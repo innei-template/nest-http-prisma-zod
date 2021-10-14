@@ -1,13 +1,9 @@
-import {
-  MiddlewareConsumer,
-  Module,
-  NestModule,
-  RequestMethod,
-} from '@nestjs/common'
+import { Module } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { AppController } from './app.controller'
-import { SkipBrowserDefaultRequestMiddleware } from './common/middlewares/favicon.middleware'
-import { SecurityMiddleware } from './common/middlewares/security.middleware'
+import { CacheModule } from './processors/cache/cache.module'
+import { DbModule } from './processors/database/database.module'
+import { HelperModule } from './processors/helper/helper.module'
 
 @Module({
   imports: [
@@ -21,14 +17,11 @@ import { SecurityMiddleware } from './common/middlewares/security.middleware'
       ],
       isGlobal: true,
     }),
+    CacheModule,
+    DbModule,
+    HelperModule,
   ],
   controllers: [AppController],
   providers: [],
 })
-export class AppModule implements NestModule {
-  configure(consumer: MiddlewareConsumer) {
-    consumer
-      .apply(SkipBrowserDefaultRequestMiddleware, SecurityMiddleware)
-      .forRoutes({ path: '(.*?)', method: RequestMethod.ALL })
-  }
-}
+export class AppModule {}

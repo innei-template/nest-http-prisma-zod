@@ -1,9 +1,8 @@
-import type { AxiosRequestConfig } from 'axios'
-import { argv } from 'yargs'
+import { argv } from 'zx'
 import { isDev } from './utils/environment.utils'
 
 console.log(argv)
-
+export const PORT = argv.port || 3333
 export const CROSS_DOMAIN = {
   allowedOrigins: [
     'innei.ren',
@@ -18,21 +17,27 @@ export const CROSS_DOMAIN = {
   allowedReferer: 'innei.ren',
 }
 
+export const MONGO_DB = {
+  dbName: argv.collection_name || 'mx-space',
+  host: argv.db_host || '127.0.0.1',
+  port: argv.db_port || 27017,
+  get uri() {
+    return `mongodb://${this.host}:${this.port}/${
+      process.env.TEST ? 'mx-space_unitest' : this.dbName
+    }`
+  },
+}
+
 export const REDIS = {
   host: argv.redis_host || 'localhost',
   port: argv.redis_port || 6379,
-  password: (argv.redis_password || null) as string,
+  password: argv.redis_password || null,
   ttl: null,
   httpCacheTTL: 5,
   max: 5,
   disableApiCache:
-    (isDev || argv.disableCache) && !process.env['ENABLE_CACHE_DEBUG'],
+    (isDev || argv.disable_cache) && !process.env['ENABLE_CACHE_DEBUG'],
 }
-
-export const AXIOS_CONFIG: AxiosRequestConfig = {
-  timeout: 10000,
-}
-
 export const SECURITY = {
   jwtSecret: argv.jwtSecret || 'asjhczxiucipoiopiqm2376',
   jwtExpire: '7d',

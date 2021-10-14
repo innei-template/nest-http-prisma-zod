@@ -1,5 +1,6 @@
-yarn version --no-git-tag-version
+set -e
 tag=v$(json -f package.json version)
+yarn changelog
 git add .
 git commit -a -m "release: $tag" &>/dev/null
 git push
