@@ -3,8 +3,7 @@ import { ApiTags } from '@nestjs/swagger'
 @Controller()
 @ApiTags('Root')
 export class AppController {
-  @Get(['/'])
-  @Get('/ping')
+  @Get(['/ping', '/'])
   ping(): 'pong' {
     return 'pong'
   }

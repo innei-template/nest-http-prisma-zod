@@ -1,5 +1,6 @@
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { Test, TestingModule } from '@nestjs/testing'
+import { beforeEach, describe, expect, it } from 'vitest'
 import { AppController } from '~/app.controller'
 import { fastifyApp } from '~/common/adapt/fastify.adapt'
 

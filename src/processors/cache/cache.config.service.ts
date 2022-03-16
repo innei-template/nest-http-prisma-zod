@@ -12,14 +12,14 @@ import {
 } from '@nestjs/common'
 // import redisStore from 'cache-manager-redis-store'
 import redisStore from 'cache-manager-ioredis'
-import { ClientOpts } from 'redis'
+
 import { REDIS } from '~/app.config'
 
 @Injectable()
 export class CacheConfigService implements CacheOptionsFactory {
   // 缓存配置
   public createCacheOptions(): CacheModuleOptions {
-    const redisOptions: ClientOpts = {
+    const redisOptions: any = {
       host: REDIS.host as string,
       port: REDIS.port as number,
     }

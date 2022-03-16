@@ -12,8 +12,6 @@
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": true
-  },
+  "editor.codeActionsOnSave": {},
   "material-icon-theme.activeIconPack": "nest"
 }
