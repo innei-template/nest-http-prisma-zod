@@ -1,0 +1,47 @@
+version: '3.8'
+
+services:
+  app:
+    container_name: nest-http
+    image: nest/nest-http:latest
+    command: node index.js --redis_host=redis --db_host=mongo --allowed_origins=${ALLOWED_ORIGINS} --jwt_secret=${JWT_SECRET} --color --cluster
+    environment:
+      - TZ=Asia/Shanghai
+      - NODE_ENV=production
+    restart: 'on-failure'
+    volumes:
+      - ./data/mx-space:/root/.mx-space
+      - ./global/node_modules:/usr/local/lib/node_modules
+      - ./node_modules:/root/node_modules
+    ports:
+      - '2333:2333'
+    depends_on:
+      - mongo
+      - redis
+    links:
+      - mongo
+      - redis
+    networks:
+      - app-network
+
+  mongo:
+    container_name: mongo
+    image: mongo
+    volumes:
+      - ./data/db:/data/db
+    ports:
+      - '3344:27017'
+    networks:
+      - app-network
+
+  redis:
+    image: redis
+    container_name: redis
+
+    ports:
+      - '3333:6379'
+    networks:
+      - app-network
+networks:
+  app-network:
+    driver: bridge
