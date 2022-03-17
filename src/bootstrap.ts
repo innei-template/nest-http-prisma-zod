@@ -9,7 +9,7 @@ import { LoggingInterceptor } from './common/interceptors/logging.interceptor'
 import { MyLogger } from './processors/logger/logger.service'
 import { isDev } from './utils/environment.utils'
 
-const APIVersion = 1
+// const APIVersion = 1
 const Origin = CROSS_DOMAIN.allowedOrigins
 
 declare const module: any
@@ -32,7 +32,7 @@ export async function bootstrap() {
     credentials: true,
   })
 
-  !isDev && app.setGlobalPrefix(`api/v${APIVersion}`)
+  !isDev && app.setGlobalPrefix(`api`)
   isDev && app.useGlobalInterceptors(new LoggingInterceptor())
   app.useGlobalPipes(
     new ValidationPipe({
@@ -49,7 +49,7 @@ export async function bootstrap() {
     const options = new DocumentBuilder()
       .setTitle('API')
       .setDescription('The blog API description')
-      .setVersion(`${APIVersion}`)
+      // .setVersion(`${APIVersion}`)
       .addSecurity('bearer', {
         type: 'http',
         scheme: 'bearer',

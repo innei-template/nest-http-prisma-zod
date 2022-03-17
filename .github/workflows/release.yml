@@ -54,9 +54,9 @@ jobs:
       - name: Test Bundle Server
         run: |
           bash scripts/workflow/test-server.sh
-      - name: Zip Assets
-        run: |
-          sh scripts/zip-asset.sh
+      # - name: Zip Assets
+      #   run: |
+      #     sh scripts/zip-asset.sh
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1

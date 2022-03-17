@@ -12,6 +12,6 @@ WORKDIR /app
 COPY --from=builder /app/out .
 COPY --from=builder /app/assets ./assets
 ENV TZ=Asia/Shanghai
-EXPOSE 2333
+EXPOSE 3333
 
 CMD ["npm", "start:prod"]
