@@ -10,9 +10,8 @@ services:
       - NODE_ENV=production
     restart: 'on-failure'
     volumes:
-      - ./data/mx-space:/root/.mx-space
-      - ./global/node_modules:/usr/local/lib/node_modules
-      - ./node_modules:/root/node_modules
+      - ./data/nest:/root/.nest
+
     ports:
       - '3333:3333'
     depends_on:
