@@ -1,8 +1,10 @@
 # Nest Http Template
 
+A NestJS template, which used the coolest and fastest stuff.
+
 ## Which Tech Stack In Use
 
-- Framework: NestJS (Based on Koa)
+- Framework: NestJS (Based on Fastify)
 - Language: TypeScript (Best practices, Not AnyScript)
 - Database ODM: Typegoose (Write schema once all in TypeScript)
 - Bundle Toolchain: @vercel/ncc Bundle (Bundle entry, go node_modules away)
