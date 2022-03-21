@@ -8,11 +8,11 @@ import {
 import { ReturnModelType } from '@typegoose/typegoose'
 import { compareSync } from 'bcrypt'
 import { nanoid } from 'nanoid'
-import { InjectModel } from 'nestjs-typegoose'
 import { sleep } from 'zx'
-import { CacheService } from '~/processors/cache/cache.service'
 import { AuthService } from '../auth/auth.service'
 import { UserDocument, UserModel } from './user.model'
+import { CacheService } from '~/processors/cache/cache.service'
+import { InjectModel } from '~/transformers/model.transformer'
 
 @Injectable()
 export class UserService {
@@ -43,7 +43,7 @@ export class UserService {
   async getMasterInfo(getLoginIp = false) {
     const user = await this.userModel
       .findOne()
-      .select('-authCode' + (getLoginIp ? ' +lastLoginIp' : ''))
+      .select(`-authCode${getLoginIp ? ' +lastLoginIp' : ''}`)
       .lean({ virtuals: true })
     if (!user) {
       throw new BadRequestException('没有完成初始化!')
@@ -131,7 +131,7 @@ export class UserService {
       lastLoginIp: ip,
     })
 
-    this.Logger.warn('主人已登录, IP: ' + ip)
+    this.Logger.warn(`主人已登录, IP: ${ip}`)
     return PrevFootstep
   }
 }

@@ -50,7 +50,6 @@ specifiers:
   mongodb-memory-server: 8.4.1
   mongoose: 6.2.6
   nanoid: 3.3.1
-  nestjs-typegoose: 7.1.38
   passport: 0.5.2
   passport-jwt: 4.0.0
   prettier: 2.5.1
@@ -95,7 +94,6 @@ dependencies:
   lodash: 4.17.21
   mongoose: 6.2.6
   nanoid: 3.3.1
-  nestjs-typegoose: 7.1.38_48a0021946a9d5ffe9f727bb652369a3
   passport: 0.5.2
   passport-jwt: 4.0.0
   redis: 4.0.4
@@ -3294,10 +3292,6 @@ packages:
     engines: {node: '>= 0.4'}
     dev: true
 
-  /is-class/0.0.9:
-    resolution: {integrity: sha512-kUfRnejcRC9YLgblxoJ76dp9gZ3vMKTrDS5I6z2UVMOsHHSImNKCJocjQTkZr38PwiSZ9LVklaHEENaVYeFTXg==}
-    dev: false
-
   /is-core-module/2.8.1:
     resolution: {integrity: sha512-SdNCUs284hr40hFTFP6l0IfZ/RSrMXF3qgoRHd3/79unUTvrFO/JoXwkGm+5J/Oe3E/b5GsnG330uUNgRpu1PA==}
     dependencies:
@@ -3984,23 +3978,6 @@ packages:
   /neo-async/2.6.2:
     resolution: {integrity: sha512-Yd3UES5mWCSqR+qNT93S3UoYUkqAZ9lLg8a7g9rimsWmYGK8cVToA4/sF3RrshdyV3sAGMXVUmpMYOw+dLpOuw==}
     dev: true
-
-  /nestjs-typegoose/7.1.38_48a0021946a9d5ffe9f727bb652369a3:
-    resolution: {integrity: sha512-hYgDliG2IS5CJkzRsTbbfwZk+IP0jEyCaxcRqqXvxZaP5miiH9UvGm3K0hg8X5DuVkmsgTzW3+MxOXmcLm9BOA==}
-    engines: {node: '>=8.10.0'}
-    peerDependencies:
-      '@nestjs/common': ^6.10.1 || ^7.0.0
-      '@nestjs/core': ^6.10.1 || ^7.0.0
-      '@typegoose/typegoose': ^6.2.1 || ^7.0.0
-      mongoose: ^5.10.6
-    dependencies:
-      '@nestjs/common': 8.4.1_add13df2cdecb4b62cd3f7664ea82e18
-      '@nestjs/core': 8.4.1_b8034d7883829e8dea958456cea5a5cb
-      '@typegoose/typegoose': 9.7.0_mongoose@6.2.6
-      is-class: 0.0.9
-      mongoose: 6.2.6
-      reflect-metadata: 0.1.13
-    dev: false
 
   /new-find-package-json/1.1.0:
     resolution: {integrity: sha512-KOH3BNZcTKPzEkaJgG2iSUaurxKmefqRKmCOYH+8xqJytNIgjqU4J88BHfK+gy/UlEzlhccLyuJDJAcCgexSwA==}

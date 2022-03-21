@@ -12,7 +12,7 @@
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
       "prettier --ignore-path ./.prettierignore --write ",
-      "eslint --cache"
+      "eslint --cache --fix"
     ]
   },
   "bump": {
@@ -69,7 +69,6 @@
     "lodash": "*",
     "mongoose": "6.2.6",
     "nanoid": "3.3.1",
-    "nestjs-typegoose": "7.1.38",
     "passport": "0.5.2",
     "passport-jwt": "4.0.0",
     "redis": "4.0.4",
