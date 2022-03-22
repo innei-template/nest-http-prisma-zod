@@ -67,7 +67,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     } else {
       const ip = getIp(request)
       this.logger.warn(
-        `IP: ${ip} 错误信息: (${status}) ${message} Path: ${decodeURI(
+        `IP: ${ip} Error Info: (${status}) ${message} Path: ${decodeURI(
           request.raw.url,
         )}`,
       )
@@ -78,7 +78,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     if (prevRequestTs) {
       const content = `${request.method} -> ${request.url}`
       Logger.debug(
-        `--- 响应异常请求：${content}${chalk.yellow(
+        `--- ResponseError：${content}${chalk.yellow(
           ` +${+new Date() - prevRequestTs}ms`,
         )}`,
         LoggingInterceptor.name,
@@ -93,7 +93,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
         message:
           (exception as any)?.response?.message ||
           (exception as any)?.message ||
-          '未知错误',
+          'Unknown Error',
       })
   }
 }

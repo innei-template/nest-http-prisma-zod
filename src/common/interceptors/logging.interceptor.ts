@@ -36,13 +36,13 @@ export class LoggingInterceptor implements NestInterceptor {
     }
     const request = this.getRequest(context)
     const content = `${request.method} -> ${request.url}`
-    Logger.debug(`+++ 收到请求：${content}`, LoggingInterceptor.name)
+    Logger.debug(`+++ Request：${content}`, LoggingInterceptor.name)
     const now = +new Date()
     SetMetadata(HTTP_REQUEST_TIME, now)(this.getRequest(context))
 
     return call$.pipe(
       tap(() =>
-        this.logger.debug(`--- 响应请求：${content} +${+new Date() - now}ms`),
+        this.logger.debug(`--- Response：${content} +${+new Date() - now}ms`),
       ),
     )
   }
@@ -52,7 +52,5 @@ export class LoggingInterceptor implements NestInterceptor {
     if (req) {
       return req
     }
-    // const ctx = GqlExecutionContext.create(context)
-    // return ctx.getContext().req
   }
 }

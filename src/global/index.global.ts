@@ -10,10 +10,10 @@ import { isDev } from './env.global'
 // 建立目录
 function mkdirs() {
   mkdirSync(DATA_DIR, { recursive: true })
-  Logger.log(chalk.blue(`数据目录已经建好: ${DATA_DIR}`))
+  Logger.log(chalk.blue(`Data dir is make up: ${DATA_DIR}`))
 
   mkdirSync(LOG_DIR, { recursive: true })
-  Logger.log(chalk.blue(`日志目录已经建好: ${LOG_DIR}`))
+  Logger.log(chalk.blue(`Log dir is make up: ${LOG_DIR}`))
 }
 
 function registerGlobal() {
