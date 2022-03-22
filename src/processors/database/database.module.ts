@@ -4,8 +4,11 @@ import { databaseProvider } from './database.provider'
 import { DatabaseService } from './database.service'
 
 import { getProviderByTypegooseClass } from '~/transformers/model.transformer'
+import { PostModel } from '~/modules/post/post.model'
 
-const models = [UserModel].map((model) => getProviderByTypegooseClass(model))
+const models = [UserModel, PostModel].map((model) =>
+  getProviderByTypegooseClass(model),
+)
 @Module({
   providers: [DatabaseService, databaseProvider, ...models],
   exports: [DatabaseService, databaseProvider, ...models],
