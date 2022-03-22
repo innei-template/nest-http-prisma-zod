@@ -38,7 +38,7 @@ services:
     container_name: redis
 
     ports:
-      - '3333:6379'
+      - '6560:6379'
     networks:
       - app-network
 networks:
