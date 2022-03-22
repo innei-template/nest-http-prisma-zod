@@ -1,12 +1,12 @@
 import { ApiHideProperty } from '@nestjs/swagger'
-import { modelOptions } from '@typegoose/typegoose'
+import { modelOptions, plugin } from '@typegoose/typegoose'
 // import LeanId from 'mongoose-lean-id'
 // import { default as mongooseLeanVirtuals } from 'mongoose-lean-virtuals'
-// import Paginate from 'mongoose-paginate-v2'
+import Paginate from 'mongoose-paginate-v2'
 
 // @plugin(mongooseLeanVirtuals)
-// @plugin(Paginate)
 // @plugin(LeanId)
+@plugin(Paginate)
 @modelOptions({
   schemaOptions: {
     toJSON: { virtuals: true },
@@ -26,25 +26,4 @@ export class BaseModel {
   static get protectedKeys() {
     return ['created', 'id', '_id']
   }
-}
-
-export class Paginator {
-  /**
-   * 总条数
-   */
-  readonly total: number
-  /**
-   * 一页多少条
-   */
-  readonly size: number
-  /**
-   * 当前页
-   */
-  readonly currentPage: number
-  /**
-   * 总页数
-   */
-  readonly totalPage: number
-  readonly hasNextPage: boolean
-  readonly hasPrevPage: boolean
 }

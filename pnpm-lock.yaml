@@ -49,6 +49,7 @@ specifiers:
   lodash: '*'
   mongodb-memory-server: 8.4.1
   mongoose: 6.2.6
+  mongoose-paginate-v2: 1.6.3
   nanoid: 3.3.1
   passport: 0.5.2
   passport-jwt: 4.0.0
@@ -93,6 +94,7 @@ dependencies:
   fastify-swagger: 5.0.0
   lodash: 4.17.21
   mongoose: 6.2.6
+  mongoose-paginate-v2: 1.6.3
   nanoid: 3.3.1
   passport: 0.5.2
   passport-jwt: 4.0.0
@@ -3923,6 +3925,11 @@ packages:
       saslprep: 1.0.3
     dev: false
     optional: true
+
+  /mongoose-paginate-v2/1.6.3:
+    resolution: {integrity: sha512-wxIOcZL7V3+yHIkdTcDk+MtPxjDacEmrZ/4NpwgvOmmEm9SWWsBKRyPd/EmHlRUzk3ylr7fy4QEje1VMg0qpZA==}
+    engines: {node: '>=4.0.0'}
+    dev: false
 
   /mongoose/6.2.6:
     resolution: {integrity: sha512-OkPM1y7Ed9+Pa2/18mxegcD0OOe/aCXTQvOEyEn/MzVdaRsVSc+zE6myOS4LkWWi30c2tl4fpdJJvgC/MgXiww==}
