@@ -84,12 +84,14 @@ export class AllExceptionsFilter implements ExceptionFilter {
         LoggingInterceptor.name,
       )
     }
-
+    const res = (exception as any).response
     response
       .status(status)
       .type('application/json')
       .send({
         ok: 0,
+        code: res?.code || status,
+        chMessage: res?.chMessage || res?.message,
         message:
           (exception as any)?.response?.message ||
           (exception as any)?.message ||

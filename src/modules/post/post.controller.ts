@@ -3,6 +3,8 @@ import { PostService } from './post.service'
 import { HTTPDecorators } from '~/common/decorator/http.decorator'
 import { ApiName } from '~/common/decorator/openapi.decorator'
 import { PagerDto } from '~/shared/dto/pager.dto'
+import { BusinessException } from '~/common/exceptions/business.excpetion'
+import { ErrorCodeEnum } from '~/constants/error-code.constant'
 
 @Controller('posts')
 @ApiName
@@ -22,5 +24,10 @@ export class PostController {
         lean: true,
       },
     )
+  }
+
+  @Get('/*')
+  async notFound() {
+    throw new BusinessException(ErrorCodeEnum.PostNotFoundError)
   }
 }
