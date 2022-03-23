@@ -1,25 +1,6 @@
-# Nest Http Template
+# File Structure
 
-A NestJS template, which used the coolest and fastest stuff.
-
-## Which Tech Stack In Use
-
-- Framework: NestJS (Based on Fastify)
-- Language: TypeScript (Best practices, Not AnyScript)
-- Database ODM: Typegoose (Write schema once all in TypeScript)
-- Bundle Toolchain: @vercel/ncc Bundle (Bundle entry, go node_modules away)
-- Testing: Vitest (Test case write in TypeScript, fast and out-of-box)
-- Package Manager: PNPM (which is fastest)
-- DevOps: Docker
-- Other: Prettier, ESLint, Husky, Bump Version, etc.
-
-## How to start development
-
-```bash
-npm run dev
-```
-
-## File Structure
+This structure help you get familiar with projects quickly.
 
 ```
 .
@@ -33,7 +14,7 @@ npm run dev
 │   ├── filters                   # 异常处理器
 │   ├── guard                     # 守卫与鉴权
 │   ├── interceptors              # 拦截器, 数据过滤与响应格式化处理
-│   ├── middlewares               # 传统意义上的中间件
+│   ├── middlewares               # 中间件
 │   └── pipes                     # 管道
 ├── constants                     # 常量
 ├── main.ts                       # 引入配置，启动主程序，引入各种全局服务
@@ -53,11 +34,3 @@ npm run dev
 └── main.ts                         # 入口
 
 ```
-
-## Docs
-
-Please visit [docs](./docs/) folder under this project.
-
-## Authors
-
-[Innei](https://github.com/innei).
