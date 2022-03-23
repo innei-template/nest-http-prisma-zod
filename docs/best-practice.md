@@ -1,8 +1,3 @@
----
-title: Bast Practice
-sidebar_position: 1
----
-
 # How to new Module
 
 In this section, let's build a simple bussiness module.
@@ -23,20 +18,21 @@ npm i -g @nestjs/cli
 Or, export node_modules/.bin in `$PATH`.
 
 ```bash
-export PATH=$"./node_modules/.bin:$PATH"
+export PATH="./node_modules/.bin:$PATH"
 ```
+
 :::
 
 :::tip
 Add export `./node_modules/.bin` into env $PATH automatically, add this line into `$HOME/.zshrc` or other shell profile you like.
 
 ```bash
-export PATH=$"./node_modules/.bin:$PATH"
+export PATH="./node_modules/.bin:$PATH"
 ```
+
 :::
 
 Do above command, nest-cli will generate a folder in modules, named good, and create a file named good.module.ts, The GoodModule will be imported in `app.module.ts` imports scope.
-
 
 ```ts
 // app.module.ts
@@ -55,7 +51,6 @@ Do above command, nest-cli will generate a folder in modules, named good, and cr
   ],
 })
 export class AppModule {}
-
 ```
 
 In NestJS, a module wraps controllers, providers. So, should create a new file named `good.controller.ts` and write api in this file. Also, use nestjs-cli to create this file quickly.
@@ -143,7 +138,6 @@ export class RuleController {
     return 'ok'
   }
 }
-
 ```
 
 Ok, a business module was successfully created.
