@@ -101,7 +101,7 @@
     "husky": "7.0.4",
     "ioredis": "*",
     "lint-staged": "12.3.5",
-    "prettier": "2.5.1",
+    "prettier": "2.6.0",
     "rimraf": "3.0.2",
     "run-script-webpack-plugin": "0.0.11",
     "ts-loader": "9.2.8",
