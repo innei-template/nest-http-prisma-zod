@@ -69,7 +69,7 @@ specifiers:
   vitest: 0.7.10
   webpack: '*'
   webpack-node-externals: 3.0.0
-  zx: 4.2.0
+  zx: 4.3.0
 
 dependencies:
   '@nestjs/common': 8.4.1_add13df2cdecb4b62cd3f7664ea82e18
@@ -102,7 +102,7 @@ dependencies:
   reflect-metadata: 0.1.13
   rxjs: 7.5.5
   snakecase-keys: 5.1.2
-  zx: 4.2.0
+  zx: 4.3.0
 
 optionalDependencies:
   mongodb-memory-server: 8.4.1
@@ -2122,7 +2122,7 @@ packages:
     resolution: {integrity: sha512-EGAbGvH7j7Xt2nc0E7D99La1OiEs8LnyimkRgwExpUMScN6O+3x9tIWs7PLQZVNx4YD+00skHXPXi1yQHpAmZA==}
     engines: {node: '>=10.13.0'}
     dependencies:
-      graceful-fs: 4.2.8
+      graceful-fs: 4.2.9
       tapable: 2.2.1
     dev: true
 
@@ -5448,7 +5448,7 @@ packages:
     engines: {node: '>=10.13.0'}
     dependencies:
       glob-to-regexp: 0.4.1
-      graceful-fs: 4.2.8
+      graceful-fs: 4.2.9
     dev: true
 
   /watchpack/2.3.1:
@@ -5665,9 +5665,9 @@ packages:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
 
-  /zx/4.2.0:
-    resolution: {integrity: sha512-/4f7FaJecA9I655KXKXIHO3CFNYjAz2uSmTz6v2eNlKdrQKyz4VyF3RjqFuP6nQG+Hd3+NjOvrVNBkv8Ne9d4Q==}
-    engines: {node: '>= 14.13.0'}
+  /zx/4.3.0:
+    resolution: {integrity: sha512-KuEjpu5QFIMx0wWfzknDRhY98s7a3tWNRmYt19XNmB7AfOmz5zISA4+3Q8vlJc2qguxMn89uSxhPDCldPa3YLA==}
+    engines: {node: '>= 14.13.1'}
     hasBin: true
     dependencies:
       '@types/fs-extra': 9.0.12
