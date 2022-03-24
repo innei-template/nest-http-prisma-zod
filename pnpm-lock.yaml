@@ -22,7 +22,7 @@ specifiers:
   '@types/bcrypt': 5.0.0
   '@types/cache-manager': 3.4.3
   '@types/cron': 1.7.3
-  '@types/ioredis': 4.28.8
+  '@types/ioredis': 4.28.10
   '@types/lodash': 4.14.180
   '@types/node': 17.0.21
   '@types/nodemailer': 6.4.4
@@ -117,7 +117,7 @@ devDependencies:
   '@types/bcrypt': 5.0.0
   '@types/cache-manager': 3.4.3
   '@types/cron': 1.7.3
-  '@types/ioredis': 4.28.8
+  '@types/ioredis': 4.28.10
   '@types/lodash': 4.14.180
   '@types/node': 17.0.21
   '@types/nodemailer': 6.4.4
@@ -833,8 +833,8 @@ packages:
       '@types/node': 17.0.21
     dev: false
 
-  /@types/ioredis/4.28.8:
-    resolution: {integrity: sha512-mULOyO2smtvkE1zmzRRA4P0+1UjEqusi014kXOL1q3CY0RgqkR5/wKvv+vAJbPw2Q66wPyylKeevUy+m/FaRMg==}
+  /@types/ioredis/4.28.10:
+    resolution: {integrity: sha512-69LyhUgrXdgcNDv7ogs1qXZomnfOEnSmrmMFqKgt1XMJxmoOSG/u3wYy13yACIfKuMJ8IhKgHafDO3sx19zVQQ==}
     dependencies:
       '@types/node': 17.0.21
     dev: true
