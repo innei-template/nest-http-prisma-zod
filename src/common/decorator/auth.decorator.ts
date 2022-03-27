@@ -3,7 +3,8 @@ import { ApiBearerAuth, ApiUnauthorizedResponse } from '@nestjs/swagger'
 import { JWTAuthGuard } from '../guard/auth.guard'
 
 export function Auth() {
-  const decorators = []
+  const decorators: (ClassDecorator | MethodDecorator | PropertyDecorator)[] =
+    []
 
   decorators.push(
     ApiBearerAuth(),

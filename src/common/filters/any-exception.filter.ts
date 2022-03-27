@@ -46,6 +46,8 @@ export class AllExceptionsFilter implements ExceptionFilter {
       (exception as any)?.response?.message ||
       (exception as myError)?.message ||
       ''
+
+    const url = request.raw.url!
     if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
       Logger.error(exception, undefined, 'Catch')
 
@@ -58,7 +60,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
           })
 
         this.errorLogPipe.write(
-          `[${new Date().toISOString()}] ${decodeURI(request.raw.url)}: ${
+          `[${new Date().toISOString()}] ${decodeURI(url)}: ${
             (exception as any)?.response?.message ||
             (exception as myError)?.message
           }\n${(exception as Error).stack}\n`,
@@ -67,9 +69,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     } else {
       const ip = getIp(request)
       this.logger.warn(
-        `IP: ${ip} Error Info: (${status}) ${message} Path: ${decodeURI(
-          request.raw.url,
-        )}`,
+        `IP: ${ip} Error Info: (${status}) ${message} Path: ${decodeURI(url)}`,
       )
     }
     // @ts-ignore

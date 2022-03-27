@@ -6,7 +6,7 @@ import { Redis } from 'ioredis'
 
 // 获取器
 export type TCacheKey = string
-export type TCacheResult<T> = Promise<T>
+export type TCacheResult<T> = Promise<T | undefined>
 
 /**
  * @class CacheService

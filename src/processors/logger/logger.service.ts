@@ -5,7 +5,7 @@ import { ConsoleLogger, ConsoleLoggerOptions } from '@nestjs/common'
 import { chalk } from 'zx'
 
 export class MyLogger extends ConsoleLogger {
-  constructor(context?: string, options?: ConsoleLoggerOptions) {
+  constructor(context: string, options: ConsoleLoggerOptions) {
     super(context, options)
   }
   private _getColorByLogLevel(logLevel: string) {
@@ -72,7 +72,7 @@ export class MyLogger extends ConsoleLogger {
     const diff = this._updateAndGetTimestampDiff()
 
     const workerPrefix = cluster.isWorker
-      ? chalk.hex('#fab1a0')(`*Worker - ${cluster.worker.id}*`)
+      ? chalk.hex('#fab1a0')(`*Worker - ${cluster.worker!.id}*`)
       : ''
     if (context && !argv.length) {
       print(`${workerPrefix} [${chalk.yellow(context)}] `, formatMessage, diff)

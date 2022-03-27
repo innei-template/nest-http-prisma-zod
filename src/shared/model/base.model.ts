@@ -13,7 +13,7 @@ import Paginate from 'mongoose-paginate-v2'
     toObject: { virtuals: true },
     timestamps: {
       createdAt: 'created',
-      updatedAt: null,
+      updatedAt: false,
     },
   },
 })
