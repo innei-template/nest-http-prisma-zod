@@ -1,4 +1,5 @@
-import { argv } from 'zx'
+import { argv } from 'zx-cjs'
+
 import { isDev } from './utils/environment.utils'
 
 console.log(argv)

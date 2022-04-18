@@ -1,8 +1,9 @@
 /* eslint-disable prefer-rest-params */
 import cluster from 'cluster'
 import { performance } from 'perf_hooks'
+import { chalk } from 'zx-cjs'
+
 import { ConsoleLogger, ConsoleLoggerOptions } from '@nestjs/common'
-import { chalk } from 'zx'
 
 export class MyLogger extends ConsoleLogger {
   constructor(context: string, options: ConsoleLoggerOptions) {

@@ -4,7 +4,7 @@ const providers: Provider<any>[] = []
 
 @Module({
   imports: [],
-  providers: providers,
+  providers,
   exports: providers,
 })
 @Global()

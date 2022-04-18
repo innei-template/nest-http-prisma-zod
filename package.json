@@ -76,7 +76,7 @@
     "reflect-metadata": "0.1.13",
     "rxjs": "7.5.5",
     "snakecase-keys": "5.4.1",
-    "zx": "npm:zx-cjs@latest"
+    "zx-cjs": "6.1.0"
   },
   "devDependencies": {
     "@innei-util/eslint-config-ts": "0.8.2",
@@ -111,7 +111,8 @@
     "vite-tsconfig-paths": "3.4.1",
     "vitest": "0.9.3",
     "webpack": "*",
-    "webpack-node-externals": "3.0.0"
+    "webpack-node-externals": "3.0.0",
+    "zx": "6.1.0"
   },
   "optionalDependencies": {
     "mongodb-memory-server": "8.5.0",

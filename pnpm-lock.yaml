@@ -69,7 +69,8 @@ specifiers:
   vitest: 0.9.3
   webpack: '*'
   webpack-node-externals: 3.0.0
-  zx: npm:zx-cjs@latest
+  zx: 6.1.0
+  zx-cjs: 6.1.0
 
 dependencies:
   '@nestjs/common': 8.4.4_ea528571bae7e3437ac6e354bb00c0f4
@@ -102,7 +103,7 @@ dependencies:
   reflect-metadata: 0.1.13
   rxjs: 7.5.5
   snakecase-keys: 5.4.1
-  zx: /zx-cjs/6.1.0
+  zx-cjs: 6.1.0
 
 optionalDependencies:
   mongodb-memory-server: 8.5.0
@@ -142,6 +143,7 @@ devDependencies:
   vitest: 0.9.3
   webpack: 5.58.2
   webpack-node-externals: 3.0.0
+  zx: /zx-cjs/6.1.0
 
 packages:
 
@@ -5775,4 +5777,3 @@ packages:
   /zx-cjs/6.1.0:
     resolution: {integrity: sha512-IM/tGEMSz6c4jFnBwkxADl/AHtvkAUxb/KL7mEjde62Y5GgbaKoZQn5Zym5u4jYGJ0xfpjomWsiNldOdoRShzw==}
     engines: {node: '>= 16.0.0'}
-    dev: false

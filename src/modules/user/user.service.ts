@@ -1,3 +1,7 @@
+import { compareSync } from 'bcrypt'
+import { nanoid } from 'nanoid'
+import { sleep } from 'zx-cjs'
+
 import {
   BadRequestException,
   ForbiddenException,
@@ -7,15 +11,14 @@ import {
   UnprocessableEntityException,
 } from '@nestjs/common'
 import { ReturnModelType } from '@typegoose/typegoose'
-import { compareSync } from 'bcrypt'
-import { nanoid } from 'nanoid'
-import { sleep } from 'zx'
-import { AuthService } from '../auth/auth.service'
-import { UserDocument, UserModel } from './user.model'
-import { CacheService } from '~/processors/cache/cache.service'
-import { InjectModel } from '~/transformers/model.transformer'
+
 import { BusinessException } from '~/common/exceptions/business.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
+import { CacheService } from '~/processors/cache/cache.service'
+import { InjectModel } from '~/transformers/model.transformer'
+
+import { AuthService } from '../auth/auth.service'
+import { UserDocument, UserModel } from './user.model'
 
 @Injectable()
 export class UserService {

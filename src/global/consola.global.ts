@@ -1,14 +1,16 @@
 /* eslint-disable prefer-rest-params */
-import { createWriteStream } from 'fs'
-import { resolve } from 'path'
 import consola_, { FancyReporter, LogLevel } from 'consola'
 import { CronJob } from 'cron'
+import { createWriteStream } from 'fs'
+import { resolve } from 'path'
+import { argv } from 'zx-cjs'
+
 import { CronExpression } from '@nestjs/schedule'
-import { argv } from 'zx'
+
+import { LOG_DIR } from '~/constants/path.constant'
 
 import { getShortDate, getShortTime } from '../utils/time.util'
 import { isDev, isTest } from './env.global'
-import { LOG_DIR } from '~/constants/path.constant'
 
 export const getTodayLogFilePath = () =>
   resolve(LOG_DIR, `stdout_${getShortDate(new Date())}.log`)
