@@ -1,10 +1,12 @@
 import { Controller, Get, Query } from '@nestjs/common'
-import { PostService } from './post.service'
+
 import { HTTPDecorators } from '~/common/decorator/http.decorator'
 import { ApiName } from '~/common/decorator/openapi.decorator'
-import { PagerDto } from '~/shared/dto/pager.dto'
-import { BusinessException } from '~/common/exceptions/business.excpetion'
+import { BizException } from '~/common/exceptions/business.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
+import { PagerDto } from '~/shared/dto/pager.dto'
+
+import { PostService } from './post.service'
 
 @Controller('posts')
 @ApiName
@@ -28,6 +30,6 @@ export class PostController {
 
   @Get('/*')
   async notFound() {
-    throw new BusinessException(ErrorCodeEnum.PostNotFoundError)
+    throw new BizException(ErrorCodeEnum.PostNotFoundError)
   }
 }

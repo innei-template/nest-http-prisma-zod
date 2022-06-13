@@ -1,6 +1,8 @@
 import { Global, Module, Provider } from '@nestjs/common'
 
-const providers: Provider<any>[] = []
+import { HttpService } from './helper.http.service'
+
+const providers: Provider<any>[] = [HttpService]
 
 @Module({
   imports: [],

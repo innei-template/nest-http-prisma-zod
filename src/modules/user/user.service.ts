@@ -12,7 +12,7 @@ import {
 } from '@nestjs/common'
 import { ReturnModelType } from '@typegoose/typegoose'
 
-import { BusinessException } from '~/common/exceptions/business.excpetion'
+import { BizException } from '~/common/exceptions/business.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { CacheService } from '~/processors/cache/cache.service'
 import { InjectModel } from '~/transformers/model.transformer'
@@ -106,7 +106,7 @@ export class UserService {
         .select('+password +apiToken')
 
       if (!currentUser) {
-        throw new BusinessException(ErrorCodeEnum.MasterLostError)
+        throw new BizException(ErrorCodeEnum.MasterLostError)
       }
       // 1. 验证新旧密码是否一致
       const isSamePassword = compareSync(password, currentUser.password)
@@ -133,7 +133,7 @@ export class UserService {
   async recordFootstep(ip: string): Promise<Record<string, Date | string>> {
     const master = await this.userModel.findOne()
     if (!master) {
-      throw new BusinessException(ErrorCodeEnum.MasterLostError)
+      throw new BizException(ErrorCodeEnum.MasterLostError)
     }
     const PrevFootstep = {
       lastLoginTime: master.lastLoginTime || new Date(1586090559569),

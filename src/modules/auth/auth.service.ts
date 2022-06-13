@@ -1,19 +1,22 @@
-import { Injectable } from '@nestjs/common'
-import { JwtService } from '@nestjs/jwt'
-import { DocumentType, ReturnModelType } from '@typegoose/typegoose'
 import dayjs from 'dayjs'
 import { isDate, omit } from 'lodash'
 import { customAlphabet } from 'nanoid/async'
-import { TokenDto } from './auth.controller'
-import { JwtPayload } from './interfaces/jwt-payload.interface'
+
+import { Injectable } from '@nestjs/common'
+import { JwtService } from '@nestjs/jwt'
+import { DocumentType, ReturnModelType } from '@typegoose/typegoose'
+
+import { BizException } from '~/common/exceptions/business.excpetion'
+import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import {
   TokenModel,
   UserModel as User,
   UserDocument,
 } from '~/modules/user/user.model'
 import { InjectModel } from '~/transformers/model.transformer'
-import { BusinessException } from '~/common/exceptions/business.excpetion'
-import { ErrorCodeEnum } from '~/constants/error-code.constant'
+
+import { TokenDto } from './auth.controller'
+import { JwtPayload } from './interfaces/jwt-payload.interface'
 
 @Injectable()
 export class AuthService {
@@ -37,7 +40,7 @@ export class AuthService {
   async verifyPayload(payload: JwtPayload): Promise<UserDocument | null> {
     const user = await this.userModel.findById(payload._id).select('+authCode')
     if (!user) {
-      throw new BusinessException(ErrorCodeEnum.MasterLostError)
+      throw new BizException(ErrorCodeEnum.MasterLostError)
     }
     return user && user.authCode === payload.authCode ? user : null
   }

@@ -1,3 +1,4 @@
+import { AxiosRequestConfig } from 'axios'
 import { argv } from 'zx-cjs'
 
 import { isDev } from './utils/environment.utils'
@@ -42,4 +43,8 @@ export const REDIS = {
 export const SECURITY = {
   jwtSecret: argv.jwtSecret || 'asjhczxiucipoiopiqm2376',
   jwtExpire: '7d',
+}
+
+export const AXIOS_CONFIG: AxiosRequestConfig = {
+  timeout: 10000,
 }
