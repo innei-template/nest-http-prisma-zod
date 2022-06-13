@@ -2,6 +2,7 @@ import { Logger, ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
+
 import { CROSS_DOMAIN, PORT } from './app.config'
 import { AppModule } from './app.module'
 import { fastifyApp } from './common/adapt/fastify.adapt'

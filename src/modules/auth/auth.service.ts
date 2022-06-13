@@ -1,21 +1,12 @@
-import dayjs from 'dayjs'
-import { isDate, omit } from 'lodash'
-import { customAlphabet } from 'nanoid/async'
-
 import { Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { DocumentType, ReturnModelType } from '@typegoose/typegoose'
+import { ReturnModelType } from '@typegoose/typegoose'
 
 import { BizException } from '~/common/exceptions/business.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
-import {
-  TokenModel,
-  UserModel as User,
-  UserDocument,
-} from '~/modules/user/user.model'
+import { UserDocument , UserModel as User } from '~/modules/user/user.model'
 import { InjectModel } from '~/transformers/model.transformer'
 
-import { TokenDto } from './auth.controller'
 import { JwtPayload } from './interfaces/jwt-payload.interface'
 
 @Injectable()

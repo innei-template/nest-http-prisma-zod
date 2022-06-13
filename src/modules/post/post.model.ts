@@ -1,5 +1,7 @@
-import { Severity, index, modelOptions, prop } from '@typegoose/typegoose'
 import { IsNotEmpty, IsString } from 'class-validator'
+
+import { Severity, index, modelOptions, prop } from '@typegoose/typegoose'
+
 import { BaseModel } from '~/shared/model/base.model'
 
 @index({ slug: 1 })

@@ -1,4 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger'
 import { Expose, Transform } from 'class-transformer'
 import {
   IsInt,
@@ -8,6 +7,8 @@ import {
   Max,
   Min,
 } from 'class-validator'
+
+import { ApiProperty } from '@nestjs/swagger'
 
 export class PagerDto {
   @Min(1)

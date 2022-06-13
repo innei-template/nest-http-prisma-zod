@@ -1,6 +1,7 @@
+import { beforeEach, describe, expect, it } from 'vitest'
+
 import { Test } from '@nestjs/testing'
 
-import { beforeEach, describe, expect, it } from 'vitest'
 import { AuthService } from '~/modules/auth/auth.service'
 import { UserModel } from '~/modules/user/user.model'
 import { UserService } from '~/modules/user/user.service'

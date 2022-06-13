@@ -1,8 +1,9 @@
-import { ApiHideProperty } from '@nestjs/swagger'
-import { modelOptions, plugin } from '@typegoose/typegoose'
 // import LeanId from 'mongoose-lean-id'
 // import { default as mongooseLeanVirtuals } from 'mongoose-lean-virtuals'
 import Paginate from 'mongoose-paginate-v2'
+
+import { ApiHideProperty } from '@nestjs/swagger'
+import { modelOptions, plugin } from '@typegoose/typegoose'
 
 // @plugin(mongooseLeanVirtuals)
 // @plugin(LeanId)

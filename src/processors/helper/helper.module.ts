@@ -1,4 +1,4 @@
-import { Global, Module, Provider } from '@nestjs/common'
+import { Provider , Global, Module } from '@nestjs/common'
 
 import { HttpService } from './helper.http.service'
 

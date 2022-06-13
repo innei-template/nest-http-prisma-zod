@@ -1,11 +1,7 @@
-import {
-  DocumentType,
-  modelOptions,
-  mongoose,
-  prop,
-  Severity,
-} from '@typegoose/typegoose'
 import { hashSync } from 'bcrypt'
+
+import { DocumentType , Severity, modelOptions, mongoose, prop } from '@typegoose/typegoose'
+
 import { BaseModel } from '~/shared/model/base.model'
 
 export type UserDocument = DocumentType<UserModel>

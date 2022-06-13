@@ -1,4 +1,3 @@
-import { ApiProperty } from '@nestjs/swagger'
 import {
   IsEmail,
   IsNotEmpty,
@@ -7,6 +6,8 @@ import {
   IsString,
   IsUrl,
 } from 'class-validator'
+
+import { ApiProperty } from '@nestjs/swagger'
 
 class UserOptionDto {
   @IsOptional()

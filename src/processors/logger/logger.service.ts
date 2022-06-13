@@ -3,7 +3,7 @@ import cluster from 'cluster'
 import { performance } from 'perf_hooks'
 import { chalk } from 'zx-cjs'
 
-import { ConsoleLogger, ConsoleLoggerOptions } from '@nestjs/common'
+import { ConsoleLoggerOptions , ConsoleLogger } from '@nestjs/common'
 
 export class MyLogger extends ConsoleLogger {
   constructor(context: string, options: ConsoleLoggerOptions) {

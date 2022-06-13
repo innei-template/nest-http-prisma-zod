@@ -1,10 +1,16 @@
 /* eslint-disable import/order */
-import { Logger } from '@nestjs/common'
 import { mkdirSync } from 'fs'
+
+import { Logger } from '@nestjs/common'
+
 import 'zx/globals'
+
 import { DATA_DIR, LOG_DIR } from '~/constants/path.constant'
+
 import { consola, registerStdLogger } from './consola.global'
+
 import './dayjs.global'
+
 import { isDev } from './env.global'
 
 // 建立目录
