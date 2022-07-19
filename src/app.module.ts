@@ -4,7 +4,7 @@ import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core'
 import { AppController } from './app.controller'
 import { AllExceptionsFilter } from './common/filters/any-exception.filter'
 import { HttpCacheInterceptor } from './common/interceptors/cache.interceptor'
-import { JSONSerializeInterceptor } from './common/interceptors/json-serialize.interceptor'
+import { JSONTransformerInterceptor } from './common/interceptors/json-transformer.interceptor'
 import { ResponseInterceptor } from './common/interceptors/response.interceptor'
 import { PostModule } from './modules/post/post.module'
 import { CacheModule } from './processors/cache/cache.module'
@@ -29,7 +29,7 @@ import { LoggerModule } from './processors/logger/logger.module'
 
     {
       provide: APP_INTERCEPTOR,
-      useClass: JSONSerializeInterceptor, // 2
+      useClass: JSONTransformerInterceptor, // 2
     },
     {
       provide: APP_INTERCEPTOR,

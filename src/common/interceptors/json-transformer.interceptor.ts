@@ -3,20 +3,21 @@
  * @author Innei
  */
 import { isArrayLike, isObjectLike } from 'lodash'
-import { Observable , map } from 'rxjs'
+import { Observable, map } from 'rxjs'
 import snakecaseKeys from 'snakecase-keys'
 
 import {
   CallHandler,
   ExecutionContext,
+  Injectable,
   NestInterceptor,
- Injectable } from '@nestjs/common'
+} from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 
 import { RESPONSE_PASSTHROUGH_METADATA } from '~/constants/system.constant'
 
 @Injectable()
-export class JSONSerializeInterceptor implements NestInterceptor {
+export class JSONTransformerInterceptor implements NestInterceptor {
   constructor(private readonly reflector: Reflector) {}
   intercept(context: ExecutionContext, next: CallHandler): Observable<any> {
     const handler = context.getHandler()
