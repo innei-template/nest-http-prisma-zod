@@ -110,7 +110,7 @@
     "vitest": "0.18.1",
     "webpack": "*",
     "webpack-node-externals": "3.0.0",
-    "zx": "6.1.0"
+    "zx": "7.0.7"
   },
   "optionalDependencies": {
     "mongodb-memory-server": "8.7.2",
