@@ -3,7 +3,7 @@ import { mkdirSync } from 'fs'
 
 import { Logger } from '@nestjs/common'
 
-import 'zx/globals'
+import 'zx-cjs/globals'
 
 import { DATA_DIR, LOG_DIR } from '~/constants/path.constant'
 
