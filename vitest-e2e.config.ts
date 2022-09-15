@@ -19,8 +19,9 @@ const swcPlugin = (() => {
   })
 
   const originalTransform = plugin.transform!
-
+  // @ts-expect-error
   const transform = function (...args: Parameters<typeof originalTransform>) {
+    // @ts-expect-error
     if (!args[1].endsWith('html')) return originalTransform.apply(this, args)
   }
 
