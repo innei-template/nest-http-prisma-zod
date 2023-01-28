@@ -5,7 +5,7 @@ import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
 import { CROSS_DOMAIN, PORT } from './app.config'
 import { AppModule } from './app.module'
-import { fastifyApp } from './common/adapt/fastify.adapt'
+import { fastifyApp } from './common/adapter/fastify.adapter'
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor'
 import { MyLogger } from './processors/logger/logger.service'
 import { isDev } from './utils/environment.utils'

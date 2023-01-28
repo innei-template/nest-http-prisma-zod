@@ -1,10 +1,10 @@
 import { beforeEach, describe, expect, it } from 'vitest'
 
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
-import { TestingModule , Test } from '@nestjs/testing'
+import { Test, TestingModule } from '@nestjs/testing'
 
 import { AppController } from '~/app.controller'
-import { fastifyApp } from '~/common/adapt/fastify.adapt'
+import { fastifyApp } from '~/common/adapter/fastify.adapter'
 
 describe('AppController (e2e)', () => {
   let app: NestFastifyApplication

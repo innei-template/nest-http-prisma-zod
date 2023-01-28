@@ -1,5 +1,6 @@
+import { resolve } from 'path'
 import swc from 'rollup-plugin-swc'
-import tsPaths from 'vite-tsconfig-paths'
+import tsconfigPath from 'vite-tsconfig-paths'
 import { defineConfig } from 'vitest/config'
 
 const swcPlugin = (() => {
@@ -19,9 +20,10 @@ const swcPlugin = (() => {
   })
 
   const originalTransform = plugin.transform!
-  // @ts-expect-error
+
+  // @ts-ignore
   const transform = function (...args: Parameters<typeof originalTransform>) {
-    // @ts-expect-error
+    // @ts-ignore
     if (!args[1].endsWith('html')) return originalTransform.apply(this, args)
   }
 
@@ -29,14 +31,47 @@ const swcPlugin = (() => {
 })()
 
 export default defineConfig({
-  plugins: [tsPaths(), swcPlugin],
+  root: './test',
   test: {
-    setupFiles: ['./setupFile.ts'],
+    include: ['**/*.spec.ts', '**/*.e2e-spec.ts'],
+
     threads: false,
-    environment: 'node',
     globals: true,
+    globalSetup: [resolve(__dirname, './test/setup.ts')],
+    setupFiles: [resolve(__dirname, './test/setup-global.ts')],
+    environment: 'node',
+    includeSource: [resolve(__dirname, './test')],
+  },
+  optimizeDeps: {
+    needsInterop: ['lodash'],
+  },
+  resolve: {
+    alias: {
+      'zx-cjs': 'zx',
+      '~/app.config': resolve(__dirname, './src/app.config.test.ts'),
+    },
   },
 
   // esbuild can not emit ts metadata
   esbuild: false,
+
+  plugins: [
+    // @ts-ignore
+    swcPlugin,
+    tsconfigPath({
+      projects: [
+        resolve(__dirname, './test/tsconfig.json'),
+        resolve(__dirname, './tsconfig.json'),
+      ],
+    }),
+
+    {
+      name: 'vitest-plugin',
+      config: () => ({
+        test: {
+          setupFiles: ['./setupFiles/lifecycle.ts'],
+        },
+      }),
+    },
+  ],
 })

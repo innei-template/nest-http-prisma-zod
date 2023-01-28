@@ -12,7 +12,7 @@ export class PostModel extends BaseModel {
   @prop({ trim: true, unique: true, required: true })
   @IsString()
   @IsNotEmpty()
-  slug!: string
+  slug: string
 
   @prop({ trim: true, required: true })
   @IsString()
