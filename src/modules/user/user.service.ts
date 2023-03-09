@@ -17,7 +17,7 @@ import { CacheService } from '~/processors/cache/cache.service'
 import { InjectModel } from '~/transformers/model.transformer'
 
 import { AuthService } from '../auth/auth.service'
-import { UserDocument , UserModel } from './user.model'
+import { UserDocument, UserModel } from './user.model'
 
 @Injectable()
 export class UserService {
@@ -46,12 +46,12 @@ export class UserService {
   }
 
   async getMasterInfo(getLoginIp = false) {
-    const user = await this.userModel
+    const user: UserModel = await this.userModel
       .findOne()
       .select(`-authCode${getLoginIp ? ' +lastLoginIp' : ''}`)
       .lean({ virtuals: true })
     if (!user) {
-      throw new BadRequestException('没有完成初始化!')
+      throw new BadRequestException('没有完成初始化！')
     }
 
     return { ...user }
@@ -81,7 +81,7 @@ export class UserService {
 
     // @ts-ignore
     const res = await this.userModel.create({ ...model, authCode })
-    const token = await this.authService.signToken(res._id)
+    const token = await this.authService.signToken(res.id)
     return { token, username: res.username, authCode: res.authCode }
   }
 
@@ -89,7 +89,7 @@ export class UserService {
    * 修改密码
    *
    * @async
-   * @param {DocumentType} user - 用户查询结果, 已经挂载在 req.user
+   * @param {DocumentType} user - 用户查询结果，已经挂载在 req.user
    * @param {Partial} data - 部分修改数据
    */
   async patchUserData(
@@ -123,7 +123,7 @@ export class UserService {
   }
 
   /**
-   * 记录登陆的足迹(ip, 时间)
+   * 记录登陆的足迹 (ip, 时间)
    *
    * @async
    * @param {string} ip - string
@@ -143,7 +143,7 @@ export class UserService {
       lastLoginIp: ip,
     })
 
-    this.Logger.warn(`主人已登录, IP: ${ip}`)
+    this.Logger.warn(`主人已登录，IP: ${ip}`)
     return PrevFootstep as any
   }
 }

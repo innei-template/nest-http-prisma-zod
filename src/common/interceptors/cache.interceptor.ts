@@ -13,8 +13,11 @@ import {
   CallHandler,
   ExecutionContext,
   HttpAdapterHost,
+  Inject,
+  Injectable,
   NestInterceptor,
- Inject, Injectable, RequestMethod } from '@nestjs/common'
+  RequestMethod,
+} from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 
 import { REDIS } from '~/app.config'
@@ -74,7 +77,7 @@ export class HttpCacheInterceptor implements NestInterceptor {
         : call$.pipe(
             tap(
               (response) =>
-                response && this.cacheManager.set(key, response, { ttl }),
+                response && this.cacheManager.set(key, response, ttl),
             ),
           )
     } catch (error) {

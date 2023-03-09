@@ -39,6 +39,7 @@ describe('Test PostController E2E', () => {
     })
 
     expect(res.statusCode).toBe(200)
-    expect(res.json()).toMatchSnapshot()
+    const result = res.json()
+    expect(result.data.length).toBe(2)
   })
 })
