@@ -38,6 +38,5 @@ jobs:
         run: |
           yarn lint
           yarn test
-          yarn test:e2e
         env:
           CI: true

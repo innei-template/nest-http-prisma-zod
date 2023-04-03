@@ -46,7 +46,7 @@ export class UserService {
   }
 
   async getMasterInfo(getLoginIp = false) {
-    const user: UserModel = await this.userModel
+    const user: UserModel | null = await this.userModel
       .findOne()
       .select(`-authCode${getLoginIp ? ' +lastLoginIp' : ''}`)
       .lean({ virtuals: true })

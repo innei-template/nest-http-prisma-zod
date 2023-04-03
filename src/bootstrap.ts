@@ -1,7 +1,6 @@
 import { Logger, ValidationPipe } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger'
 
 import { CROSS_DOMAIN, PORT } from './app.config'
 import { AppModule } from './app.module'
@@ -46,20 +45,20 @@ export async function bootstrap() {
     }),
   )
 
-  if (isDev) {
-    const options = new DocumentBuilder()
-      .setTitle('API')
-      .setDescription('The blog API description')
-      // .setVersion(`${APIVersion}`)
-      .addSecurity('bearer', {
-        type: 'http',
-        scheme: 'bearer',
-      })
-      .addBearerAuth()
-      .build()
-    const document = SwaggerModule.createDocument(app, options)
-    SwaggerModule.setup('api-docs', app, document)
-  }
+  // if (isDev) {
+  //   const options = new DocumentBuilder()
+  //     .setTitle('API')
+  //     .setDescription('The blog API description')
+  //     // .setVersion(`${APIVersion}`)
+  //     .addSecurity('bearer', {
+  //       type: 'http',
+  //       scheme: 'bearer',
+  //     })
+  //     .addBearerAuth()
+  //     .build()
+  //   const document = SwaggerModule.createDocument(app, options)
+  //   SwaggerModule.setup('api-docs', app, document)
+  // }
 
   await app.listen(+PORT, '0.0.0.0', async (err, address) => {
     app.useLogger(app.get(MyLogger))

@@ -8,8 +8,6 @@ import {
   Min,
 } from 'class-validator'
 
-import { ApiProperty } from '@nestjs/swagger'
-
 export class PagerDto {
   @Min(1)
   @Max(50)
@@ -18,7 +16,6 @@ export class PagerDto {
   @Transform(({ value: val }) => (val ? parseInt(val) : 10), {
     toClassOnly: true,
   })
-  @ApiProperty({ example: 10 })
   size?: number
 
   @Transform(({ value: val }) => (val ? parseInt(val) : 1), {
@@ -27,12 +24,10 @@ export class PagerDto {
   @Min(1)
   @IsInt()
   @Expose()
-  @ApiProperty({ example: 1 })
   page?: number
 
   @IsOptional()
   @IsString()
   @IsNotEmpty()
-  @ApiProperty({ required: false })
   select?: string
 }

@@ -2,7 +2,6 @@
 // import { default as mongooseLeanVirtuals } from 'mongoose-lean-virtuals'
 import Paginate from 'mongoose-paginate-v2'
 
-import { ApiHideProperty } from '@nestjs/swagger'
 import { modelOptions, plugin } from '@typegoose/typegoose'
 
 // @plugin(mongooseLeanVirtuals)
@@ -19,7 +18,6 @@ import { modelOptions, plugin } from '@typegoose/typegoose'
   },
 })
 export class BaseModel {
-  @ApiHideProperty()
   created?: Date
 
   id?: string

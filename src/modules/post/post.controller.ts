@@ -1,7 +1,6 @@
 import { Controller, Get, Query } from '@nestjs/common'
 
 import { HTTPDecorators } from '~/common/decorators/http.decorator'
-import { ApiName } from '~/common/decorators/openapi.decorator'
 import { BizException } from '~/common/exceptions/business.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { PagerDto } from '~/shared/dto/pager.dto'
@@ -9,7 +8,6 @@ import { PagerDto } from '~/shared/dto/pager.dto'
 import { PostService } from './post.service'
 
 @Controller('posts')
-@ApiName
 export class PostController {
   constructor(private readonly service: PostService) {}
 
