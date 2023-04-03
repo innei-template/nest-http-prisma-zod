@@ -40,7 +40,7 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
       - uses: pnpm/action-setup@v2.2.2
         with:
-          version: latest
+          version: 8.x.x
           run_install: true
       - name: Test
         run: |
@@ -122,7 +122,7 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
       - uses: pnpm/action-setup@v2.2.2
         with:
-          version: latest
+          version: 8.x.x
           run_install: true
       - name: Build project
         run: |
