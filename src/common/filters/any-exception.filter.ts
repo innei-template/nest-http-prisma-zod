@@ -2,8 +2,10 @@ import { FastifyReply, FastifyRequest } from 'fastify'
 import { WriteStream } from 'fs'
 import { resolve } from 'path'
 
-import { ArgumentsHost, ExceptionFilter ,
+import {
+  ArgumentsHost,
   Catch,
+  ExceptionFilter,
   HttpException,
   HttpStatus,
   Inject,

@@ -9,8 +9,9 @@ import { map } from 'rxjs/operators'
 import {
   CallHandler,
   ExecutionContext,
+  Injectable,
   NestInterceptor,
- Injectable } from '@nestjs/common'
+} from '@nestjs/common'
 import { Reflector } from '@nestjs/core'
 
 import { HTTP_RES_TRANSFORM_PAGINATE } from '~/constants/meta.constant'

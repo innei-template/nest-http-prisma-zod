@@ -1,6 +1,12 @@
 import { hashSync } from 'bcrypt'
 
-import { DocumentType , Severity, modelOptions, mongoose, prop } from '@typegoose/typegoose'
+import {
+  DocumentType,
+  Severity,
+  modelOptions,
+  mongoose,
+  prop,
+} from '@typegoose/typegoose'
 
 import { BaseModel } from '~/shared/model/base.model'
 

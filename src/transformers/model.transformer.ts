@@ -8,7 +8,7 @@
  */
 import { Connection } from 'mongoose'
 
-import { Provider , Inject } from '@nestjs/common'
+import { Inject, Provider } from '@nestjs/common'
 import { getModelForClass } from '@typegoose/typegoose'
 
 import {

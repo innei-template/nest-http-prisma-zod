@@ -4,7 +4,8 @@ import {
   CallHandler,
   ExecutionContext,
   NestInterceptor,
- RequestMethod } from '@nestjs/common'
+  RequestMethod,
+} from '@nestjs/common'
 
 export class AllowAllCorsInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler<any>) {

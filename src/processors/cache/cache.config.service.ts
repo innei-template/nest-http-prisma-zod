@@ -7,7 +7,11 @@
 // import redisStore from 'cache-manager-redis-store'
 import redisStore from 'cache-manager-ioredis'
 
-import { CacheModuleOptions, CacheOptionsFactory , Injectable } from '@nestjs/common'
+import {
+  CacheModuleOptions,
+  CacheOptionsFactory,
+  Injectable,
+} from '@nestjs/common'
 
 import { REDIS } from '~/app.config'
 

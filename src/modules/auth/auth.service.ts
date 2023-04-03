@@ -4,7 +4,7 @@ import { ReturnModelType } from '@typegoose/typegoose'
 
 import { BizException } from '~/common/exceptions/business.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
-import { UserDocument , UserModel as User } from '~/modules/user/user.model'
+import { UserModel as User, UserDocument } from '~/modules/user/user.model'
 import { InjectModel } from '~/transformers/model.transformer'
 
 import { JwtPayload } from './interfaces/jwt-payload.interface'
