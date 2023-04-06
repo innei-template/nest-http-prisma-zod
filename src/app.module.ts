@@ -6,6 +6,7 @@ import { AllExceptionsFilter } from './common/filters/any-exception.filter'
 import { HttpCacheInterceptor } from './common/interceptors/cache.interceptor'
 import { JSONTransformerInterceptor } from './common/interceptors/json-transformer.interceptor'
 import { ResponseInterceptor } from './common/interceptors/response.interceptor'
+import { ConfigsModule } from './modules/configs/configs.module'
 import { PostModule } from './modules/post/post.module'
 import { CacheModule } from './processors/cache/cache.module'
 import { DatabaseModule } from './processors/database/database.module'
@@ -17,7 +18,9 @@ import { LoggerModule } from './processors/logger/logger.module'
     CacheModule,
     DatabaseModule,
     HelperModule,
+    ConfigsModule,
     LoggerModule,
+
     PostModule,
   ],
   controllers: [AppController],
