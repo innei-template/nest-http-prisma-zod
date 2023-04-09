@@ -38,6 +38,10 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const response = ctx.getResponse<FastifyReply>()
     const request = ctx.getRequest<FastifyRequest>()
 
+    if (request.method === 'OPTIONS') {
+      return response.status(HttpStatus.OK).send()
+    }
+
     const status =
       exception instanceof HttpException
         ? exception.getStatus()

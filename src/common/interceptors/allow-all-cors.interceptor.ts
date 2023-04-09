@@ -1,4 +1,4 @@
-import { FastifyReply } from 'fastify'
+import { FastifyReply, FastifyRequest } from 'fastify'
 
 import {
   CallHandler,
@@ -7,9 +7,17 @@ import {
   RequestMethod,
 } from '@nestjs/common'
 
+declare module 'fastify' {
+  // @ts-ignore
+  interface FastifyRequest {
+    cors?: boolean
+  }
+}
+
 export class AllowAllCorsInterceptor implements NestInterceptor {
   intercept(context: ExecutionContext, next: CallHandler<any>) {
     const handle = next.handle()
+    const request = context.switchToHttp().getRequest() as FastifyRequest
     const response: FastifyReply<any> = context.switchToHttp().getResponse()
     const allowedMethods = [
       RequestMethod.GET,
@@ -36,6 +44,7 @@ export class AllowAllCorsInterceptor implements NestInterceptor {
       'Access-Control-Allow-Methods': allowedMethods.join(','),
       'Access-Control-Max-Age': '86400',
     })
+    request.cors = true
     return handle
   }
 }
