@@ -67,7 +67,7 @@
     "nanoid": "^3",
     "passport": "0.6.0",
     "passport-jwt": "4.0.1",
-    "redis": "4.6.5",
+    "redis": "4.6.6",
     "reflect-metadata": "0.1.13",
     "rxjs": "7.8.0",
     "snakecase-keys": "5.4.5",
