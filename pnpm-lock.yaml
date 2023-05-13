@@ -27,8 +27,8 @@ dependencies:
     specifier: 2.2.1
     version: 2.2.1(@nestjs/common@9.4.0)(@nestjs/core@9.4.0)(reflect-metadata@0.1.13)
   '@typegoose/auto-increment':
-    specifier: 3.0.0
-    version: 3.0.0(mongoose@7.0.4)
+    specifier: 3.1.0
+    version: 3.1.0(mongoose@7.0.4)
   '@typegoose/typegoose':
     specifier: 11.0.2
     version: 11.0.2(mongoose@7.0.4)
@@ -2010,11 +2010,11 @@ packages:
     dev: true
     optional: true
 
-  /@typegoose/auto-increment@3.0.0(mongoose@7.0.4):
-    resolution: {integrity: sha512-ikuQWXkza27C1BjbvMITF71KEu7sgV57r1VN+aL6sJ7meykaV0ZhNpR9uz9gfFmUKGM3OX87LDqP2crJGDaRdA==}
+  /@typegoose/auto-increment@3.1.0(mongoose@7.0.4):
+    resolution: {integrity: sha512-+VkwJlhUhK27zK+56RayuP3GscK4Mzj04IerjraOUB3qxLLo8vMNyFHZuADIf90dmNr164JHuZ69XnMSehcvEQ==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
-      mongoose: ~7.0.2
+      mongoose: ~7.1.0
     dependencies:
       loglevel: 1.8.1
       mongoose: 7.0.4
