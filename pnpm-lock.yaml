@@ -75,7 +75,7 @@ dependencies:
     specifier: 1.7.1
     version: 1.7.1
   nanoid:
-    specifier: ^3.0.2
+    specifier: ^3.3.6
     version: 3.3.6
   passport:
     specifier: 0.6.0
