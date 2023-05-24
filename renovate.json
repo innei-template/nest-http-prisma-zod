@@ -17,5 +17,5 @@
       "labels": ["UPDATE-MAJOR"]
     }
   ],
-  "ignoreDeps": ["node", "@swc/core"]
+  "ignoreDeps": ["node", "@swc/core", "vitest", "vite"]
 }
