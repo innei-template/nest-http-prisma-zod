@@ -1,5 +1,21 @@
 {
   "extends": [
-    "config:base"
-  ]
+    "config:base",
+    "group:allNonMajor",
+    ":automergePatch",
+    ":automergeTesters",
+    ":automergeLinters",
+    ":rebaseStalePrs"
+  ],
+  "labels": ["dependencies"],
+  "pin": false,
+  "rangeStrategy": "bump",
+  "node": false,
+  "packageRules": [
+    {
+      "updateTypes": ["major"],
+      "labels": ["UPDATE-MAJOR"]
+    }
+  ],
+  "ignoreDeps": ["node", "@swc/core"]
 }
