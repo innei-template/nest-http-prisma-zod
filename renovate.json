@@ -17,5 +17,13 @@
       "labels": ["UPDATE-MAJOR"]
     }
   ],
-  "ignoreDeps": ["node", "@swc/core", "vitest", "vite"]
+  "ignoreDeps": [
+    "node",
+    "@swc/core",
+    "vitest",
+    "vite",
+    "nanoid",
+    "chalk",
+    "consola"
+  ]
 }
