@@ -28,14 +28,14 @@ dependencies:
     specifier: 9.4.2
     version: 9.4.2(@nestjs/common@9.4.2)(@nestjs/core@9.4.2)
   '@nestjs/schedule':
-    specifier: 2.2.2
-    version: 2.2.2(@nestjs/common@9.4.2)(@nestjs/core@9.4.2)(reflect-metadata@0.1.13)
+    specifier: 2.2.3
+    version: 2.2.3(@nestjs/common@9.4.2)(@nestjs/core@9.4.2)(reflect-metadata@0.1.13)
   '@typegoose/auto-increment':
     specifier: 3.2.0
-    version: 3.2.0(mongoose@7.2.2)
+    version: 3.2.0(mongoose@7.2.3)
   '@typegoose/typegoose':
     specifier: 11.2.0
-    version: 11.2.0(mongoose@7.2.2)
+    version: 11.2.0(mongoose@7.2.3)
   axios:
     specifier: 1.4.0
     version: 1.4.0
@@ -73,8 +73,8 @@ dependencies:
     specifier: '*'
     version: 4.17.21
   mongoose:
-    specifier: 7.2.2
-    version: 7.2.2
+    specifier: 7.2.3
+    version: 7.2.3
   mongoose-paginate-v2:
     specifier: 1.7.1
     version: 1.7.1
@@ -1719,8 +1719,8 @@ packages:
       - supports-color
     dev: false
 
-  /@nestjs/schedule@2.2.2(@nestjs/common@9.4.2)(@nestjs/core@9.4.2)(reflect-metadata@0.1.13):
-    resolution: {integrity: sha512-e9z1bbFwi4QsPkR2ix72OABhBlfRQcl4ZjF8LShlefOskR4ySN4rUzJilH+1rk8vORYDyGDurVdeduPyyfSQRg==}
+  /@nestjs/schedule@2.2.3(@nestjs/common@9.4.2)(@nestjs/core@9.4.2)(reflect-metadata@0.1.13):
+    resolution: {integrity: sha512-PxoGdoBwZQ6SzGfFcERTk7mDxrmesNt2cfqKgtLsFpjYNpV6ZYlKw9Ku8C0ZIjdhy0tBbysj+Fsi3sYua6o6Eg==}
     peerDependencies:
       '@nestjs/common': ^7.0.0 || ^8.0.0 || ^9.0.0
       '@nestjs/core': ^7.0.0 || ^8.0.0 || ^9.0.0
@@ -1728,7 +1728,7 @@ packages:
     dependencies:
       '@nestjs/common': 9.4.2(cache-manager@5.2.2)(class-transformer@0.5.1)(class-validator@0.14.0)(reflect-metadata@0.1.13)(rxjs@7.8.1)
       '@nestjs/core': 9.4.2(@nestjs/common@9.4.2)(reflect-metadata@0.1.13)(rxjs@7.8.1)
-      cron: 2.3.0
+      cron: 2.3.1
       reflect-metadata: 0.1.13
       uuid: 9.0.0
     dev: false
@@ -2040,18 +2040,18 @@ packages:
     dev: true
     optional: true
 
-  /@typegoose/auto-increment@3.2.0(mongoose@7.2.2):
+  /@typegoose/auto-increment@3.2.0(mongoose@7.2.3):
     resolution: {integrity: sha512-2rpgvvyiKDT2R4AdGhxhH3HK/G02OE+FQ5EfdP+SHzJ9lEvhoK4FdLU3/Fas68kqnrhYqQenq7B6QuH5yno94w==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
       mongoose: ~7.2.0
     dependencies:
       loglevel: 1.8.1
-      mongoose: 7.2.2
+      mongoose: 7.2.3
       tslib: 2.5.3
     dev: false
 
-  /@typegoose/typegoose@11.2.0(mongoose@7.2.2):
+  /@typegoose/typegoose@11.2.0(mongoose@7.2.3):
     resolution: {integrity: sha512-svfAvLdlYEsinusgqWUNQ4fkVNZSnCfiInT/ic6nYnUHZzSwpS2YsHbEzq2LiaLgpFJ8IHNbha1qEqoeH43Q/Q==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
@@ -2059,7 +2059,7 @@ packages:
     dependencies:
       lodash: 4.17.21
       loglevel: 1.8.1
-      mongoose: 7.2.2
+      mongoose: 7.2.3
       reflect-metadata: 0.1.13
       semver: 7.5.1
       tslib: 2.5.3
@@ -3390,12 +3390,6 @@ packages:
       path-type: 4.0.0
       yaml: 1.10.2
     dev: true
-
-  /cron@2.3.0:
-    resolution: {integrity: sha512-ZN5HP8zDY41sJolMsbc+GksRATcbvkPKF5wR/qc8FrV4NBVi9ORQa1HmYa5GydaysUB80X9XpRlRkooa5uEtTA==}
-    dependencies:
-      luxon: 3.3.0
-    dev: false
 
   /cron@2.3.1:
     resolution: {integrity: sha512-1eRRlIT0UfIqauwbG9pkg3J6CX9A6My2ytJWqAXoK0T9oJnUZTzGBNPxao0zjodIbPgf8UQWjE62BMb9eVllSQ==}
@@ -5778,8 +5772,8 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
-  /mongoose@7.2.2:
-    resolution: {integrity: sha512-JPBMTF+oYfLGVFWbHSZ/H+f1GajNanGLYH6c/P0nE3bNJfwGhX573vieGR0kNlNhj3cZk8WCPrnVsTNeUmFUag==}
+  /mongoose@7.2.3:
+    resolution: {integrity: sha512-ClHD73HiqMk4hcOhdlZxluldokZfXvkrxjdKuqI7UQWLM71OIoy+n+OS+OHz4qJhS+/UaPzemQDKYtVrl4l0Ig==}
     engines: {node: '>=14.20.1'}
     dependencies:
       bson: 5.3.0
