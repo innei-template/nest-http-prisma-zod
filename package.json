@@ -52,7 +52,7 @@
     "@typegoose/typegoose": "11.2.0",
     "axios": "1.4.0",
     "bcrypt": "5.1.0",
-    "cache-manager": "5.2.2",
+    "cache-manager": "5.2.3",
     "cache-manager-ioredis": "2.1.0",
     "chalk": "*",
     "class-transformer": "0.5.1",
