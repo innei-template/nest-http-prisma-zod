@@ -79,7 +79,7 @@
     "@innei/bump-version": "^1.5.10",
     "@innei/eslint-config-ts": "^0.10.1",
     "@innei/prettier": "^0.10.1",
-    "@nestjs/cli": "10.0.1",
+    "@nestjs/cli": "10.0.2",
     "@nestjs/schematics": "10.0.1",
     "@nestjs/testing": "10.0.0",
     "@swc/core": "1.3.4",

@@ -125,8 +125,8 @@ devDependencies:
     specifier: ^0.10.1
     version: 0.10.1
   '@nestjs/cli':
-    specifier: 10.0.1
-    version: 10.0.1(@swc/core@1.3.4)
+    specifier: 10.0.2
+    version: 10.0.2(@swc/core@1.3.4)
   '@nestjs/schematics':
     specifier: 10.0.1
     version: 10.0.1(chokidar@3.5.3)(typescript@5.1.3)
@@ -1102,13 +1102,6 @@ packages:
     dev: false
     optional: true
 
-  /@babel/code-frame@7.21.4:
-    resolution: {integrity: sha512-LYvhNKfwWSPpocw8GI7gpK2nq3HSDuEPC/uSYaALSJu9xjsalaaYFOq0Pwt5KmVqwEbZlDu81aLXwBOmD/Fv9g==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/highlight': 7.18.6
-    dev: true
-
   /@babel/code-frame@7.22.5:
     resolution: {integrity: sha512-Xmwn266vad+6DAqEB2A6V/CcZVp62BbwVmcOJc2RPuwih1kw02TjQvWVWlcKGbBPd+8/0V5DEkOcizRGYsspYQ==}
     engines: {node: '>=6.9.0'}
@@ -1126,7 +1119,7 @@ packages:
     engines: {node: '>=6.9.0'}
     dependencies:
       '@ampproject/remapping': 2.2.1
-      '@babel/code-frame': 7.21.4
+      '@babel/code-frame': 7.22.5
       '@babel/generator': 7.22.3
       '@babel/helper-compilation-targets': 7.22.1(@babel/core@7.22.1)
       '@babel/helper-module-transforms': 7.22.1
@@ -1163,7 +1156,7 @@ packages:
       '@babel/compat-data': 7.22.3
       '@babel/core': 7.22.1
       '@babel/helper-validator-option': 7.21.0
-      browserslist: 4.21.7
+      browserslist: 4.21.9
       lru-cache: 5.1.1
       semver: 6.3.0
     dev: true
@@ -1203,7 +1196,7 @@ packages:
       '@babel/helper-module-imports': 7.21.4
       '@babel/helper-simple-access': 7.21.5
       '@babel/helper-split-export-declaration': 7.18.6
-      '@babel/helper-validator-identifier': 7.19.1
+      '@babel/helper-validator-identifier': 7.22.5
       '@babel/template': 7.21.9
       '@babel/traverse': 7.22.4
       '@babel/types': 7.22.4
@@ -1256,15 +1249,6 @@ packages:
       - supports-color
     dev: true
 
-  /@babel/highlight@7.18.6:
-    resolution: {integrity: sha512-u7stbOuYjaPezCuLj29hNW1v64M2Md2qupEKP1fHc7WdOA3DgLh37suiSrZYY7haUB7iBeQZ9P1uiRF359do3g==}
-    engines: {node: '>=6.9.0'}
-    dependencies:
-      '@babel/helper-validator-identifier': 7.19.1
-      chalk: 2.4.2
-      js-tokens: 4.0.0
-    dev: true
-
   /@babel/highlight@7.22.5:
     resolution: {integrity: sha512-BSKlD1hgnedS5XRnGOljZawtag7H1yPfQp0tdNJCHoH6AZ+Pcm9VvkrK59/Yy593Ypg0zMxH2BxD1VPYUQ7UIw==}
     engines: {node: '>=6.9.0'}
@@ -1286,7 +1270,7 @@ packages:
     resolution: {integrity: sha512-MK0X5k8NKOuWRamiEfc3KEJiHMTkGZNUjzMipqCGDDc6ijRl/B7RGSKVGncu4Ro/HdyzzY6cmoXuKI2Gffk7vQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/code-frame': 7.21.4
+      '@babel/code-frame': 7.22.5
       '@babel/parser': 7.22.4
       '@babel/types': 7.22.4
     dev: true
@@ -1295,7 +1279,7 @@ packages:
     resolution: {integrity: sha512-Tn1pDsjIcI+JcLKq1AVlZEr4226gpuAQTsLMorsYg9tuS/kG7nuwwJ4AB8jfQuEgb/COBwR/DqJxmoiYFu5/rQ==}
     engines: {node: '>=6.9.0'}
     dependencies:
-      '@babel/code-frame': 7.21.4
+      '@babel/code-frame': 7.22.5
       '@babel/generator': 7.22.3
       '@babel/helper-environment-visitor': 7.22.1
       '@babel/helper-function-name': 7.21.0
@@ -1599,8 +1583,8 @@ packages:
       rxjs: 7.8.1
     dev: false
 
-  /@nestjs/cli@10.0.1(@swc/core@1.3.4):
-    resolution: {integrity: sha512-oK3o9MkcpJeo0ikYgjuqkMlta2xdZ8FvcPQmjQsRe3kX8bfU78wXp36JZtowCYfRuotdEsK/eH2i+JKPx9a3rg==}
+  /@nestjs/cli@10.0.2(@swc/core@1.3.4):
+    resolution: {integrity: sha512-zM21oq+RL5tZu4zByIXlv+RAqE/SujGJVF+p1oDZkpSzbRD3Nn3iElYDQLNnFLwFBbVhUUdN9s5BxJhFrFJD3g==}
     engines: {node: '>= 16'}
     hasBin: true
     peerDependencies:
@@ -2446,7 +2430,7 @@ packages:
       debug: 4.3.4
       globby: 11.1.0
       is-glob: 4.0.3
-      semver: 7.5.1
+      semver: 7.5.2
       tsutils: 3.21.0(typescript@5.1.3)
       typescript: 5.1.3
     transitivePeerDependencies:
@@ -2652,12 +2636,12 @@ packages:
       acorn: 8.9.0
     dev: true
 
-  /acorn-jsx@5.3.2(acorn@8.8.2):
+  /acorn-jsx@5.3.2(acorn@8.9.0):
     resolution: {integrity: sha512-rq9s+JNhf0IChjtDXxllJ7g41oZk5SlXtp0LHwyA5cejwn7vKmKp4pPri6YEePv2PU65sAsegbXtIinmDFDXgQ==}
     peerDependencies:
       acorn: ^6.0.0 || ^7.0.0 || ^8.0.0
     dependencies:
-      acorn: 8.8.2
+      acorn: 8.9.0
     dev: true
 
   /acorn-walk@8.2.0:
@@ -2958,17 +2942,6 @@ packages:
       fill-range: 7.0.1
     dev: true
 
-  /browserslist@4.21.7:
-    resolution: {integrity: sha512-BauCXrQ7I2ftSqd2mvKHGo85XR0u7Ru3C/Hxsy/0TkfCtjrmAbPdzLGasmoiBxplpDXlPvdjX9u7srIMfgasNA==}
-    engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
-    hasBin: true
-    dependencies:
-      caniuse-lite: 1.0.30001494
-      electron-to-chromium: 1.4.419
-      node-releases: 2.0.12
-      update-browserslist-db: 1.0.11(browserslist@4.21.7)
-    dev: true
-
   /browserslist@4.21.9:
     resolution: {integrity: sha512-M0MFoZzbUrRU4KNfCrDLnvyE7gub+peetoTid3TBIqtunaDJyXlwhakT+/VkvSXcfIzFfK/nkCs4nmyTmxdNSg==}
     engines: {node: ^6 || ^7 || ^8 || ^9 || ^10 || ^11 || ^12 || >=13.7}
@@ -3059,10 +3032,6 @@ packages:
     engines: {node: '>=10'}
     dev: false
     optional: true
-
-  /caniuse-lite@1.0.30001494:
-    resolution: {integrity: sha512-sY2B5Qyl46ZzfYDegrl8GBCzdawSLT4ThM9b9F+aDYUrAG2zCOyMbd2Tq34mS1g4ZKBfjRlzOohQMxx28x6wJg==}
-    dev: true
 
   /caniuse-lite@1.0.30001503:
     resolution: {integrity: sha512-Sf9NiF+wZxPfzv8Z3iS0rXM1Do+iOy2Lxvib38glFX+08TCYYYGR5fRJXk4d77C4AYwhUjgYgMsMudbh2TqCKw==}
@@ -3652,10 +3621,6 @@ packages:
       safe-buffer: 5.2.1
     dev: false
 
-  /electron-to-chromium@1.4.419:
-    resolution: {integrity: sha512-jdie3RiEgygvDTyS2sgjq71B36q2cDSBfPlwzUyuOrfYTNoYWyBxxjGJV/HAu3A2hB0Y+HesvCVkVAFoCKwCSw==}
-    dev: true
-
   /electron-to-chromium@1.4.432:
     resolution: {integrity: sha512-yz3U/khQgAFT2HURJA3/F4fKIyO2r5eK09BQzBZFd6BvBSSaRuzKc2ZNBHtJcO75/EKiRYbVYJZ2RB0P4BuD2g==}
     dev: true
@@ -4161,8 +4126,8 @@ packages:
     resolution: {integrity: sha512-7OASN1Wma5fum5SrNhFMAMJxOUAbhyfQ8dQ//PJaJbNw0URTPWqIghHWt1MmAANKhHZIYOHruW4Kw4ruUWOdGw==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
     dependencies:
-      acorn: 8.8.2
-      acorn-jsx: 5.3.2(acorn@8.8.2)
+      acorn: 8.9.0
+      acorn-jsx: 5.3.2(acorn@8.9.0)
       eslint-visitor-keys: 3.4.1
     dev: true
 
@@ -5762,15 +5727,9 @@ packages:
       yallist: 4.0.0
     dev: false
 
-  /minipass@4.2.5:
-    resolution: {integrity: sha512-+yQl7SX3bIT83Lhb4BVorMAHVuqsskxRdlmO9kTpyukp8vsm2Sn/fUOV9xlnG8/a5JsypJzap21lz/y3FBMJ8Q==}
-    engines: {node: '>=8'}
-    dev: false
-
   /minipass@4.2.8:
     resolution: {integrity: sha512-fNzuVyifolSLFL4NzpF+wEF4qrgqaaKX0haXPQEdQ7NKAN+WecoKMHV09YcuL/DHxrUsYQOK3MiuDf7Ip2OXfQ==}
     engines: {node: '>=8'}
-    dev: true
 
   /minipass@5.0.0:
     resolution: {integrity: sha512-3FnjYuehv9k6ovOEbyOswadCDPX1piCfhV8ncmYtHOjuPwylVWsghTLo7rabjC3Rx5xD4HDx8Wm1xnMF7S5qFQ==}
@@ -6268,7 +6227,7 @@ packages:
     resolution: {integrity: sha512-ayCKvm/phCGxOkYRSCM82iDwct8/EonSEgCSxWxD7ve6jHggsFl4fZVQBPRNgQoKiuV/odhFrGzQXZwbifC8Rg==}
     engines: {node: '>=8'}
     dependencies:
-      '@babel/code-frame': 7.21.4
+      '@babel/code-frame': 7.22.5
       error-ex: 1.3.2
       json-parse-even-better-errors: 2.3.1
       lines-and-columns: 1.2.4
@@ -7208,7 +7167,7 @@ packages:
   /strip-literal@0.4.2:
     resolution: {integrity: sha512-pv48ybn4iE1O9RLgCAN0iU4Xv7RlBTiit6DKmMiErbs9x1wH6vXBs45tWc0H5wUIF6TLTrKweqkmYF/iraQKNw==}
     dependencies:
-      acorn: 8.8.2
+      acorn: 8.9.0
     dev: true
 
   /strnum@1.0.5:
@@ -7282,7 +7241,7 @@ packages:
     dependencies:
       chownr: 2.0.0
       fs-minipass: 2.1.0
-      minipass: 4.2.5
+      minipass: 4.2.8
       minizlib: 2.1.2
       mkdirp: 1.0.4
       yallist: 4.0.0
@@ -7571,17 +7530,6 @@ packages:
   /universalify@2.0.0:
     resolution: {integrity: sha512-hAZsKq7Yy11Zu1DE0OzWjw7nnLZmJZYTDZZyEFHZdUhV8FkH5MCfoU1XMaxXovpyW5nq5scPqq0ZDP9Zyl04oQ==}
     engines: {node: '>= 10.0.0'}
-    dev: true
-
-  /update-browserslist-db@1.0.11(browserslist@4.21.7):
-    resolution: {integrity: sha512-dCwEFf0/oT85M1fHBg4F0jtLwJrutGoHSQXCh7u4o2t1drG+c0a9Flnqww6XUKSfQMPpJBRjU8d4RXB09qtvaA==}
-    hasBin: true
-    peerDependencies:
-      browserslist: '>= 4.21.0'
-    dependencies:
-      browserslist: 4.21.7
-      escalade: 3.1.1
-      picocolors: 1.0.0
     dev: true
 
   /update-browserslist-db@1.0.11(browserslist@4.21.9):
