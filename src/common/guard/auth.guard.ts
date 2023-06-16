@@ -20,6 +20,6 @@ export class JWTAuthGuard extends _AuthGuard('jwt') implements CanActivate {
   }
 
   getRequest(context: ExecutionContext) {
-    return getNestExecutionContextRequest(context)
+    return getNestExecutionContextRequest(context) as any
   }
 }
