@@ -100,8 +100,8 @@ dependencies:
     specifier: 7.8.1
     version: 7.8.1
   snakecase-keys:
-    specifier: 5.4.5
-    version: 5.4.5
+    specifier: 5.4.6
+    version: 5.4.6
   zx-cjs:
     specifier: 7.0.7-0
     version: 7.0.7-0
@@ -6957,8 +6957,8 @@ packages:
       tslib: 2.5.3
     dev: false
 
-  /snakecase-keys@5.4.5:
-    resolution: {integrity: sha512-qSQVcgcWk8mQUN1miVGnRMAUye1dbj9+F9PVkR7wZUXNCidQwrl/kOKmoYf+WbH2ju6c9pXnlmbS2he7pb2/9A==}
+  /snakecase-keys@5.4.6:
+    resolution: {integrity: sha512-7ipeNts8YTLbx/6zIaT1mQGrHG2vK+0TjywPD79QzIDJDcvNXBLX7DXQOt6by4DFdncu8lDPc+QHKHemtDEoQg==}
     engines: {node: '>=12'}
     dependencies:
       map-obj: 4.3.0
