@@ -42,7 +42,7 @@
     "test:cov": "vitest --coverage"
   },
   "dependencies": {
-    "@nestjs/cache-manager": "2.0.0",
+    "@nestjs/cache-manager": "2.0.1",
     "@nestjs/common": "10.0.3",
     "@nestjs/core": "10.0.3",
     "@nestjs/jwt": "10.1.0",
