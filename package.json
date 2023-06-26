@@ -87,7 +87,7 @@
     "@types/cache-manager": "4.0.2",
     "@types/cron": "2.0.1",
     "@types/lodash": "4.14.195",
-    "@types/node": "20.3.1",
+    "@types/node": "20.3.2",
     "@types/passport-jwt": "3.0.8",
     "@types/supertest": "2.0.12",
     "@types/ua-parser-js": "0.7.36",
