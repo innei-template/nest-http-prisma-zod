@@ -35,10 +35,10 @@ dependencies:
     version: 3.0.1(@nestjs/common@10.0.5)(@nestjs/core@10.0.5)(reflect-metadata@0.1.13)
   '@typegoose/auto-increment':
     specifier: 3.2.0
-    version: 3.2.0(mongoose@7.3.1)
+    version: 3.2.0(mongoose@7.3.2)
   '@typegoose/typegoose':
     specifier: 11.2.0
-    version: 11.2.0(mongoose@7.3.1)
+    version: 11.2.0(mongoose@7.3.2)
   axios:
     specifier: 1.4.0
     version: 1.4.0
@@ -76,8 +76,8 @@ dependencies:
     specifier: '*'
     version: 4.17.21
   mongoose:
-    specifier: 7.3.1
-    version: 7.3.1
+    specifier: 7.3.2
+    version: 7.3.2
   mongoose-paginate-v2:
     specifier: 1.7.1
     version: 1.7.1
@@ -212,8 +212,8 @@ devDependencies:
     specifier: 0.25.3
     version: 0.25.3
   zx:
-    specifier: 7.2.2
-    version: 7.2.2
+    specifier: 7.2.3
+    version: 7.2.3
 
 packages:
 
@@ -2060,18 +2060,18 @@ packages:
     dev: true
     optional: true
 
-  /@typegoose/auto-increment@3.2.0(mongoose@7.3.1):
+  /@typegoose/auto-increment@3.2.0(mongoose@7.3.2):
     resolution: {integrity: sha512-2rpgvvyiKDT2R4AdGhxhH3HK/G02OE+FQ5EfdP+SHzJ9lEvhoK4FdLU3/Fas68kqnrhYqQenq7B6QuH5yno94w==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
       mongoose: ~7.2.0
     dependencies:
       loglevel: 1.8.1
-      mongoose: 7.3.1
+      mongoose: 7.3.2
       tslib: 2.5.3
     dev: false
 
-  /@typegoose/typegoose@11.2.0(mongoose@7.3.1):
+  /@typegoose/typegoose@11.2.0(mongoose@7.3.2):
     resolution: {integrity: sha512-svfAvLdlYEsinusgqWUNQ4fkVNZSnCfiInT/ic6nYnUHZzSwpS2YsHbEzq2LiaLgpFJ8IHNbha1qEqoeH43Q/Q==}
     engines: {node: '>=14.17.0'}
     peerDependencies:
@@ -2079,7 +2079,7 @@ packages:
     dependencies:
       lodash: 4.17.21
       loglevel: 1.8.1
-      mongoose: 7.3.1
+      mongoose: 7.3.2
       reflect-metadata: 0.1.13
       semver: 7.5.1
       tslib: 2.5.3
@@ -5818,8 +5818,8 @@ packages:
     engines: {node: '>=4.0.0'}
     dev: false
 
-  /mongoose@7.3.1:
-    resolution: {integrity: sha512-6289bmSIhvR8xMHsYe2/CuzN7wHK+2RHcK7idDdzniCPC5zix5JH0Hc4k3CmXlr/9zQ2250gUQiUWtvDB0vF1Q==}
+  /mongoose@7.3.2:
+    resolution: {integrity: sha512-Z86m5ASwYYFyT++wPQTtuTl5Jh052w6G1IM8LxPu/6iuqxQo6nUOaEoGZfMy0ovw3Dyw3415Jue3pYXkRqPkfA==}
     engines: {node: '>=14.20.1'}
     dependencies:
       bson: 5.3.0
@@ -7899,8 +7899,8 @@ packages:
     engines: {node: '>= 16.0.0'}
     dev: false
 
-  /zx@7.2.2:
-    resolution: {integrity: sha512-50Gjicd6ijTt7Zcz5fNX+rHrmE0uVqC+X6lYKhf2Cu8wIxDpNIzXwTmzchNdW+JY3LFsRcU43B1lHE4HBMmKgQ==}
+  /zx@7.2.3:
+    resolution: {integrity: sha512-QODu38nLlYXg/B/Gw7ZKiZrvPkEsjPN3LQ5JFXM7h0JvwhEdPNNl+4Ao1y4+o3CLNiDUNcwzQYZ4/Ko7kKzCMA==}
     engines: {node: '>= 16.0.0'}
     hasBin: true
     dependencies:
