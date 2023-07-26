@@ -7,18 +7,23 @@
     ":automergeLinters",
     ":rebaseStalePrs"
   ],
-  "labels": ["dependencies"],
+  "labels": [
+    "dependencies"
+  ],
   "pin": false,
   "rangeStrategy": "bump",
   "node": false,
   "packageRules": [
     {
-      "updateTypes": ["major"],
-      "labels": ["UPDATE-MAJOR"]
+      "updateTypes": [
+        "major"
+      ],
+      "labels": [
+        "UPDATE-MAJOR"
+      ]
     }
   ],
   "ignoreDeps": [
-    "node",
     "@swc/core",
     "vitest",
     "vite",
