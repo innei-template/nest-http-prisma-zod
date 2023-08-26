@@ -1,4 +1,4 @@
-import { Logger, ValidationPipe } from '@nestjs/common'
+import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 
@@ -34,33 +34,8 @@ export async function bootstrap() {
 
   !isDev && app.setGlobalPrefix(`api`)
   isDev && app.useGlobalInterceptors(new LoggingInterceptor())
-  app.useGlobalPipes(
-    new ValidationPipe({
-      transform: true,
-      whitelist: true,
-      errorHttpStatusCode: 422,
-      forbidUnknownValues: true,
-      enableDebugMessages: isDev,
-      stopAtFirstError: true,
-    }),
-  )
 
-  // if (isDev) {
-  //   const options = new DocumentBuilder()
-  //     .setTitle('API')
-  //     .setDescription('The blog API description')
-  //     // .setVersion(`${APIVersion}`)
-  //     .addSecurity('bearer', {
-  //       type: 'http',
-  //       scheme: 'bearer',
-  //     })
-  //     .addBearerAuth()
-  //     .build()
-  //   const document = SwaggerModule.createDocument(app, options)
-  //   SwaggerModule.setup('api-docs', app, document)
-  // }
-
-  await app.listen(+PORT, '0.0.0.0', async (err, address) => {
+  await app.listen(+PORT, '0.0.0.0', async () => {
     app.useLogger(app.get(MyLogger))
     consola.info('ENV:', process.env.NODE_ENV)
     const url = await app.getUrl()

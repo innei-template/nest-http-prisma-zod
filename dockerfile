@@ -10,6 +10,10 @@ FROM node:16-alpine
 RUN apk add zip unzip bash --no-cache
 WORKDIR /app
 COPY --from=builder /app/out .
+
+COPY package*.json ./
+COPY prisma ./prisma/
+
 ENV TZ=Asia/Shanghai
 EXPOSE 3333
 

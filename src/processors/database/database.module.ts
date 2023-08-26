@@ -1,4 +1,6 @@
-import { Global, Module } from '@nestjs/common'
+import { loggingMiddleware, PrismaModule, QueryInfo } from 'nestjs-prisma'
+
+import { Global, Logger, Module } from '@nestjs/common'
 
 import { ConfigModel } from '~/modules/configs/configs.model'
 import { PostModel } from '~/modules/post/post.model'
@@ -14,6 +16,23 @@ const models = [UserModel, PostModel, ConfigModel].map((model) =>
 @Module({
   providers: [DatabaseService, databaseProvider, ...models],
   exports: [DatabaseService, databaseProvider, ...models],
+  imports: [
+    PrismaModule.forRoot({
+      prismaServiceOptions: {
+        middlewares: [
+          loggingMiddleware({
+            logger: new Logger('PrismaMiddleware'),
+            logLevel: 'log', // default is `debug`
+            logMessage: (query: QueryInfo) =>
+              `[Prisma Query] ${query.model}.${query.action} - ${query.executionTime}ms`,
+          }),
+        ],
+        prismaOptions: {
+          log: isDev ? ['query', 'error', 'info', 'warn'] : undefined,
+        },
+      },
+    }),
+  ],
 })
 @Global()
 export class DatabaseModule {}

@@ -39,7 +39,13 @@
     "prod:debug": "cross-env NODE_ENV=production nest start --debug --watch",
     "test": "vitest",
     "test:watch": "vitest --watch",
-    "test:cov": "vitest --coverage"
+    "test:cov": "vitest --coverage",
+    "migrate:dev": "npx prisma migrate dev",
+    "migrate:dev:create": "npx prisma migrate dev --create-only",
+    "migrate:deploy": "npx prisma migrate deploy",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio",
+    "prisma:seed": "npx prisma db seed"
   },
   "dependencies": {
     "@nestjs/cache-manager": "2.1.0",
@@ -50,10 +56,12 @@
     "@nestjs/passport": "10.0.0",
     "@nestjs/platform-fastify": "10.1.2",
     "@nestjs/schedule": "3.0.1",
+    "@prisma/client": "5.2.0",
     "@typegoose/auto-increment": "3.4.0",
     "@typegoose/typegoose": "11.4.0",
     "axios": "1.4.0",
     "bcrypt": "5.1.0",
+    "bson": "5.4.0",
     "cache-manager": "5.2.3",
     "cache-manager-ioredis": "2.1.0",
     "chalk": "*",
@@ -67,12 +75,15 @@
     "mongoose": "7.4.1",
     "mongoose-paginate-v2": "1.7.23",
     "nanoid": "3.3.6",
+    "nestjs-prisma": "0.22.0",
+    "nestjs-zod": "3.0.0",
     "passport": "0.6.0",
     "passport-jwt": "4.0.1",
     "redis": "4.6.7",
     "reflect-metadata": "0.1.13",
     "rxjs": "7.8.1",
     "snakecase-keys": "5.4.6",
+    "zod": "3.22.2",
     "zx-cjs": "7.0.7-0"
   },
   "devDependencies": {
@@ -99,6 +110,7 @@
     "ioredis": "^5.3.2",
     "lint-staged": "13.2.3",
     "prettier": "3.0.0",
+    "prisma": "5.2.0",
     "rimraf": "5.0.1",
     "rollup-plugin-swc": "0.2.1",
     "source-map-support": "*",
@@ -117,5 +129,8 @@
   "resolutions": {
     "pino": "./external/pino",
     "typescript": "^5.1.6"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
   }
 }

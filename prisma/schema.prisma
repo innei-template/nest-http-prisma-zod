@@ -1,0 +1,64 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id            String     @id @default("")
+  username      String     @unique
+  name          String
+  introduce     String?
+  avatar        String?
+  password      String
+  mail          String?
+  url           String?
+  lastLoginTime DateTime?
+  lastLoginIp   String?
+  socialIds     Json?
+  authCode      String
+  apiTokens     ApiToken[]
+  oauths        OAuth[]
+  Post          Post[]
+}
+
+model ApiToken {
+  id      String    @id @default("")
+  userId  String
+  created DateTime
+  token   String
+  expired DateTime?
+  name    String    @unique
+  user    User      @relation(fields: [userId], references: [id])
+}
+
+model OAuth {
+  id       String @id @default("")
+  userId   String
+  platform String
+  oauthId  String
+  user     User   @relation(fields: [userId], references: [id])
+}
+
+model Post {
+  id        String   @id @default("")
+  slug      String   @unique
+  text      String
+  title     String
+  createdAt DateTime @default(now()) @map("created")
+  // Fields from BaseModel
+  // created  DateTime @default(now())  // This is same as createdAt
+  // Adding id here would be redundant since Prisma auto-generates it
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+
+  @@index([slug])
+  @@index([createdAt], name: "modified")
+  @@index([text], map: "text")
+}
