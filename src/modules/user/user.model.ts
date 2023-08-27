@@ -1,16 +1,17 @@
 import { hashSync } from 'bcrypt'
 
+import { Prisma } from '@prisma/client'
 import {
   DocumentType,
-  Severity,
   modelOptions,
   mongoose,
   prop,
+  Severity,
 } from '@typegoose/typegoose'
 
 import { BaseModel } from '~/shared/model/base.model'
 
-export type UserDocument = DocumentType<UserModel>
+export type UserDocument = DocumentType<UserModel> & Prisma.PostCreateInput
 
 export class OAuthModel {
   @prop()

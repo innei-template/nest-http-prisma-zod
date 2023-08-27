@@ -56,12 +56,14 @@ model User {
   apiTokens     ApiToken[]
   oauths        OAuth[]
   Post          Post[]
+  created       DateTime   @default(now()) @map("created_at")
+  modified      DateTime?  @updatedAt @map("updated_at")
 }
 
 model ApiToken {
   id      String    @id @default("")
   userId  String
-  created DateTime
+  created DateTime  @default(now())
   token   String
   expired DateTime?
   name    String    @unique
@@ -77,17 +79,18 @@ model OAuth {
 }
 
 model Post {
-  id        String   @id @default("")
-  slug      String   @unique
-  text      String
-  title     String
-  createdAt DateTime @default(now()) @map("created")
+  id       String    @id @default("")
+  slug     String    @unique
+  text     String
+  title    String
+  created  DateTime  @default(now()) @map("created_at")
+  modified DateTime? @updatedAt @map("updated_at")
   // Fields from BaseModel
   // created  DateTime @default(now())  // This is same as createdAt
   // Adding id here would be redundant since Prisma auto-generates it
-  User      User?    @relation(fields: [userId], references: [id])
-  userId    String?
+  User     User?     @relation(fields: [userId], references: [id])
+  userId   String?
 
   @@index([slug])
-  @@index([createdAt], name: "modified")
+  @@index([created])
 }

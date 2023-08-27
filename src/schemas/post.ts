@@ -8,7 +8,8 @@ export const PostModel = z.object({
   slug: z.string(),
   text: z.string(),
   title: z.string(),
-  createdAt: z.date(),
+  created: z.date(),
+  modified: z.date().nullish(),
   userId: z.string().nullish(),
 })
 

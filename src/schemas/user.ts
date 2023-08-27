@@ -23,6 +23,8 @@ export const UserModel = z.object({
   lastLoginIp: z.string().nullish(),
   socialIds: z.json(),
   authCode: z.string(),
+  created: z.date(),
+  modified: z.date().nullish(),
 })
 
 export class UserDto extends createZodDto(UserModel) {}

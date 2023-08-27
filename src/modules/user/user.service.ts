@@ -6,12 +6,12 @@ import {
   Logger,
   UnprocessableEntityException,
 } from '@nestjs/common'
+import { Prisma } from '@prisma/client'
 
 import { BizException } from '~/common/exceptions/biz.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { CacheService } from '~/processors/cache/cache.service'
 import { DatabaseService } from '~/processors/database/database.service'
-import { UserDto } from '~/schemas'
 
 import { AuthService } from '../auth/auth.service'
 import { UserRegisterDto } from './dtos/register.dto'
@@ -56,7 +56,10 @@ export class UserService {
    * @param {DocumentType} user - 用户查询结果，已经挂载在 req.user
    * @param {Partial} data - 部分修改数据
    */
-  async patchUserData(user: UserDto, data: Partial<UserDto>): Promise<any> {
+  async patchUserData(
+    user: Prisma.UserCreateInput,
+    data: Partial<Prisma.UserCreateInput>,
+  ): Promise<any> {
     const { password } = data
     const doc = { ...data }
     if (password !== undefined) {

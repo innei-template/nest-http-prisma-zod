@@ -23,7 +23,7 @@
     ]
   },
   "scripts": {
-    "prepare": "corepack enable && husky install",
+    "prepare": "corepack enable && husky install && prisma generate",
     "prebuild": "rimraf dist",
     "build": "nest build",
     "dev": "npm run start",
