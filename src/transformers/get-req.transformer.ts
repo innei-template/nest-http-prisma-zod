@@ -1,11 +1,10 @@
 import { FastifyRequest } from 'fastify'
 
 import { ExecutionContext } from '@nestjs/common'
-
-import { UserModel } from '~/modules/user/user.model'
+import { Prisma } from '@prisma/client'
 
 export function getNestExecutionContextRequest(
   context: ExecutionContext,
-): FastifyRequest & { user?: UserModel } & Record<string, any> {
+): FastifyRequest & { user?: Prisma.UserCreateInput } & Record<string, any> {
   return context.switchToHttp().getRequest<FastifyRequest>()
 }

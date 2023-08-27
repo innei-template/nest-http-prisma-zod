@@ -6,12 +6,11 @@ import { ConfigModel } from '~/modules/configs/configs.model'
 import { PostModel } from '~/modules/post/post.model'
 import { getProviderByTypegooseClass } from '~/transformers/model.transformer'
 
-import { UserModel } from '../../modules/user/user.model'
 import { databaseProvider } from './database.provider'
 import { DatabaseService } from './database.service'
 import { extendedPrismaClient } from './prisma.instance'
 
-const models = [UserModel, PostModel, ConfigModel].map((model) =>
+const models = [PostModel, ConfigModel].map((model) =>
   getProviderByTypegooseClass(model),
 )
 @Module({

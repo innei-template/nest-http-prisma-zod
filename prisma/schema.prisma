@@ -42,13 +42,13 @@ datasource db {
 
 model User {
   id            String     @id @default("")
-  username      String     @unique
-  name          String
-  introduce     String?
-  avatar        String?
-  password      String
-  mail          String?
-  url           String?
+  username      String     @unique @db.VarChar(80)
+  name          String     @db.VarChar(80)
+  introduce     String?    @db.VarChar(255)
+  avatar        String?    @db.VarChar(1024)
+  password      String     @db.VarChar(80)
+  mail          String?    @db.VarChar(80)
+  url           String?    @db.VarChar(1024)
   lastLoginTime DateTime?
   lastLoginIp   String?
   socialIds     Json?      @default("{}")
@@ -80,9 +80,9 @@ model OAuth {
 
 model Post {
   id       String    @id @default("")
-  slug     String    @unique
+  slug     String    @unique @db.VarChar(80)
   text     String
-  title    String
+  title    String    @db.VarChar(255)
   created  DateTime  @default(now()) @map("created_at")
   modified DateTime? @updatedAt @map("updated_at")
   // Fields from BaseModel
