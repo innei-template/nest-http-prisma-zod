@@ -2,8 +2,7 @@
  * 对响应体进行 JSON 标准的转换
  * @author Innei
  */
-import { isArrayLike, isObjectLike } from 'lodash'
-import { Observable, map } from 'rxjs'
+import { map, Observable } from 'rxjs'
 import snakecaseKeys from 'snakecase-keys'
 
 import {
@@ -43,42 +42,6 @@ export class JSONTransformerInterceptor implements NestInterceptor {
   }
 
   private serialize(obj: any) {
-    if (!isObjectLike(obj)) {
-      return obj
-    }
-
-    if (isArrayLike(obj)) {
-      obj = Array.from(obj).map((i) => {
-        return this.serialize(i)
-      })
-    } else {
-      // if is Object
-      if (obj.toJSON || obj.toObject) {
-        obj = obj.toJSON?.() ?? obj.toObject?.()
-      }
-
-      Reflect.deleteProperty(obj, '__v')
-
-      const keys = Object.keys(obj)
-      for (const key of keys) {
-        const val = obj[key]
-        // first
-        if (!isObjectLike(val)) {
-          continue
-        }
-
-        if (val.toJSON) {
-          obj[key] = val.toJSON()
-          // second
-          if (!isObjectLike(obj[key])) {
-            continue
-          }
-          Reflect.deleteProperty(obj[key], '__v')
-        }
-        obj[key] = this.serialize(obj[key])
-      }
-      obj = snakecaseKeys(obj)
-    }
-    return obj
+    return snakecaseKeys(obj, { deep: true })
   }
 }

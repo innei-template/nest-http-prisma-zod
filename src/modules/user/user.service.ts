@@ -3,7 +3,6 @@ import { nanoid } from 'nanoid'
 import { sleep } from 'zx-cjs'
 
 import {
-  BadRequestException,
   ForbiddenException,
   Injectable,
   Logger,
@@ -11,7 +10,7 @@ import {
 } from '@nestjs/common'
 import { ReturnModelType } from '@typegoose/typegoose'
 
-import { BizException } from '~/common/exceptions/business.excpetion'
+import { BizException } from '~/common/exceptions/biz.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { CacheService } from '~/processors/cache/cache.service'
 import { InjectModel } from '~/transformers/model.transformer'
@@ -45,46 +44,6 @@ export class UserService {
     return user
   }
 
-  async getMasterInfo(getLoginIp = false) {
-    const user: UserModel | null = await this.userModel
-      .findOne()
-      .select(`-authCode${getLoginIp ? ' +lastLoginIp' : ''}`)
-      .lean({ virtuals: true })
-    if (!user) {
-      throw new BadRequestException('没有完成初始化！')
-    }
-
-    return { ...user }
-  }
-  async hasMaster() {
-    return !!(await this.userModel.countDocuments())
-  }
-
-  public async getMaster() {
-    const master = await this.userModel.findOne().lean()
-    if (!master) {
-      throw new BadRequestException('我还没有主人')
-    }
-    return master
-  }
-
-  async createMaster(
-    model: Pick<UserModel, 'username' | 'name' | 'password'> &
-      Partial<Pick<UserModel, 'introduce' | 'avatar' | 'url'>>,
-  ) {
-    const hasMaster = await this.hasMaster()
-    // 禁止注册两个以上账户
-    if (hasMaster) {
-      throw new BadRequestException('我已经有一个主人了哦')
-    }
-    const authCode = nanoid(10)
-
-    // @ts-ignore
-    const res = await this.userModel.create({ ...model, authCode })
-    const token = await this.authService.signToken(res.id)
-    return { token, username: res.username, authCode: res.authCode }
-  }
-
   /**
    * 修改密码
    *
@@ -105,7 +64,7 @@ export class UserService {
         .select('+password +apiToken')
 
       if (!currentUser) {
-        throw new BizException(ErrorCodeEnum.MasterLostError)
+        throw new BizException(ErrorCodeEnum.UserNotFoundError)
       }
       // 1. 验证新旧密码是否一致
       const isSamePassword = compareSync(password, currentUser.password)
@@ -132,7 +91,7 @@ export class UserService {
   async recordFootstep(ip: string): Promise<Record<string, Date | string>> {
     const master = await this.userModel.findOne()
     if (!master) {
-      throw new BizException(ErrorCodeEnum.MasterLostError)
+      throw new BizException(ErrorCodeEnum.UserNotFoundError)
     }
     const PrevFootstep = {
       lastLoginTime: master.lastLoginTime || new Date(1586090559569),

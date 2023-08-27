@@ -7,7 +7,7 @@ import { AppModule } from './app.module'
 import { fastifyApp } from './common/adapter/fastify.adapter'
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor'
 import { MyLogger } from './processors/logger/logger.service'
-import { isDev } from './utils/environment.utils'
+import { isDev } from './shared/utils/environment.utils'
 
 // const APIVersion = 1
 const Origin = CROSS_DOMAIN.allowedOrigins

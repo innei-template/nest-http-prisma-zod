@@ -1,25 +1,19 @@
-import { Transform } from 'class-transformer'
-import { IsDate, IsNotEmpty, IsOptional, IsString } from 'class-validator'
+import { Body, Post, Scope } from '@nestjs/common'
 
-import { Controller, Scope } from '@nestjs/common'
+import { ApiController } from '~/common/decorators/api-controller.decorator'
 
 import { AuthService } from './auth.service'
+import { UserLoginDto } from './dtos/auth.dto'
 
-export class TokenDto {
-  @IsDate()
-  @IsOptional()
-  @Transform(({ value: v }) => new Date(v))
-  expired?: Date
-
-  @IsString()
-  @IsNotEmpty()
-  name: string
-}
-
-@Controller({
+@ApiController({
   path: 'auth',
   scope: Scope.REQUEST,
 })
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
+
+  @Post('/login')
+  login(@Body() body: UserLoginDto) {
+    return body
+  }
 }

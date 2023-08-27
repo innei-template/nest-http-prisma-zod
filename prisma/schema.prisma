@@ -60,5 +60,4 @@ model Post {
 
   @@index([slug])
   @@index([createdAt], name: "modified")
-  @@index([text], map: "text")
 }

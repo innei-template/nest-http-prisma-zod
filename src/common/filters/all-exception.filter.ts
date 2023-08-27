@@ -1,6 +1,6 @@
-import { FastifyReply, FastifyRequest } from 'fastify'
 import { WriteStream } from 'fs'
 import { resolve } from 'path'
+import { FastifyReply, FastifyRequest } from 'fastify'
 
 import {
   ArgumentsHost,
@@ -18,7 +18,7 @@ import { LOG_DIR } from '~/constants/path.constant'
 import { REFLECTOR } from '~/constants/system.constant'
 import { isDev } from '~/global/env.global'
 
-import { getIp } from '../../utils/ip.util'
+import { getIp } from '../../shared/utils/ip.util'
 import { LoggingInterceptor } from '../interceptors/logging.interceptor'
 
 type myError = {
@@ -98,7 +98,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
       .send({
         ok: 0,
         code: res?.code || status,
-        chMessage: res?.chMessage || res?.message,
+        chMessage: res?.chMessage,
         message:
           (exception as any)?.response?.message ||
           (exception as any)?.message ||

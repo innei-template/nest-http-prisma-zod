@@ -2,8 +2,8 @@
  * @module utils/ip
  * @description IP utility functions
  */
-import { FastifyRequest } from 'fastify'
 import { IncomingMessage } from 'http'
+import { FastifyRequest } from 'fastify'
 
 export const getIp = (request: FastifyRequest | IncomingMessage) => {
   const _ = request as any

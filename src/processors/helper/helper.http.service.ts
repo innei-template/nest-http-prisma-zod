@@ -1,13 +1,13 @@
-import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 import { performance } from 'perf_hooks'
 import { inspect } from 'util'
+import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
 
 import { Injectable, Logger } from '@nestjs/common'
 
 import { version } from '~/../package.json'
 import { AXIOS_CONFIG } from '~/app.config'
 import { RedisKeys } from '~/constants/cache.constant'
-import { getRedisKey } from '~/utils/redis.util'
+import { getRedisKey } from '~/shared/utils/redis.util'
 
 import { CacheService } from '../cache/cache.service'
 

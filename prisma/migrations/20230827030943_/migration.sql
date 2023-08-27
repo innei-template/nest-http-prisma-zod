@@ -1,0 +1,2 @@
+-- DropIndex
+DROP INDEX "text";

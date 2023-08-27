@@ -9,6 +9,7 @@ import { getProviderByTypegooseClass } from '~/transformers/model.transformer'
 import { UserModel } from '../../modules/user/user.model'
 import { databaseProvider } from './database.provider'
 import { DatabaseService } from './database.service'
+import { snowflakeGeneratorMiddleware } from './middlewares/snowflake'
 
 const models = [UserModel, PostModel, ConfigModel].map((model) =>
   getProviderByTypegooseClass(model),
@@ -18,8 +19,11 @@ const models = [UserModel, PostModel, ConfigModel].map((model) =>
   exports: [DatabaseService, databaseProvider, ...models],
   imports: [
     PrismaModule.forRoot({
+      isGlobal: true,
       prismaServiceOptions: {
         middlewares: [
+          snowflakeGeneratorMiddleware,
+
           loggingMiddleware({
             logger: new Logger('PrismaMiddleware'),
             logLevel: 'log', // default is `debug`

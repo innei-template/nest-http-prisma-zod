@@ -1,7 +1,7 @@
 import { Controller, Get, Query } from '@nestjs/common'
 
 import { HTTPDecorators } from '~/common/decorators/http.decorator'
-import { BizException } from '~/common/exceptions/business.excpetion'
+import { BizException } from '~/common/exceptions/biz.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { PagerDto } from '~/shared/dto/pager.dto'
 

@@ -61,7 +61,6 @@
     "@typegoose/typegoose": "11.4.0",
     "axios": "1.4.0",
     "bcrypt": "5.1.0",
-    "bson": "5.4.0",
     "cache-manager": "5.2.3",
     "cache-manager-ioredis": "2.1.0",
     "chalk": "*",

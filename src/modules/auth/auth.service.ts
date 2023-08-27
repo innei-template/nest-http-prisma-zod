@@ -1,38 +1,51 @@
+import { PrismaService } from 'nestjs-prisma'
+
 import { Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
-import { ReturnModelType } from '@typegoose/typegoose'
 
-import { BizException } from '~/common/exceptions/business.excpetion'
+import { BizException } from '~/common/exceptions/biz.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
-import { UserModel as User, UserDocument } from '~/modules/user/user.model'
-import { InjectModel } from '~/transformers/model.transformer'
+import { resourceNotFoundWrapper } from '~/shared/utils/prisma.util'
 
 import { JwtPayload } from './interfaces/jwt-payload.interface'
 
 @Injectable()
 export class AuthService {
   constructor(
-    @InjectModel(User) private readonly userModel: ReturnModelType<typeof User>,
+    private readonly prisma: PrismaService,
     private readonly jwtService: JwtService,
   ) {}
 
-  async signToken(_id: string) {
-    const { authCode } = (await this.userModel
-      .findById(_id)
-      .select('authCode'))!
+  private async getUserAuthCode(id: string) {
+    const { authCode } = await this.prisma.user
+      .findUniqueOrThrow({
+        where: {
+          id,
+        },
+        select: {
+          authCode: true,
+        },
+      })
+      .catch(
+        resourceNotFoundWrapper(
+          new BizException(ErrorCodeEnum.AuthFailUserNotExist),
+        ),
+      )
 
-    const payload = {
-      _id,
+    return authCode
+  }
+
+  async signToken(id: string) {
+    const authCode = await this.getUserAuthCode(id)
+    const payload: JwtPayload = {
+      id,
       authCode,
     }
 
     return this.jwtService.sign(payload)
   }
-  async verifyPayload(payload: JwtPayload): Promise<UserDocument | null> {
-    const user = await this.userModel.findById(payload._id).select('+authCode')
-    if (!user) {
-      throw new BizException(ErrorCodeEnum.MasterLostError)
-    }
-    return user && user.authCode === payload.authCode ? user : null
+  async verifyPayload(payload: JwtPayload): Promise<boolean> {
+    const authCode = await this.getUserAuthCode(payload.id)
+    return authCode === payload.authCode
   }
 }

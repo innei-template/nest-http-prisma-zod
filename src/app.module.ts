@@ -1,13 +1,12 @@
-import { ZodValidationPipe } from 'nestjs-zod'
-
 import { Module } from '@nestjs/common'
 import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
 
 import { AppController } from './app.controller'
-import { AllExceptionsFilter } from './common/filters/any-exception.filter'
+import { AllExceptionsFilter } from './common/filters/all-exception.filter'
 import { HttpCacheInterceptor } from './common/interceptors/cache.interceptor'
 import { JSONTransformerInterceptor } from './common/interceptors/json-transformer.interceptor'
 import { ResponseInterceptor } from './common/interceptors/response.interceptor'
+import { ZodValidationPipe } from './common/pipes/zod-validation.pipe'
 import { ConfigsModule } from './modules/configs/configs.module'
 import { PostModule } from './modules/post/post.module'
 import { CacheModule } from './processors/cache/cache.module'

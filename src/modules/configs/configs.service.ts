@@ -1,5 +1,5 @@
 import { ClassConstructor, plainToInstance } from 'class-transformer'
-import { ValidatorOptions, validateSync } from 'class-validator'
+import { validateSync, ValidatorOptions } from 'class-validator'
 import { cloneDeep, mergeWith } from 'lodash'
 
 import {
@@ -12,9 +12,9 @@ import { ReturnModelType } from '@typegoose/typegoose'
 
 import { RedisKeys } from '~/constants/cache.constant'
 import { CacheService } from '~/processors/cache/cache.service'
+import { getRedisKey } from '~/shared/utils/redis.util'
+import { camelcaseKeys, sleep } from '~/shared/utils/tool.utils'
 import { InjectModel } from '~/transformers/model.transformer'
-import { getRedisKey } from '~/utils/redis.util'
-import { camelcaseKeys, sleep } from '~/utils/tool.utils'
 
 import * as optionDtos from '../configs/configs.dto'
 import { UserService } from '../user/user.service'

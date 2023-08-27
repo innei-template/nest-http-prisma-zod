@@ -1,15 +1,15 @@
 /* eslint-disable prefer-rest-params */
-import consola_, { FancyReporter, LogLevel } from 'consola'
-import { CronJob } from 'cron'
 import { createWriteStream } from 'fs'
 import { resolve } from 'path'
+import consola_, { FancyReporter, LogLevel } from 'consola'
+import { CronJob } from 'cron'
 import { argv } from 'zx-cjs'
 
 import { CronExpression } from '@nestjs/schedule'
 
 import { LOG_DIR } from '~/constants/path.constant'
 
-import { getShortDate, getShortTime } from '../utils/time.util'
+import { getShortDate, getShortTime } from '../shared/utils/time.util'
 import { isDev, isTest } from './env.global'
 
 export const getTodayLogFilePath = () =>

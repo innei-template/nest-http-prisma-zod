@@ -18,7 +18,7 @@ import {
 } from '@nestjs/common'
 
 import { HTTP_REQUEST_TIME } from '~/constants/meta.constant'
-import { isDev } from '~/utils/environment.utils'
+import { isDev } from '~/shared/utils/environment.utils'
 
 @Injectable()
 export class LoggingInterceptor implements NestInterceptor {
