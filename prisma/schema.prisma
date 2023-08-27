@@ -5,6 +5,36 @@ generator client {
   provider = "prisma-client-js"
 }
 
+generator zod {
+  provider = "nestjs-zod-prisma"
+  output   = "../src/schemas" // (default) the directory where generated zod schemas will be saved
+
+  relationModel = true // (default) Create and export both plain and related models.
+  // relationModel         = "default" // Do not export model without relations.
+  // relationModel         = false // Do not generate related model
+
+  generateDto = true // (default) Generate DTOs for NestJS
+
+  modelCase = "PascalCase" // (default) Output models using pascal case (ex. UserModel, PostModel)
+  // modelCase             = "camelCase" // Output models using camel case (ex. userModel, postModel)
+
+  modelSuffix = "Model" // (default) Suffix to apply to your prisma models when naming Zod schemas
+
+  dtoCase = "PascalCase" // (default) Output DTOs using pascal case (ex. UserDto, PostDto)
+  // dtoCase             = "camelCase" // Output DTOs using camel case (ex. userDto, postDto)
+
+  dtoSuffix = "Dto" // (default) Suffix to apply to your prisma models when naming DTOs
+
+  // useDecimalJs          = false // (default) represent the prisma Decimal type using as a JS number
+  useDecimalJs = true // represent the prisma Decimal type using Decimal.js (as Prisma does)
+
+  imports = null // (default) will import the referenced file in generated schemas to be used via imports.someExportedVariable
+
+  // https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-by-null-values
+  prismaJsonNullability = true // (default) uses prisma's scheme for JSON field nullability
+  // prismaJsonNullability = false // allows null assignment to optional JSON fields
+}
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -21,7 +51,7 @@ model User {
   url           String?
   lastLoginTime DateTime?
   lastLoginIp   String?
-  socialIds     Json?
+  socialIds     Json?      @default("{}")
   authCode      String
   apiTokens     ApiToken[]
   oauths        OAuth[]

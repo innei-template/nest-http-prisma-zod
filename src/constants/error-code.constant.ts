@@ -1,19 +1,27 @@
 export enum ErrorCodeEnum {
-  PostNotFoundError = 10000,
+  PostNotFound = 10000,
 
   AuthFailUserNotExist = 20000,
+  AuthFail = 20001,
 
-  UserNotFoundError = 30000,
+  UserNotFound = 30000,
+  UserExist = 30001,
 }
 
 export const ErrorCode = Object.freeze<
   Record<ErrorCodeEnum, [string, string, number]>
 >({
-  [ErrorCodeEnum.PostNotFoundError]: ['post not found', '文章不存在', 404],
+  [ErrorCodeEnum.PostNotFound]: ['post not found', '文章不存在', 404],
   [ErrorCodeEnum.AuthFailUserNotExist]: [
     'auth failed, user not exist',
     '认证失败，用户不存在',
     400,
   ],
-  [ErrorCodeEnum.UserNotFoundError]: ['user not found', '用户不存在', 404],
+  [ErrorCodeEnum.AuthFail]: [
+    'auth failed, please check your username and password',
+    '认证失败，请检查用户名和密码',
+    400,
+  ],
+  [ErrorCodeEnum.UserNotFound]: ['user not found', '用户不存在', 404],
+  [ErrorCodeEnum.UserExist]: ['user already exist', '用户已存在', 400],
 })

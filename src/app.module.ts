@@ -1,5 +1,8 @@
-import { Module } from '@nestjs/common'
-import { APP_FILTER, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
+import { ZodSerializerInterceptor } from 'nestjs-zod'
+
+import { Module, Type } from '@nestjs/common'
+import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
+import { ThrottlerGuard } from '@nestjs/throttler'
 
 import { AppController } from './app.controller'
 import { AllExceptionsFilter } from './common/filters/all-exception.filter'
@@ -14,6 +17,15 @@ import { DatabaseModule } from './processors/database/database.module'
 import { HelperModule } from './processors/helper/helper.module'
 import { LoggerModule } from './processors/logger/logger.module'
 
+// Request ----->
+// Response <-----
+const appInterceptors: Type<any>[] = [
+  HttpCacheInterceptor,
+  JSONTransformerInterceptor,
+
+  ResponseInterceptor,
+  ZodSerializerInterceptor,
+]
 @Module({
   imports: [
     CacheModule,
@@ -26,19 +38,10 @@ import { LoggerModule } from './processors/logger/logger.module'
   ],
   controllers: [AppController],
   providers: [
-    {
+    ...appInterceptors.map((interceptor) => ({
       provide: APP_INTERCEPTOR,
-      useClass: HttpCacheInterceptor, // 3
-    },
-
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: JSONTransformerInterceptor, // 2
-    },
-    {
-      provide: APP_INTERCEPTOR,
-      useClass: ResponseInterceptor, // 1
-    },
+      useClass: interceptor,
+    })),
 
     {
       provide: APP_FILTER,
@@ -47,6 +50,11 @@ import { LoggerModule } from './processors/logger/logger.module'
     {
       provide: APP_PIPE,
       useClass: ZodValidationPipe,
+    },
+
+    {
+      provide: APP_GUARD,
+      useClass: ThrottlerGuard,
     },
   ],
 })

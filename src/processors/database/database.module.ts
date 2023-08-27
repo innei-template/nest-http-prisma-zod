@@ -1,6 +1,6 @@
-import { loggingMiddleware, PrismaModule, QueryInfo } from 'nestjs-prisma'
+import { CustomPrismaModule } from 'nestjs-prisma'
 
-import { Global, Logger, Module } from '@nestjs/common'
+import { Global, Module } from '@nestjs/common'
 
 import { ConfigModel } from '~/modules/configs/configs.model'
 import { PostModel } from '~/modules/post/post.model'
@@ -9,7 +9,7 @@ import { getProviderByTypegooseClass } from '~/transformers/model.transformer'
 import { UserModel } from '../../modules/user/user.model'
 import { databaseProvider } from './database.provider'
 import { DatabaseService } from './database.service'
-import { snowflakeGeneratorMiddleware } from './middlewares/snowflake'
+import { extendedPrismaClient } from './prisma.instance'
 
 const models = [UserModel, PostModel, ConfigModel].map((model) =>
   getProviderByTypegooseClass(model),
@@ -18,22 +18,11 @@ const models = [UserModel, PostModel, ConfigModel].map((model) =>
   providers: [DatabaseService, databaseProvider, ...models],
   exports: [DatabaseService, databaseProvider, ...models],
   imports: [
-    PrismaModule.forRoot({
+    CustomPrismaModule.forRootAsync({
       isGlobal: true,
-      prismaServiceOptions: {
-        middlewares: [
-          snowflakeGeneratorMiddleware,
-
-          loggingMiddleware({
-            logger: new Logger('PrismaMiddleware'),
-            logLevel: 'log', // default is `debug`
-            logMessage: (query: QueryInfo) =>
-              `[Prisma Query] ${query.model}.${query.action} - ${query.executionTime}ms`,
-          }),
-        ],
-        prismaOptions: {
-          log: isDev ? ['query', 'error', 'info', 'warn'] : undefined,
-        },
+      name: 'PrismaService',
+      useFactory: () => {
+        return extendedPrismaClient
       },
     }),
   ],

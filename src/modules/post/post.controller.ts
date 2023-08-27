@@ -28,6 +28,6 @@ export class PostController {
 
   @Get('/*')
   async notFound() {
-    throw new BizException(ErrorCodeEnum.PostNotFoundError)
+    throw new BizException(ErrorCodeEnum.PostNotFound)
   }
 }
