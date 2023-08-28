@@ -7,7 +7,7 @@ import { AppModule } from './app.module'
 import { fastifyApp } from './common/adapter/fastify.adapter'
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor'
 import { MyLogger } from './processors/logger/logger.service'
-import { isDev } from './shared/utils/environment.utils'
+import { isDev } from './shared/utils/environment.util'
 
 // const APIVersion = 1
 const Origin = CROSS_DOMAIN.allowedOrigins
@@ -32,7 +32,6 @@ export async function bootstrap() {
     credentials: true,
   })
 
-  !isDev && app.setGlobalPrefix(`api`)
   isDev && app.useGlobalInterceptors(new LoggingInterceptor())
 
   await app.listen(+PORT, '0.0.0.0', async () => {

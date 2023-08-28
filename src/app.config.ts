@@ -1,7 +1,7 @@
 import { AxiosRequestConfig } from 'axios'
 import { argv } from 'zx-cjs'
 
-import { isDev } from './shared/utils/environment.utils'
+import { isDev } from './shared/utils/environment.util'
 
 export const API_VERSION = 1
 console.log(argv)

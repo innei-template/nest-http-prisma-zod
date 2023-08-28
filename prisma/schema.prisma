@@ -41,23 +41,24 @@ datasource db {
 }
 
 model User {
-  id            String     @id @default("")
-  username      String     @unique @db.VarChar(80)
-  name          String     @db.VarChar(80)
-  introduce     String?    @db.VarChar(255)
-  avatar        String?    @db.VarChar(1024)
-  password      String     @db.VarChar(80)
-  mail          String?    @db.VarChar(80)
-  url           String?    @db.VarChar(1024)
-  lastLoginTime DateTime?
-  lastLoginIp   String?
-  socialIds     Json?      @default("{}")
-  authCode      String
-  apiTokens     ApiToken[]
-  oauths        OAuth[]
-  Post          Post[]
-  created       DateTime   @default(now()) @map("created_at")
-  modified      DateTime?  @updatedAt @map("updated_at")
+  id            String    @id @default("")
+  username      String    @unique @db.VarChar(80)
+  name          String    @db.VarChar(80)
+  introduce     String?   @db.VarChar(255)
+  avatar        String?   @db.VarChar(1024)
+  password      String    @db.VarChar(80)
+  mail          String?   @db.VarChar(80)
+  url           String?   @db.VarChar(1024)
+  lastLoginTime DateTime? @map("last_login_time")
+
+  lastLoginIp String?    @map("last_login_ip")
+  socialIds   Json?      @default("{}") @map("social_ids")
+  authCode    String     @map("auth_code")
+  apiTokens   ApiToken[]
+  oauths      OAuth[]
+  Post        Post[]
+  created     DateTime   @default(now()) @map("created_at")
+  modified    DateTime?  @updatedAt @map("updated_at")
 }
 
 model ApiToken {

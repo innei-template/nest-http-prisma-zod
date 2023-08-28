@@ -3,17 +3,10 @@ import * as z from 'nestjs-zod/z'
 
 import { UserModel } from '~/schemas'
 
+import { UserSchemaProjection } from '../user.protect'
+
 export class UserRegisterDto extends createZodDto(
-  UserModel.omit({
-    authCode: true,
-
-    lastLoginIp: true,
-    lastLoginTime: true,
-    socialIds: true,
-
-    // base
-    id: true,
-  }).extend({
+  UserModel.omit(UserSchemaProjection).extend({
     socialIds: z.json().default({}),
   }),
 ) {}

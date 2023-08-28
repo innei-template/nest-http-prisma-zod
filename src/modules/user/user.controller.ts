@@ -9,6 +9,7 @@ import { UserModel } from '~/schemas'
 import { AuthService } from '../auth/auth.service'
 import { UserLoginDto } from './dtos/login.dto'
 import { UserRegisterDto } from './dtos/register.dto'
+import { UserSchemaSerializeProjection } from './user.protect'
 import { UserService } from './user.service'
 
 @Controller(['master', 'user'])
@@ -21,9 +22,7 @@ export class UserController {
   @Post('/login')
   @Throttle(1, 3)
   @ZodSerializerDto(
-    UserModel.omit({
-      password: true,
-    }).extend({
+    UserModel.omit(UserSchemaSerializeProjection).extend({
       auth_token: z.string(),
     }),
   )
@@ -43,9 +42,7 @@ export class UserController {
 
   @Post('/register')
   @ZodSerializerDto(
-    UserModel.omit({
-      password: true,
-    }).extend({
+    UserModel.omit(UserSchemaSerializeProjection).extend({
       auth_token: z.string(),
     }),
   )

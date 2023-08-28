@@ -1,7 +1,14 @@
+import { PrismaClientExceptionFilter } from 'nestjs-prisma'
 import { ZodSerializerInterceptor } from 'nestjs-zod'
 
 import { Module, Type } from '@nestjs/common'
-import { APP_FILTER, APP_GUARD, APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
+import {
+  APP_FILTER,
+  APP_GUARD,
+  APP_INTERCEPTOR,
+  APP_PIPE,
+  HttpAdapterHost,
+} from '@nestjs/core'
 import { ThrottlerGuard } from '@nestjs/throttler'
 
 import { AppController } from './app.controller'
@@ -44,10 +51,6 @@ const appInterceptors: Type<any>[] = [
     })),
 
     {
-      provide: APP_FILTER,
-      useClass: AllExceptionsFilter,
-    },
-    {
       provide: APP_PIPE,
       useClass: ZodValidationPipe,
     },
@@ -55,6 +58,19 @@ const appInterceptors: Type<any>[] = [
     {
       provide: APP_GUARD,
       useClass: ThrottlerGuard,
+    },
+
+    {
+      provide: APP_FILTER,
+      useFactory: ({ httpAdapter }: HttpAdapterHost) => {
+        return new PrismaClientExceptionFilter(httpAdapter)
+      },
+      inject: [HttpAdapterHost],
+    },
+
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter,
     },
   ],
 })
