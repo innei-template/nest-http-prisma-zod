@@ -1,12 +1,18 @@
 import { Injectable } from '@nestjs/common'
 
-import { InjectModel } from '~/transformers/model.transformer'
+import { DatabaseService } from '~/processors/database/database.service'
 
-import { PostModel } from './post.model'
+import { PostInputSchema } from './post.protect'
 
 @Injectable()
 export class PostService {
-  constructor(
-    @InjectModel(PostModel) public readonly model: MongooseModel<PostModel>,
-  ) {}
+  constructor(private readonly db: DatabaseService) {}
+
+  create(dto: PostInputSchema) {
+    return this.db.prisma.post.create({
+      data: {
+        ...dto,
+      },
+    })
+  }
 }

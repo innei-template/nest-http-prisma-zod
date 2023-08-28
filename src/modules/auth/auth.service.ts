@@ -1,4 +1,6 @@
 import { compareSync } from 'bcrypt'
+import dayjs from 'dayjs'
+import { isDate } from 'lodash'
 import { nanoid } from 'nanoid'
 
 import { Injectable } from '@nestjs/common'
@@ -17,6 +19,10 @@ export class AuthService {
     private readonly db: DatabaseService,
     private readonly jwtService: JwtService,
   ) {}
+
+  get jwtServicePublic() {
+    return this.jwtService
+  }
 
   private async getUserAuthCode(id: string) {
     const { authCode } = await this.db.prisma.user
@@ -68,5 +74,26 @@ export class AuthService {
 
   async generateAuthCode() {
     return nanoid(10)
+  }
+
+  isCustomToken(token: string) {
+    return token.startsWith('txo') && token.length - 3 === 40
+  }
+
+  async verifyCustomToken(token: string) {
+    const apiTokenRecord = await this.db.prisma.apiToken.findFirst({
+      where: { token },
+    })
+
+    if (!apiTokenRecord) {
+      return false
+    }
+
+    if (typeof apiTokenRecord.expired === 'undefined') {
+      return true
+    } else if (isDate(apiTokenRecord.expired)) {
+      const isExpired = dayjs(new Date()).isAfter(apiTokenRecord.expired)
+      return isExpired ? false : true
+    }
   }
 }

@@ -9,11 +9,11 @@ export function createProjectionOmit<T extends object, K extends keyof T>(
   obj: T,
   keys: K[],
   withDefaults: true,
-): Projection<K | DefaultKeys>
+): Projection<K | DefaultKeys> & { keys: (K | DefaultKeys)[] }
 export function createProjectionOmit<T extends object, K extends keyof T>(
   obj: T,
   keys: K[],
-): Projection<K>
+): Projection<K> & { keys: K[] }
 
 export function createProjectionOmit<T extends object, K extends keyof T>(
   obj: T,
@@ -34,5 +34,7 @@ export function createProjectionOmit<T extends object, K extends keyof T>(
     projection[key] = true
   }
 
+  // @ts-expect-error
+  projection.keys = keys
   return projection as any
 }

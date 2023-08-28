@@ -28,7 +28,7 @@ generator zod {
   // useDecimalJs          = false // (default) represent the prisma Decimal type using as a JS number
   useDecimalJs = true // represent the prisma Decimal type using Decimal.js (as Prisma does)
 
-  imports = null // (default) will import the referenced file in generated schemas to be used via imports.someExportedVariable
+  // imports = null // (default) will import the referenced file in generated schemas to be used via imports.someExportedVariable
 
   // https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-by-null-values
   prismaJsonNullability = true // (default) uses prisma's scheme for JSON field nullability
@@ -56,9 +56,9 @@ model User {
   authCode    String     @map("auth_code")
   apiTokens   ApiToken[]
   oauths      OAuth[]
-  Post        Post[]
-  created     DateTime   @default(now()) @map("created_at")
-  modified    DateTime?  @updatedAt @map("updated_at")
+
+  created  DateTime  @default(now()) @map("created_at")
+  modified DateTime? @updatedAt @map("updated_at")
 }
 
 model ApiToken {
@@ -86,11 +86,6 @@ model Post {
   title    String    @db.VarChar(255)
   created  DateTime  @default(now()) @map("created_at")
   modified DateTime? @updatedAt @map("updated_at")
-  // Fields from BaseModel
-  // created  DateTime @default(now())  // This is same as createdAt
-  // Adding id here would be redundant since Prisma auto-generates it
-  User     User?     @relation(fields: [userId], references: [id])
-  userId   String?
 
   @@index([slug])
   @@index([created])

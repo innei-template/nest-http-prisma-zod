@@ -5,6 +5,7 @@ import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { CROSS_DOMAIN, PORT } from './app.config'
 import { AppModule } from './app.module'
 import { fastifyApp } from './common/adapter/fastify.adapter'
+import { SpiderGuard } from './common/guards/spider.guard'
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor'
 import { MyLogger } from './processors/logger/logger.service'
 import { isDev } from './shared/utils/environment.util'
@@ -33,6 +34,7 @@ export async function bootstrap() {
   })
 
   isDev && app.useGlobalInterceptors(new LoggingInterceptor())
+  app.useGlobalGuards(new SpiderGuard())
 
   await app.listen(+PORT, '0.0.0.0', async () => {
     app.useLogger(app.get(MyLogger))

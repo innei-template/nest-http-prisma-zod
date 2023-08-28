@@ -12,6 +12,7 @@ import { BizException } from '~/common/exceptions/biz.excpetion'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { CacheService } from '~/processors/cache/cache.service'
 import { DatabaseService } from '~/processors/database/database.service'
+import { resourceNotFoundWrapper } from '~/shared/utils/prisma.util'
 
 import { AuthService } from '../auth/auth.service'
 import { UserRegisterDto } from './dtos/register.dto'
@@ -124,5 +125,14 @@ export class UserService {
 
     this.Logger.warn(`主人已登录，IP: ${ip}`)
     return PrevFootstep as any
+  }
+
+  getOwner() {
+    // TODO omit keys
+    return this.db.prisma.user
+      .findFirstOrThrow()
+      .catch(
+        resourceNotFoundWrapper(new BizException(ErrorCodeEnum.UserNotFound)),
+      )
   }
 }

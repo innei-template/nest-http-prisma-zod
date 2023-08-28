@@ -4,10 +4,8 @@ import * as z from 'nestjs-zod/z'
 import {
   CompleteApiToken,
   CompleteOAuth,
-  CompletePost,
   RelatedApiTokenModel,
   RelatedOAuthModel,
-  RelatedPostModel,
 } from './index'
 
 export const UserModel = z.object({
@@ -32,7 +30,6 @@ export class UserDto extends createZodDto(UserModel) {}
 export interface CompleteUser extends z.infer<typeof UserModel> {
   apiTokens: CompleteApiToken[]
   oauths: CompleteOAuth[]
-  Post: CompletePost[]
 }
 
 /**
@@ -44,6 +41,5 @@ export const RelatedUserModel: z.ZodSchema<CompleteUser> = z.lazy(() =>
   UserModel.extend({
     apiTokens: RelatedApiTokenModel.array(),
     oauths: RelatedOAuthModel.array(),
-    Post: RelatedPostModel.array(),
   }),
 )
