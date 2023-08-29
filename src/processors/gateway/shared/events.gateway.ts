@@ -1,8 +1,8 @@
-import { BusinessEvents } from '~/constants/business-event.constant'
-
 import { Injectable } from '@nestjs/common'
 
-import { AdminEventsGateway } from '../admin/events.gateway'
+import { BusinessEvents } from '~/constants/business-event.constant'
+
+import { AdminEventsGateway } from '../admin/event.gateway'
 import { WebEventsGateway } from '../web/events.gateway'
 
 @Injectable()

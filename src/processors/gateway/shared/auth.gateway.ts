@@ -9,8 +9,8 @@ import {
 
 import { EventBusEvents } from '~/constants/event-bus.constant'
 import { AuthService } from '~/modules/auth/auth.service'
+import { CacheService } from '~/processors/cache/cache.service'
 import { JWTService } from '~/processors/helper/helper.jwt.service'
-import { CacheService } from '~/processors/redis/cache.service'
 
 import { BusinessEvents } from '../../../constants/business-event.constant'
 import { BroadcastBaseGateway } from '../base.gateway'
@@ -131,9 +131,10 @@ export const createAuthGateway = (
     }
 
     override broadcast(event: BusinessEvents, data: any) {
-      this.cacheService.emitter
-        .of(`/${namespace}`)
-        .emit('message', this.gatewayMessageFormat(event, data))
+      // TODO
+      // this.cacheService.emitter
+      //   .of(`/${namespace}`)
+      //   .emit('message', this.gatewayMessageFormat(event, data))
     }
   }
 

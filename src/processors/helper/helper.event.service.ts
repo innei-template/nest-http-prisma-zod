@@ -3,14 +3,17 @@ import { merge } from 'lodash'
 import { Injectable, Logger } from '@nestjs/common'
 import { EventEmitter2 } from '@nestjs/event-emitter'
 
-import { BusinessEvents } from '~/constants/business-event.constant'
+import {
+  BizEventDataMap,
+  BusinessEvents,
+} from '~/constants/business-event.constant'
 import { EventBusEvents } from '~/constants/event-bus.constant'
 import { EventScope } from '~/constants/event-scope.constant'
 import { scheduleManager } from '~/shared/utils/schedule.util'
 
-import { AdminEventsGateway } from '../gateway/admin/events.gateway'
+import { AdminEventsGateway } from '../gateway/admin/event.gateway'
 import { BroadcastBaseGateway } from '../gateway/base.gateway'
-import { SystemEventsGateway } from '../gateway/system/events.gateway'
+import { SystemEventsGateway } from '../gateway/system/event.gateway'
 import { WebEventsGateway } from '../gateway/web/events.gateway'
 
 export type EventManagerOptions = {
@@ -77,9 +80,9 @@ export class EventManagerService {
 
   #key = 'event-manager'
 
-  emit(
-    event: BusinessEvents,
-    data?: any,
+  emit<T extends BusinessEvents>(
+    event: T,
+    data?: BizEventDataMap[T],
     options?: EventManagerOptions,
   ): Promise<void>
   emit(
@@ -124,9 +127,9 @@ export class EventManagerService {
   }
 
   // TODO 补充类型
-  on(
-    event: BusinessEvents,
-    handler: (data: any) => void,
+  on<T extends BusinessEvents>(
+    event: T,
+    handler: (data: BizEventDataMap[T]) => void,
     options?: Pick<EventManagerOptions, 'scope'>,
   ): IEventManagerHandlerDisposer
   on(
@@ -174,6 +177,21 @@ export class EventManagerService {
       // emit current event directly
       this.emitter2.emit(event, payload)
       this.#handlers.forEach((handler) => handler(event, payload))
+    })
+  }
+
+  /**
+   * system event
+   */
+  event<T extends BusinessEvents>(
+    event: T,
+    data: BizEventDataMap[T],
+  ): IEventManagerHandlerDisposer
+  event(event: EventBusEvents, data: any): IEventManagerHandlerDisposer
+
+  event(event: any, data: any): any {
+    return this.emit(event, data, {
+      scope: EventScope.TO_SYSTEM,
     })
   }
 

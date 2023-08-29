@@ -241,6 +241,9 @@ devDependencies:
   vitest:
     specifier: 0.25.3
     version: 0.25.3
+  zod-prisma-types:
+    specifier: 2.7.9
+    version: 2.7.9
   zx:
     specifier: 7.2.3
     version: 7.2.3
@@ -1675,6 +1678,16 @@ packages:
       - supports-color
     dev: true
 
+  /@prisma/debug@5.2.0:
+    resolution: {integrity: sha512-dOrNOA8B65l3dCp2r3gn5A5dbMXNbEixO3JAaMWiS2q03qMU3/R9oNv86H2c1i3GSwQglH5gjwpkA9olp/+h1A==}
+    dependencies:
+      '@types/debug': 4.1.8
+      debug: 4.3.4
+      strip-ansi: 6.0.1
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
   /@prisma/engines-version@5.2.0-25.2804dc98259d2ea960602aca6b8e7fdc03c1758f:
     resolution: {integrity: sha512-jsnKT5JIDIE01lAeCj2ghY9IwxkedhKNvxQeoyLs6dr4ZXynetD0vTy7u6wMJt8vVPv8I5DPy/I4CFaoXAgbtg==}
     dev: false
@@ -1687,6 +1700,17 @@ packages:
     resolution: {integrity: sha512-bMOH7y73Ui7gpQrioFeavMQA+Tf8ksaVf8Nhs9rQNzuSg8SSV6E9baczob0L5KGZTSgYoqnrRxuo03kVJYrnIg==}
     dependencies:
       '@prisma/debug': 4.16.2
+      '@types/cross-spawn': 6.0.2
+      cross-spawn: 7.0.3
+      kleur: 4.1.5
+    transitivePeerDependencies:
+      - supports-color
+    dev: true
+
+  /@prisma/generator-helper@5.2.0:
+    resolution: {integrity: sha512-jju+nGe8IgwDhs412sx6PSk5efkuoBqHOJSqbRBb9Y/fMfeDRGLVdwia8Hj+PKmd/YXrqFgBd4NDeFxeCcVVqw==}
+    dependencies:
+      '@prisma/debug': 5.2.0
       '@types/cross-spawn': 6.0.2
       cross-spawn: 7.0.3
       kleur: 4.1.5
@@ -3541,6 +3565,10 @@ packages:
 
   /code-block-writer@11.0.3:
     resolution: {integrity: sha512-NiujjUFB4SwScJq2bwbYUtXbZhBSlY6vYzm++3Q6oC+U+injTqfPYFK8wS9COOmb2lueqp0ZRB4nK1VYeHgNyw==}
+    dev: true
+
+  /code-block-writer@12.0.0:
+    resolution: {integrity: sha512-q4dMFMlXtKR3XNBHyMHt/3pwYNA69EDk00lloMOaaUMKPUXBw6lpXtbu3MMVG6/uOihGnRDOlkyqsONEUj60+w==}
     dev: true
 
   /color-convert@1.9.3:
@@ -8672,6 +8700,18 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  /zod-prisma-types@2.7.9:
+    resolution: {integrity: sha512-JgPN32d/Wm6/E61oHXek2jDT6VxBpKVPmLom7585SmdCyj+xb+OAg8O3G0BLU+gWNiC+Eyt3blo1S/8W9sIaxA==}
+    hasBin: true
+    dependencies:
+      '@prisma/generator-helper': 5.2.0
+      code-block-writer: 12.0.0
+      lodash: 4.17.21
+      zod: 3.22.2
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /zod@3.22.2:

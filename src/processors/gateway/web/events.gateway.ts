@@ -1,29 +1,22 @@
 /* eslint-disable @typescript-eslint/no-non-null-assertion */
-import { plainToClass } from 'class-transformer'
-import { validate } from 'class-validator'
 import SocketIO from 'socket.io'
+
 import {
   GatewayMetadata,
   OnGatewayConnection,
   OnGatewayDisconnect,
-
-  ConnectedSocket,
-  MessageBody,
-  SubscribeMessage,
   WebSocketGateway,
   WebSocketServer,
 } from '@nestjs/websockets'
 
-
 import { BusinessEvents } from '~/constants/business-event.constant'
 import { RedisKeys } from '~/constants/cache.constant'
-import { CacheService } from '~/processors/redis/cache.service'
-import { scheduleManager } from '~/utils'
-import { getRedisKey } from '~/utils/redis.util'
-import { getShortDate } from '~/utils/time.util'
+import { CacheService } from '~/processors/cache/cache.service'
+import { getRedisKey } from '~/shared/utils/redis.util'
+import { scheduleManager } from '~/shared/utils/schedule.util'
+import { getShortDate } from '~/shared/utils/time.util'
 
 import { BroadcastBaseGateway } from '../base.gateway'
-import { DanmakuDto } from './dtos/danmaku.dto'
 
 const namespace = 'web'
 @WebSocketGateway<GatewayMetadata>({
@@ -42,26 +35,12 @@ export class WebEventsGateway
 
   async sendOnlineNumber() {
     return {
-      online: await this.getcurrentClientCount(),
+      online: await this.getCurrentClientCount(),
       timestamp: new Date().toISOString(),
     }
   }
-  @SubscribeMessage(BusinessEvents.DANMAKU_CREATE)
-  createNewDanmaku(
-    @MessageBody() data: DanmakuDto,
-    @ConnectedSocket() client: SocketIO.Socket,
-  ) {
-    const validator = plainToClass(DanmakuDto, data)
-    validate(validator).then((errors) => {
-      if (errors.length > 0) {
-        return client.send(errors)
-      }
-      this.broadcast(BusinessEvents.DANMAKU_CREATE, data)
-      client.send([])
-    })
-  }
 
-  async getcurrentClientCount() {
+  async getCurrentClientCount() {
     const server = this.namespace.server
     const sockets = await server.of(`/${namespace}`).adapter.sockets(new Set())
     return sockets.size
@@ -82,7 +61,7 @@ export class WebEventsGateway
       await redisClient.hset(
         getRedisKey(RedisKeys.MaxOnlineCount),
         dateFormat,
-        Math.max(maxOnlineCount, await this.getcurrentClientCount()),
+        Math.max(maxOnlineCount, await this.getCurrentClientCount()),
       )
       const key = getRedisKey(RedisKeys.MaxOnlineCount, 'total')
 
@@ -101,10 +80,11 @@ export class WebEventsGateway
   }
 
   override broadcast(event: BusinessEvents, data: any) {
-    const emitter = this.cacheService.emitter
-
-    emitter
-      .of(`/${namespace}`)
-      .emit('message', this.gatewayMessageFormat(event, data))
+    // TODO
+    // const emitter = this.cacheService.emitter
+    //
+    // emitter
+    //   .of(`/${namespace}`)
+    //   .emit('message', this.gatewayMessageFormat(event, data))
   }
 }

@@ -35,6 +35,26 @@ generator zod {
   // prismaJsonNullability = false // allows null assignment to optional JSON fields
 }
 
+// generator zod {
+//   provider                         = "zod-prisma-types"
+//   output                           = "../src/generated/zod" // default is ./generated/zod
+//   useMultipleFiles                 = true // default is false
+//   writeBarrelFiles                 = false // default is true
+//   createInputTypes                 = true // default is true
+//   createModelTypes                 = true // default is true
+//   addInputTypeValidation           = true // default is true
+//   addIncludeType                   = false // default is true
+//   addSelectType                    = false // default is true
+//   validateWhereUniqueInput         = false // default is false
+//   createOptionalDefaultValuesTypes = true // default is false
+//   createRelationValuesTypes        = true // default is false
+//   createPartialTypes               = true // default is false
+//   useDefaultValidators             = true // default is true
+//   coerceDate                       = true // default is true
+//   writeNullishInModelTypes         = true // default is false
+//   prismaClientPath                 = "./path/to/prisma/client" // default is client output path
+// }
+
 datasource db {
   provider = "postgresql"
   url      = env("DATABASE_URL")
@@ -80,13 +100,32 @@ model OAuth {
 }
 
 model Post {
-  id       String    @id @default("")
-  slug     String    @unique @db.VarChar(80)
-  text     String
-  title    String    @db.VarChar(255)
-  created  DateTime  @default(now()) @map("created_at")
-  modified DateTime? @updatedAt @map("updated_at")
+  id         String    @id @default("")
+  slug       String
+  text       String
+  title      String    @db.VarChar(255)
+  created    DateTime  @default(now()) @map("created_at")
+  modified   DateTime? @updatedAt @map("updated_at")
+  categoryId String
+  category   Category  @relation(fields: [categoryId], references: [id], onDelete: Restrict)
 
+  @@unique([slug, categoryId])
   @@index([slug])
   @@index([created])
+}
+
+enum CategoryType {
+  Category
+  Tag
+}
+
+model Category {
+  id      String       @id @default("")
+  name    String       @unique
+  type    CategoryType @default(Category)
+  slug    String       @unique
+  created DateTime     @default(now()) @map("created_at")
+  Post    Post[]
+
+  @@index([slug], name: "slugIndex")
 }

@@ -9,7 +9,6 @@ import {
 } from '@nestjs/common'
 
 import { AuthService } from '~/modules/auth/auth.service'
-import { ConfigsService } from '~/modules/configs/configs.service'
 import { UserService } from '~/modules/user/user.service'
 import { getNestExecutionContextRequest } from '~/transformers/get-req.transformer'
 
@@ -21,7 +20,6 @@ import { getNestExecutionContextRequest } from '~/transformers/get-req.transform
 export class AuthGuard implements CanActivate {
   constructor(
     protected readonly authService: AuthService,
-    protected readonly configs: ConfigsService,
 
     @Inject(UserService) private readonly userService: UserService,
   ) {}

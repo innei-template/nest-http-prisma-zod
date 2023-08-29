@@ -2,6 +2,7 @@
  * 对响应体进行 JSON 标准的转换
  * @author Innei
  */
+import { isObjectLike } from 'lodash'
 import { map, Observable } from 'rxjs'
 import snakecaseKeys from 'snakecase-keys'
 
@@ -42,6 +43,9 @@ export class JSONTransformerInterceptor implements NestInterceptor {
   }
 
   private serialize(obj: any) {
+    if (!isObjectLike(obj)) {
+      return obj
+    }
     return snakecaseKeys(obj, { deep: true })
   }
 }
