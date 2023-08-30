@@ -1,7 +1,7 @@
 import { Body, Get, Post, Query } from '@nestjs/common'
 
 import { ApiController } from '~/common/decorators/api-controller.decorator'
-import { BizException } from '~/common/exceptions/biz.excpetion'
+import { BizException } from '~/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { PagerDto } from '~/shared/dto/pager.dto'
 

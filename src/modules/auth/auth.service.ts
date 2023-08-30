@@ -6,7 +6,7 @@ import { nanoid } from 'nanoid'
 import { Injectable } from '@nestjs/common'
 import { JwtService } from '@nestjs/jwt'
 
-import { BizException } from '~/common/exceptions/biz.excpetion'
+import { BizException } from '~/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { DatabaseService } from '~/processors/database/database.service'
 import { resourceNotFoundWrapper } from '~/shared/utils/prisma.util'

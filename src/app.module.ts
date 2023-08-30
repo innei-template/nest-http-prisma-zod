@@ -14,9 +14,11 @@ import { ThrottlerGuard } from '@nestjs/throttler'
 import { AppController } from './app.controller'
 import { AllExceptionsFilter } from './common/filters/all-exception.filter'
 import { HttpCacheInterceptor } from './common/interceptors/cache.interceptor'
+import { IdempotenceInterceptor } from './common/interceptors/idempotence.interceptor'
 import { JSONTransformerInterceptor } from './common/interceptors/json-transformer.interceptor'
 import { ResponseInterceptor } from './common/interceptors/response.interceptor'
 import { ZodValidationPipe } from './common/pipes/zod-validation.pipe'
+import { CategoryModule } from './modules/category/category.module'
 import { PostModule } from './modules/post/post.module'
 import { CacheModule } from './processors/cache/cache.module'
 import { DatabaseModule } from './processors/database/database.module'
@@ -27,6 +29,7 @@ import { LoggerModule } from './processors/logger/logger.module'
 // Request ----->
 // Response <-----
 const appInterceptors: Type<any>[] = [
+  IdempotenceInterceptor,
   HttpCacheInterceptor,
   JSONTransformerInterceptor,
 
@@ -44,6 +47,8 @@ const appInterceptors: Type<any>[] = [
 
     // BIZ
     PostModule,
+
+    CategoryModule,
   ],
   controllers: [AppController],
   providers: [

@@ -8,7 +8,7 @@ import {
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
 
-import { BizException } from '~/common/exceptions/biz.excpetion'
+import { BizException } from '~/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { CacheService } from '~/processors/cache/cache.service'
 import { DatabaseService } from '~/processors/database/database.service'

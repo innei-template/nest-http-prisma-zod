@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common'
 import { Post } from '@prisma/client'
 
-import { BizException } from '~/common/exceptions/biz.excpetion'
+import { BizException } from '~/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { DatabaseService } from '~/processors/database/database.service'
 
