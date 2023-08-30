@@ -1,8 +1,9 @@
-import { Body, Get, Post, Query } from '@nestjs/common'
+import { Body, Get, Param, Post, Query } from '@nestjs/common'
 
 import { ApiController } from '~/common/decorators/api-controller.decorator'
 import { BizException } from '~/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
+import { SnowflakeIdDto } from '~/shared/dto/id.dto'
 import { PagerDto } from '~/shared/dto/pager.dto'
 
 import { PostDto } from './post.dto'
@@ -15,6 +16,12 @@ export class PostController {
   @Get('/')
   async gets(@Query() query: PagerDto) {
     return query
+  }
+
+  @Get('/:id')
+  async get(@Param() param: SnowflakeIdDto) {
+    const { id } = param
+    return this.service.getPostById(id)
   }
 
   @Post('/')

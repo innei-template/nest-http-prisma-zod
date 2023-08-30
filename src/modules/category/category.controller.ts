@@ -11,7 +11,7 @@ export class CategoryController {
 
   @Post('/')
   // @Auth()
-  async create(@Body() body: CategoryDto) {
+  async createCategory(@Body() body: CategoryDto) {
     return this.service.create(body)
   }
 }

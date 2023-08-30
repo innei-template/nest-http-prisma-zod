@@ -1,5 +1,4 @@
 import { Injectable } from '@nestjs/common'
-import { Post } from '@prisma/client'
 
 import { BizException } from '~/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
@@ -38,14 +37,26 @@ export class PostService {
       throw new BizException(ErrorCodeEnum.CategoryNotFound)
     }
 
-    const model: Post = await this.db.prisma.post.create({
+    const model = await this.db.prisma.post.create({
       data: {
         ...dto,
       },
+      include: { category: true },
     })
 
     // this.eventService.event(BusinessEvents.POST_CREATE, model)
 
     return model
+  }
+
+  async getPostById(id: string) {
+    return this.db.prisma.post.findUnique({
+      where: {
+        id,
+      },
+      include: {
+        category: true,
+      },
+    })
   }
 }

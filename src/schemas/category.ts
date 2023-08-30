@@ -1,13 +1,11 @@
 import { createZodDto } from 'nestjs-zod/dto'
 import * as z from 'nestjs-zod/z'
 
-import { CategoryType } from './enums'
 import { CompletePost, RelatedPostModel } from './index'
 
 export const CategoryModel = z.object({
   id: z.string(),
   name: z.string(),
-  type: z.nativeEnum(CategoryType),
   slug: z.string(),
   created: z.date(),
 })

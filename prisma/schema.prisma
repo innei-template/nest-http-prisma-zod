@@ -114,18 +114,18 @@ model Post {
   @@index([created])
 }
 
-enum CategoryType {
-  Category
-  Tag
-}
-
 model Category {
-  id      String       @id @default("")
-  name    String       @unique
-  type    CategoryType @default(Category)
-  slug    String       @unique
-  created DateTime     @default(now()) @map("created_at")
+  id      String   @id @default("")
+  name    String   @unique
+  slug    String   @unique
+  created DateTime @default(now()) @map("created_at")
   Post    Post[]
 
   @@index([slug], name: "slugIndex")
+}
+
+model Tag {
+  id      String   @id @default("")
+  name    String   @unique
+  created DateTime @default(now()) @map("created_at")
 }
