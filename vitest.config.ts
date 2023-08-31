@@ -48,7 +48,10 @@ export default defineConfig({
   resolve: {
     alias: {
       'zx-cjs': 'zx',
-      '~/app.config': resolve(__dirname, './src/app.config.test.ts'),
+      '~/app.config': resolve(__dirname, './src/app.config.testing.ts'),
+      // '~/processors/database/prisma.instance': resolve(
+      //   './src/processors/database/prisma.instance.testing.ts',
+      // ),
     },
   },
 

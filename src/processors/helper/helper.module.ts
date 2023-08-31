@@ -1,5 +1,8 @@
 import { Global, Module, Provider } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
 import { ThrottlerModule } from '@nestjs/throttler'
+
+import { isTest } from '~/global/env.global'
 
 import { HttpService } from './helper.http.service'
 import { JWTService } from './helper.jwt.service'
@@ -12,6 +15,11 @@ const providers: Provider<any>[] = [
 
 @Module({
   imports: [
+    ConfigModule.forRoot({
+      envFilePath: isTest ? ['.env.test', '.env'] : '.env',
+      isGlobal: true,
+    }),
+
     ThrottlerModule.forRoot({
       ttl: 60,
       limit: 100,

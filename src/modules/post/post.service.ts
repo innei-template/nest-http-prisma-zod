@@ -3,6 +3,7 @@ import { Injectable } from '@nestjs/common'
 import { BizException } from '~/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { DatabaseService } from '~/processors/database/database.service'
+import { resourceNotFoundWrapper } from '~/shared/utils/prisma.util'
 
 import { PostInputSchema } from './post.protect'
 
@@ -50,13 +51,17 @@ export class PostService {
   }
 
   async getPostById(id: string) {
-    return this.db.prisma.post.findUnique({
-      where: {
-        id,
-      },
-      include: {
-        category: true,
-      },
-    })
+    return this.db.prisma.post
+      .findUniqueOrThrow({
+        where: {
+          id,
+        },
+        include: {
+          category: true,
+        },
+      })
+      .catch(
+        resourceNotFoundWrapper(new BizException(ErrorCodeEnum.PostNotFound)),
+      )
   }
 }

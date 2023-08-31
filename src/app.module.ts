@@ -20,6 +20,7 @@ import { ResponseInterceptor } from './common/interceptors/response.interceptor'
 import { ZodValidationPipe } from './common/pipes/zod-validation.pipe'
 import { CategoryModule } from './modules/category/category.module'
 import { PostModule } from './modules/post/post.module'
+import { UserModule } from './modules/user/user.module'
 import { CacheModule } from './processors/cache/cache.module'
 import { DatabaseModule } from './processors/database/database.module'
 import { GatewayModule } from './processors/gateway/gateway.module'
@@ -47,7 +48,7 @@ const appInterceptors: Type<any>[] = [
 
     // BIZ
     PostModule,
-
+    UserModule,
     CategoryModule,
   ],
   controllers: [AppController],

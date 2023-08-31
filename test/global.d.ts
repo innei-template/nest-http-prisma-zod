@@ -1,16 +1,10 @@
 import { Consola } from 'consola'
-import { Document, PaginateModel } from 'mongoose'
 
 import 'vitest/globals'
 import 'zx-cjs/globals'
 
-import { ModelType } from '@typegoose/typegoose/lib/types'
-
 declare global {
   export type KV<T = any> = Record<string, T>
-
-  // @ts-ignore
-  export type MongooseModel<T> = ModelType<T> & PaginateModel<T & Document>
 
   export const isDev: boolean
 

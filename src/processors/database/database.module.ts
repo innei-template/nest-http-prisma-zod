@@ -1,9 +1,11 @@
 import { CustomPrismaModule } from 'nestjs-prisma'
 
 import { Global, Module } from '@nestjs/common'
+import { ConfigService } from '@nestjs/config'
+
+import { createExtendedPrismaClient } from '~/processors/database/prisma.instance'
 
 import { DatabaseService } from './database.service'
-import { extendedPrismaClient } from './prisma.instance'
 
 @Module({
   providers: [DatabaseService],
@@ -12,8 +14,12 @@ import { extendedPrismaClient } from './prisma.instance'
     CustomPrismaModule.forRootAsync({
       isGlobal: true,
       name: 'PrismaService',
-      useFactory: () => {
-        return extendedPrismaClient
+      inject: [ConfigService],
+      useFactory: (configService: ConfigService) => {
+        const dbUrl = configService.getOrThrow('DATABASE_URL')
+        return createExtendedPrismaClient({
+          url: dbUrl,
+        })
       },
     }),
   ],

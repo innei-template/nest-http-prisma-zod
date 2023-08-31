@@ -1,9 +1,10 @@
 import { ZodSerializerDto } from 'nestjs-zod'
 import { z } from 'zod'
 
-import { Body, Controller, Post } from '@nestjs/common'
+import { Body, Post } from '@nestjs/common'
 import { Throttle } from '@nestjs/throttler'
 
+import { ApiController } from '~/common/decorators/api-controller.decorator'
 import { UserModel } from '~/schemas'
 
 import { AuthService } from '../auth/auth.service'
@@ -12,7 +13,7 @@ import { UserRegisterDto } from './dtos/register.dto'
 import { UserSchemaSerializeProjection } from './user.protect'
 import { UserService } from './user.service'
 
-@Controller(['master', 'user'])
+@ApiController(['master', 'user'])
 export class UserController {
   constructor(
     private readonly userService: UserService,

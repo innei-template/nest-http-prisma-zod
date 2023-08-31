@@ -1,11 +1,13 @@
-// @ts-nocheck
 import { beforeAll } from 'vitest'
 
 import 'zx/globals'
 
 import consola from 'consola'
-import { dbHelper } from 'test/helper/db-mock.helper'
-import { redisHelper } from 'test/helper/redis-mock.helper'
+import { prisma } from 'test/lib/prisma'
+
+import { redisHelper } from '../helper/redis-mock.helper'
+
+declare const global: any
 
 beforeAll(async () => {
   await import('zx/globals')
@@ -13,16 +15,16 @@ beforeAll(async () => {
   global.isDev = true
   global.cwd = process.cwd()
   global.consola = consola
+  await prisma.$connect()
 })
 
 afterAll(async () => {
-  await dbHelper.clear()
-  await dbHelper.close()
   await (await redisHelper).close()
+
+  await prisma.$disconnect()
 })
 
 beforeAll(async () => {
-  await dbHelper.connect()
   await redisHelper
 })
 
