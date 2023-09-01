@@ -1,5 +1,3 @@
-import { beforeAll } from 'vitest'
-
 import 'zx/globals'
 
 import consola from 'consola'

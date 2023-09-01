@@ -17,6 +17,7 @@ import { DatabaseService } from './database.service'
       inject: [ConfigService],
       useFactory: (configService: ConfigService) => {
         const dbUrl = configService.getOrThrow('DATABASE_URL')
+
         return createExtendedPrismaClient({
           url: dbUrl,
         })

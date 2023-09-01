@@ -1,10 +1,11 @@
 import { ModuleMetadata } from '@nestjs/common'
+import { ConfigModule } from '@nestjs/config'
 import { APP_INTERCEPTOR } from '@nestjs/core'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 
-import { HttpCacheInterceptor } from '~/common/interceptors/cache.interceptor'
 import { JSONTransformerInterceptor } from '~/common/interceptors/json-transformer.interceptor'
 import { ResponseInterceptor } from '~/common/interceptors/response.interceptor'
+import { DatabaseModule } from '~/processors/database/database.module'
 
 import { redisHelper } from './redis-mock.helper'
 import { setupE2EApp } from './setup-e2e'
@@ -15,16 +16,19 @@ export const createE2EApp = (module: ModuleMetadata) => {
   } = {} as any
 
   beforeAll(async () => {
-    const { CacheService, token } = await redisHelper
+    const { CacheService, token, CacheModule } = await redisHelper
     const { ...nestModule } = module
+    nestModule.imports ||= []
+    nestModule.imports.push(
+      DatabaseModule,
+      ConfigModule.forRoot({
+        isGlobal: true,
+      }),
+      CacheModule,
+    )
     nestModule.providers ||= []
 
     nestModule.providers.push(
-      {
-        provide: APP_INTERCEPTOR,
-        useClass: HttpCacheInterceptor, // 3
-      },
-
       {
         provide: APP_INTERCEPTOR,
         useClass: JSONTransformerInterceptor, // 2
