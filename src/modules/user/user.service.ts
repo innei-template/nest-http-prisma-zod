@@ -16,6 +16,7 @@ import { resourceNotFoundWrapper } from '~/shared/utils/prisma.util'
 
 import { AuthService } from '../auth/auth.service'
 import { UserRegisterDto } from './dtos/register.dto'
+import { UserSchemaProjection } from './user.protect'
 
 @Injectable()
 export class UserService {
@@ -62,6 +63,13 @@ export class UserService {
     data: Partial<Prisma.UserCreateInput>,
   ): Promise<any> {
     const { password } = data
+
+    for (const key in UserSchemaProjection) {
+      if (key in data) {
+        delete data[key]
+      }
+    }
+
     const doc = { ...data }
     if (password !== undefined) {
       const { id } = user

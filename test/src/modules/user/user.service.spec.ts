@@ -10,7 +10,6 @@ import { Test } from '@nestjs/testing'
 import { UserService } from '~/modules/user/user.service'
 import { CacheService } from '~/processors/cache/cache.service'
 import { DatabaseModule } from '~/processors/database/database.module'
-import { DatabaseService } from '~/processors/database/database.service'
 import { UserModel } from '~/schemas'
 
 describe('/modules/user/user.service', () => {
@@ -38,13 +37,13 @@ describe('/modules/user/user.service', () => {
     await app.init()
     service = app.get(UserService)
 
-    const db = app.get(DatabaseService)
-    await db.prisma.$transaction([
-      db.prisma.user.deleteMany(),
-
-      db.prisma.post.deleteMany(),
-      db.prisma.category.deleteMany(),
-    ])
+    // const db = app.get(DatabaseService)
+    // await db.prisma.$transaction([
+    //   db.prisma.user.deleteMany(),
+    //
+    //   db.prisma.post.deleteMany(),
+    //   db.prisma.category.deleteMany(),
+    // ])
   })
 
   it('should register user successfully', async () => {
@@ -66,5 +65,18 @@ describe('/modules/user/user.service', () => {
     await service.register(userModel)
 
     await expect(service.register(userModel)).rejects.toThrowError()
+  })
+
+  it('should patch user successfully', async () => {
+    const userModel = generateMock(UserModel)
+    await service.register(userModel)
+    const user = await prisma.user.findFirstOrThrow()
+    await service.patchUserData(user, {
+      name: 'test',
+    })
+
+    const updatedUser = await prisma.user.findFirstOrThrow()
+    expect(updatedUser.name).toBe('test')
+    expect(updatedUser.id).toBe(user.id)
   })
 })

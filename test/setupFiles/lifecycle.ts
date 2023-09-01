@@ -3,7 +3,6 @@ import { beforeAll } from 'vitest'
 import 'zx/globals'
 
 import consola from 'consola'
-import { prisma } from 'test/lib/prisma'
 
 import { redisHelper } from '../helper/redis-mock.helper'
 
@@ -15,13 +14,13 @@ beforeAll(async () => {
   global.isDev = true
   global.cwd = process.cwd()
   global.consola = consola
-  await prisma.$connect()
+  // await prisma.$connect()
 })
 
 afterAll(async () => {
   await (await redisHelper).close()
 
-  await prisma.$disconnect()
+  // await prisma.$disconnect()
 })
 
 beforeAll(async () => {
