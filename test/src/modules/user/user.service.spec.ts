@@ -1,6 +1,6 @@
+import { mockUserInputData1 } from 'test/mock/data/user.data'
 import { authProvider } from 'test/mock/modules/auth.mock'
 
-import { generateMock } from '@anatine/zod-mock'
 import { ConfigModule } from '@nestjs/config'
 import { Test } from '@nestjs/testing'
 
@@ -8,13 +8,13 @@ import { UserService } from '~/modules/user/user.service'
 import { CacheService } from '~/processors/cache/cache.service'
 import { DatabaseModule } from '~/processors/database/database.module'
 import { DatabaseService } from '~/processors/database/database.service'
-import { UserModel } from '~/schemas'
 
 // jest.mock('bcrypt', () => ({}))
 describe('/modules/user/user.service', () => {
   let service: UserService
   let dbService: DatabaseService
   let prisma: DatabaseService['prisma']
+
   beforeAll(async () => {
     const app = await Test.createTestingModule({
       providers: [
@@ -65,7 +65,7 @@ describe('/modules/user/user.service', () => {
   })
 
   it('should register user successfully', async () => {
-    const userModel = generateMock(UserModel)
+    const userModel = mockUserInputData1
     await service.register(userModel)
 
     const user = await prisma.user.findUnique({
@@ -79,14 +79,14 @@ describe('/modules/user/user.service', () => {
   })
 
   it('should throw if existed', async () => {
-    const userModel = generateMock(UserModel)
+    const userModel = mockUserInputData1
     await service.register(userModel)
 
     await expect(service.register(userModel)).rejects.toThrowError()
   })
 
   it('should patch user successfully', async () => {
-    const userModel = generateMock(UserModel)
+    const userModel = mockUserInputData1
     await service.register(userModel)
     const user = await prisma.user.findFirstOrThrow()
     await service.patchUserData(user, {
