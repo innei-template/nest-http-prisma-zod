@@ -118,7 +118,6 @@
     "prisma": "5.2.0",
     "prisma-mock": "0.8.2",
     "rimraf": "5.0.1",
-    "rollup-plugin-swc": "0.2.1",
     "source-map-support": "*",
     "ts-jest": "29.1.1",
     "ts-loader": "9.4.4",

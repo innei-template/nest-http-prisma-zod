@@ -24,9 +24,6 @@
     }
   ],
   "ignoreDeps": [
-    "@swc/core",
-    "vitest",
-    "vite",
     "nanoid",
     "chalk",
     "consola"
