@@ -16,6 +16,9 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - uses: pnpm/action-setup@v2.2.4
+        with:
+          version: 8.x.x
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v3
         with:
@@ -25,10 +28,8 @@ jobs:
         with:
           postgresql version: '11'
 
-      - uses: pnpm/action-setup@v2.2.4
-        with:
-          version: 8.x.x
-          run_install: true
+      - name: Install dependencies
+        run: pnpm install
       - name: Run Test
         run: |
           pnpm run lint
