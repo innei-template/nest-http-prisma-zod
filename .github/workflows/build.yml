@@ -23,15 +23,7 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node-version }}
-      - name: Cache pnpm modules
-        uses: actions/cache@v3
-        env:
-          cache-name: cache-pnpm-modules
-        with:
-          path: ~/.pnpm-store
-          key: ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
-          restore-keys: |
-            ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-${{ hashFiles('**/pnpm-lock.yaml') }}
+          cache: 'pnpm'
       - uses: pnpm/action-setup@v2.2.4
         with:
           version: 8.x.x
@@ -42,10 +34,10 @@ jobs:
       - name: Build project
         run: |
           npm run bundle
-      - name: Start MongoDB
-        uses: supercharge/mongodb-github-action@v1.9.0
+      - uses: harmon758/postgresql-action@v1
         with:
-          mongodb-version: 4.4
+          postgresql version: '11'
+
       - name: Start Redis
         uses: supercharge/redis-github-action@1.5.0
         with:

@@ -7,6 +7,7 @@ import { AppModule } from './app.module'
 import { fastifyApp } from './common/adapter/fastify.adapter'
 import { SpiderGuard } from './common/guards/spider.guard'
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor'
+import { consola } from './global/consola.global'
 import { MyLogger } from './processors/logger/logger.service'
 import { isDev } from './shared/utils/environment.util'
 

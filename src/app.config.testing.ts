@@ -19,17 +19,6 @@ export const CROSS_DOMAIN = {
   allowedReferer: 'innei.ren',
 }
 
-export const MONGO_DB = {
-  dbName: argv.collection_name || 'nest-http',
-  host: argv.db_host || '127.0.0.1',
-  port: argv.db_port || 27017,
-  get uri() {
-    return `mongodb://${this.host}:${this.port}/${
-      process.env.TEST ? 'nest_unitest' : this.dbName
-    }`
-  },
-}
-
 export const REDIS = {
   host: argv.redis_host || 'localhost',
   port: argv.redis_port || 6379,

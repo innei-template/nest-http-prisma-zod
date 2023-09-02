@@ -5,6 +5,8 @@ import { chalk } from 'zx-cjs'
 
 import { ConsoleLogger, ConsoleLoggerOptions } from '@nestjs/common'
 
+import { consola } from '~/global/consola.global'
+
 export class MyLogger extends ConsoleLogger {
   constructor(context: string, options: ConsoleLoggerOptions) {
     super(context, options)

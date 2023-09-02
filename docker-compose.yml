@@ -4,7 +4,7 @@ services:
   app:
     container_name: nest-http
     image: nest/nest-http:latest
-    command: node index.js --redis_host=redis --db_host=mongo --allowed_origins=${ALLOWED_ORIGINS} --jwt_secret=${JWT_SECRET} --color --cluster
+    command: node index.js --redis_host=redis --allowed_origins=${ALLOWED_ORIGINS} --jwt_secret=${JWT_SECRET} --color --cluster
     environment:
       - TZ=Asia/Shanghai
       - NODE_ENV=production
