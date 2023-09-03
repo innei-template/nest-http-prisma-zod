@@ -1,5 +1,4 @@
 import IORedis, { Redis } from 'ioredis'
-import RedisMemoryServer from 'redis-memory-server'
 
 import { Global, Module } from '@nestjs/common'
 
@@ -29,11 +28,18 @@ export class MockCacheService {
 }
 
 const createMockRedis = async () => {
-  const redisServer = new RedisMemoryServer({})
+  let redisPort = 6379
+  let redisHost = 'localhost'
+  let redisServer: any
+  if (process.env.CI) {
+    // Skip
+  } else {
+    const RedisMemoryServer = require('redis-memory-server')
+    redisServer = new RedisMemoryServer({})
 
-  const redisHost = await redisServer.getHost()
-  const redisPort = await redisServer.getPort()
-
+    redisHost = await redisServer.getHost()
+    redisPort = await redisServer.getPort()
+  }
   const cacheService = new MockCacheService(redisPort, redisHost)
 
   const provide = {
@@ -56,7 +62,9 @@ const createMockRedis = async () => {
     async close() {
       await cacheService.getClient().flushall()
       await cacheService.getClient().quit()
-      await redisServer.stop()
+      if (!process.env.CI) {
+        await redisServer?.stop()
+      }
     },
   }
 }

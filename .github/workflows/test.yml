@@ -36,6 +36,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
+      - name: Start Redis
+        uses: supercharge/redis-github-action@1.5.0
+        with:
+          redis-version: 6
+
       - uses: pnpm/action-setup@v2.2.4
         with:
           version: 8.x.x
@@ -46,7 +51,7 @@ jobs:
           cache: 'pnpm'
 
       - name: Install dependencies
-        run: pnpm install
+        run: pnpm i --no-optional
       - name: Run Test
         run: |
           pnpm run lint
