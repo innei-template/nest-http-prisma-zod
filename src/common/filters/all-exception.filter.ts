@@ -17,7 +17,7 @@ import { Reflector } from '@nestjs/core'
 import { HTTP_REQUEST_TIME } from '~/constants/meta.constant'
 import { LOG_DIR } from '~/constants/path.constant'
 import { REFLECTOR } from '~/constants/system.constant'
-import { isDev } from '~/global/env.global'
+import { isDev, isTest } from '~/global/env.global'
 
 import { getIp } from '../../shared/utils/ip.util'
 import { LoggingInterceptor } from '../interceptors/logging.interceptor'
@@ -58,6 +58,7 @@ export class AllExceptionsFilter implements ExceptionFilter {
     const url = request.raw.url!
     if (status === HttpStatus.INTERNAL_SERVER_ERROR) {
       Logger.error(exception, undefined, 'Catch')
+      console.error(exception)
 
       if (!isDev) {
         this.errorLogPipe =
@@ -76,9 +77,11 @@ export class AllExceptionsFilter implements ExceptionFilter {
       }
     } else {
       const ip = getIp(request)
-      this.logger.warn(
-        `IP: ${ip} Error Info: (${status}) ${message} Path: ${decodeURI(url)}`,
-      )
+      const logMessage = `IP: ${ip} Error Info: (${status}) ${message} Path: ${decodeURI(
+        url,
+      )}`
+      if (isTest) console.log(logMessage)
+      this.logger.warn(logMessage)
     }
     // @ts-ignore
     const prevRequestTs = this.reflector.get(HTTP_REQUEST_TIME, request as any)

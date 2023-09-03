@@ -1,5 +1,4 @@
 import { PrismaClientExceptionFilter } from 'nestjs-prisma'
-import { ZodSerializerInterceptor } from 'nestjs-zod'
 
 import { Module, Type } from '@nestjs/common'
 import {
@@ -35,7 +34,6 @@ const appInterceptors: Type<any>[] = [
   JSONTransformerInterceptor,
 
   ResponseInterceptor,
-  ZodSerializerInterceptor,
 ]
 @Module({
   imports: [

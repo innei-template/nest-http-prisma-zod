@@ -34,7 +34,7 @@ const createMockRedis = async () => {
   if (process.env.CI) {
     // Skip
   } else {
-    const RedisMemoryServer = require('redis-memory-server')
+    const RedisMemoryServer = require('redis-memory-server').default
     redisServer = new RedisMemoryServer({})
 
     redisHost = await redisServer.getHost()

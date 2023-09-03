@@ -1,8 +1,9 @@
 import { ModuleMetadata } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
-import { APP_INTERCEPTOR } from '@nestjs/core'
+import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 
+import { AllExceptionsFilter } from '~/common/filters/all-exception.filter'
 import { JSONTransformerInterceptor } from '~/common/interceptors/json-transformer.interceptor'
 import { ResponseInterceptor } from '~/common/interceptors/response.interceptor'
 import { DatabaseModule } from '~/processors/database/database.module'
@@ -37,6 +38,10 @@ export const createE2EApp = (module: ModuleMetadata) => {
       {
         provide: APP_INTERCEPTOR,
         useClass: ResponseInterceptor, // 1
+      },
+      {
+        provide: APP_FILTER,
+        useClass: AllExceptionsFilter,
       },
     )
 

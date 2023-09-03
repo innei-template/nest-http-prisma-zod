@@ -8,7 +8,7 @@ import { IdempotenceOption } from '../interceptors/idempotence.interceptor'
 /**
  * @description 跳过响应体处理
  */
-export const Bypass: MethodDecorator = (
+const Bypass: MethodDecorator = (
   target,
   key,
   descriptor: PropertyDescriptor,
@@ -19,12 +19,21 @@ export const Bypass: MethodDecorator = (
 /**
  * 幂等
  */
-export const Idempotence: (options?: IdempotenceOption) => MethodDecorator =
+const Idempotence: (options?: IdempotenceOption) => MethodDecorator =
   (options) => (target, key, descriptor: PropertyDescriptor) => {
     SetMetadata(HTTP_IDEMPOTENCE_OPTIONS, options || {})(descriptor.value)
+  }
+
+/**
+ * @description 过滤响应体中的字段
+ */
+const ProtectKeys: (keys: string[]) => MethodDecorator =
+  (keys) => (target, key, descriptor: PropertyDescriptor) => {
+    SetMetadata(SYSTEM.OMIT_RESPONSE_PROTECT_KEYS, keys)(descriptor.value)
   }
 
 export const HTTPDecorators = {
   Bypass,
   Idempotence,
+  ProtectKeys,
 }

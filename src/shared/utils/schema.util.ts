@@ -34,7 +34,7 @@ export function createProjectionOmit<T extends object, K extends keyof T>(
     projection[key] = true
   }
 
-  // @ts-expect-error
-  projection.keys = keys
+  // @ts-ignore
+  projection.keys = [...keys, ...(withDefaults ? defaultProjectKeys : [])]
   return projection as any
 }

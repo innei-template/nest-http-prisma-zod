@@ -32,7 +32,7 @@ class Reporter extends FancyReporter {
 }
 export const consola = consola_.create({
   reporters: [new Reporter()],
-  level: isDev || argv.verbose ? LogLevel.Trace : LogLevel.Info,
+  level: isDev || isTest || argv.verbose ? LogLevel.Trace : LogLevel.Info,
 })
 export function registerStdLogger() {
   let logStream = createWriteStream(getTodayLogFilePath(), {

@@ -2,7 +2,7 @@
  * 对响应体进行转换结构
  * @author Innei
  */
-import { isArrayLike } from 'lodash'
+import { isArrayLike, omit } from 'lodash'
 import { Observable } from 'rxjs'
 import { map } from 'rxjs/operators'
 
@@ -41,11 +41,20 @@ export class ResponseInterceptor<T> implements NestInterceptor<T, Response<T>> {
       return next.handle()
     }
 
+    const omitKeys = this.reflector.getAllAndOverride(
+      SYSTEM.OMIT_RESPONSE_PROTECT_KEYS,
+      [handler, context.getClass()],
+    )
+
     return next.handle().pipe(
       map((data) => {
         if (typeof data === 'undefined') {
           context.switchToHttp().getResponse().status(204)
           return data
+        }
+
+        if (Array.isArray(omitKeys)) {
+          data = omit(data, omitKeys)
         }
 
         return isArrayLike(data) ? { data } : data

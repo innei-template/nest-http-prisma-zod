@@ -5,7 +5,7 @@ import { createProjectionOmit } from '~/shared/utils/schema.util'
 
 export const UserSchemaProjection = createProjectionOmit(
   UserModel.shape,
-  ['lastLoginIp', 'authCode', 'lastLoginIp', 'lastLoginTime', 'socialIds'],
+  ['lastLoginIp', 'authCode', 'lastLoginIp', 'lastLoginTime'],
   true,
 )
 

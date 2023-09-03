@@ -1,11 +1,8 @@
-import { ZodSerializerDto } from 'nestjs-zod'
-import { z } from 'zod'
-
 import { Body, Post } from '@nestjs/common'
 import { Throttle } from '@nestjs/throttler'
 
 import { ApiController } from '~/common/decorators/api-controller.decorator'
-import { UserModel } from '~/schemas'
+import { HTTPDecorators } from '~/common/decorators/http.decorator'
 
 import { AuthService } from '../auth/auth.service'
 import { UserLoginDto } from './dtos/login.dto'
@@ -22,11 +19,7 @@ export class UserController {
 
   @Post('/login')
   @Throttle(1, 3)
-  @ZodSerializerDto(
-    UserModel.omit(UserSchemaSerializeProjection).extend({
-      auth_token: z.string(),
-    }),
-  )
+  @HTTPDecorators.ProtectKeys(UserSchemaSerializeProjection.keys)
   async login(@Body() body: UserLoginDto) {
     const { username, password } = body
     const user = await this.authService.validateUsernameAndPassword(
@@ -42,15 +35,12 @@ export class UserController {
   }
 
   @Post('/register')
-  @ZodSerializerDto(
-    UserModel.omit(UserSchemaSerializeProjection).extend({
-      auth_token: z.string(),
-    }),
-  )
+  @HTTPDecorators.ProtectKeys(UserSchemaSerializeProjection.keys)
   async register(@Body() body: UserRegisterDto) {
     const newUser = await this.userService.register(body)
 
     const jwt = await this.authService.signToken(newUser.id)
+
     return {
       auth_token: jwt,
       ...newUser,
