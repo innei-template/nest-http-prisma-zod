@@ -1,4 +1,4 @@
-import { Body, Post } from '@nestjs/common'
+import { Body, HttpCode, Post } from '@nestjs/common'
 import { Throttle } from '@nestjs/throttler'
 
 import { ApiController } from '~/common/decorators/api-controller.decorator'
@@ -19,6 +19,7 @@ export class UserController {
 
   @Post('/login')
   @Throttle(1, 3)
+  @HttpCode(200)
   @HTTPDecorators.ProtectKeys(UserSchemaSerializeProjection.keys)
   async login(@Body() body: UserLoginDto) {
     const { username, password } = body

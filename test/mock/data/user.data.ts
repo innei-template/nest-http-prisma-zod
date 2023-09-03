@@ -8,7 +8,7 @@ import { UserModel } from '~/schemas'
 // @anatine/zod-mock has memory leak issues, so pin the seed, and only use one mock per test.
 const mockUserInputData1 = omit(
   generateMock(UserModel, { seed: 1 }),
-  UserSchemaProjection.keys,
+  ...UserSchemaProjection.keys,
 )
 
 mockUserInputData1.socialIds = {

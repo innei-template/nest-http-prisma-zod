@@ -1,6 +1,9 @@
+import { hashSync } from 'bcrypt'
 import { omit } from 'lodash'
+import { nanoid } from 'nanoid'
 import snakecaseKeys from 'snakecase-keys'
 import { createE2EApp } from 'test/helper/create-e2e-app'
+import { prisma } from 'test/lib/prisma'
 import { mockUserInputData1 } from 'test/mock/data/user.data'
 
 import { UserModule } from '~/modules/user/user.module'
@@ -11,7 +14,7 @@ describe('ROUTE /user', () => {
     imports: [UserModule],
   })
 
-  it('GET /register', async () => {
+  it('POST /register', async () => {
     const data = await proxy.app.inject({
       method: 'POST',
       url: '/user/register',
@@ -27,5 +30,27 @@ describe('ROUTE /user', () => {
         { deep: true },
       ),
     )
+  })
+
+  it('POST /login', async () => {
+    const password = 'password'
+    const { username } = await prisma.user.create({
+      data: {
+        ...mockUserInputData1,
+        password: hashSync(password, 8),
+        authCode: nanoid(8),
+      },
+    })
+
+    const data = await proxy.app.inject({
+      method: 'POST',
+      url: '/user/login',
+      body: {
+        username,
+        password,
+      },
+    })
+
+    expect(data.statusCode).toBe(200)
   })
 })
