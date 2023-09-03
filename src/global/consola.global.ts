@@ -1,6 +1,7 @@
 /* eslint-disable prefer-rest-params */
 import { createWriteStream } from 'fs'
 import { resolve } from 'path'
+import chalk from 'chalk'
 import consola_, { FancyReporter, LogLevel } from 'consola'
 import { CronJob } from 'cron'
 import { argv } from 'zx-cjs'

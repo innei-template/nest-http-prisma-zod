@@ -1,1 +1,1 @@
-export async function teardown() {}
+module.exports = () => {}

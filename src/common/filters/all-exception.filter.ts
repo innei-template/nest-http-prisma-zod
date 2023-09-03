@@ -1,5 +1,6 @@
-import { WriteStream } from 'fs'
+import fs, { WriteStream } from 'fs'
 import { resolve } from 'path'
+import chalk from 'chalk'
 import { FastifyReply, FastifyRequest } from 'fastify'
 
 import {

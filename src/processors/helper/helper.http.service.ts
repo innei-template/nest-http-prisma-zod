@@ -1,6 +1,7 @@
 import { performance } from 'perf_hooks'
 import { inspect } from 'util'
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
+import chalk from 'chalk'
 
 import { Injectable, Logger } from '@nestjs/common'
 

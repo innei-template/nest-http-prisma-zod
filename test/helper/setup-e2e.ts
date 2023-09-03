@@ -3,6 +3,7 @@ import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { Test, TestingModule } from '@nestjs/testing'
 
 import { fastifyApp } from '~/common/adapter/fastify.adapter'
+import { isDev } from '~/global/env.global'
 
 export const setupE2EApp = async (module: TestingModule | ModuleMetadata) => {
   let nextModule: TestingModule

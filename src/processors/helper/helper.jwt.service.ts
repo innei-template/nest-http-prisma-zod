@@ -5,6 +5,8 @@ import { Injectable } from '@nestjs/common'
 
 import { CLUSTER, ENCRYPT, SECURITY } from '~/app.config'
 import { RedisKeys } from '~/constants/cache.constant'
+import { consola } from '~/global/consola.global'
+import { isDev } from '~/global/env.global'
 import { getRedisKey } from '~/shared/utils/redis.util'
 import { md5 } from '~/shared/utils/tool.utils'
 
