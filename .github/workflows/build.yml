@@ -13,6 +13,23 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    services:
+      postgres:
+        image: postgres
+
+        env:
+          POSTGRES_PASSWORD: postgres
+          POSTGRES_USER: postgres
+          POSTGRES_DB: postgres
+
+        options: >-
+          --health-cmd pg_isready
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+        ports:
+          - 5432:5432
+
     strategy:
       matrix:
         node-version: [16.x]
@@ -33,17 +50,4 @@ jobs:
           pnpm i --no-optional
       - name: Build project
         run: |
-          npm run bundle
-      - uses: harmon758/postgresql-action@v1
-        with:
-          postgresql version: '11'
-
-      - name: Start Redis
-        uses: supercharge/redis-github-action@1.5.0
-        with:
-          redis-version: 6
-      - name: Test Bundle Server
-        run: |
-          bash scripts/workflow/test-server.sh
-  test:
-    uses: ./.github/workflows/test.yml
+          npm run build

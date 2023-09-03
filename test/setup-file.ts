@@ -1,5 +1,4 @@
 import { redisHelper } from './helper/redis-mock.helper'
-import { prisma } from './lib/prisma'
 import resetDb from './lib/reset-db'
 
 beforeAll(() => {})
@@ -9,6 +8,6 @@ beforeEach(async () => {
 })
 
 afterAll(async () => {
-  prisma.$disconnect()
+  // prisma.$disconnect()
   await (await redisHelper).close()
 })

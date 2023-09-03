@@ -1,3 +1,5 @@
+import chalk from 'chalk'
+
 import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'

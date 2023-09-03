@@ -4,7 +4,10 @@
 name: Node.js Test CI
 
 on:
-  workflow_call:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
 
 jobs:
   test:

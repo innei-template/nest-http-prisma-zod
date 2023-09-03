@@ -9,6 +9,8 @@ import { registerStdLogger } from './consola.global'
 
 import './dayjs.global'
 
+import chalk from 'chalk'
+
 // 建立目录
 function mkdirs() {
   mkdirSync(DATA_DIR, { recursive: true })

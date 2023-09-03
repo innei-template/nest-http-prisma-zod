@@ -10,6 +10,7 @@ import { BizException } from '~/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '~/constants/error-code.constant'
 import { DatabaseService } from '~/processors/database/database.service'
 import { resourceNotFoundWrapper } from '~/shared/utils/prisma.util'
+import { sleep } from '~/shared/utils/tool.utils'
 
 import { JwtPayload } from './interfaces/jwt-payload.interface'
 

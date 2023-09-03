@@ -60,10 +60,6 @@ describe('/modules/user/user.service', () => {
     prisma = dbService.prisma
   })
 
-  afterAll(async () => {
-    await dbService.prisma.$disconnect()
-  })
-
   it('should register user successfully', async () => {
     const userModel = mockUserInputData1
     await service.register(userModel)
