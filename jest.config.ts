@@ -12,10 +12,11 @@ const config: Config = {
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
 
-  collectCoverageFrom: ['src/**/*.{js,jsx,ts,tsx}'],
+  collectCoverageFrom: ['src/modules/*.{js,jsx,ts,tsx}'],
   rootDir: resolve(__dirname, './'),
   watchPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
 
+  maxWorkers: 1,
   testMatch: ['**/*.spec.ts', '**/*.e2e-spec.ts'],
   globalSetup: resolve(__dirname, './test/setup.ts'),
   setupFilesAfterEnv: [resolve(__dirname, './test/setup-file.ts')],

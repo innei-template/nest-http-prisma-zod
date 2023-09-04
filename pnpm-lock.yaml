@@ -239,6 +239,9 @@ devDependencies:
   typescript:
     specifier: ^5.2.2
     version: 5.2.2
+  zod-fixture:
+    specifier: 2.5.0
+    version: 2.5.0(zod@3.22.2)
   zod-prisma-types:
     specifier: 2.7.9
     version: 2.7.9
@@ -8396,6 +8399,15 @@ packages:
   /yocto-queue@0.1.0:
     resolution: {integrity: sha512-rVksvsnNCdJ/ohGc6xgPwyN8eheCxsiLM8mxuE/t/mOVqJewPuO1miLpTHQiRgTKCLexL4MeAFVagts7HmNZ2Q==}
     engines: {node: '>=10'}
+    dev: true
+
+  /zod-fixture@2.5.0(zod@3.22.2):
+    resolution: {integrity: sha512-lMQcUI5RC9zdkU26RUaOTDsUo1xWHEHtkVrERn6Cs/sRe+s/0qzltHQlRZMwYuvGh5SGPRI3Xy4eOToVJCj9sQ==}
+    peerDependencies:
+      zod: '>=3.0.0'
+    dependencies:
+      randexp: 0.5.3
+      zod: 3.22.2
     dev: true
 
   /zod-prisma-types@2.7.9:

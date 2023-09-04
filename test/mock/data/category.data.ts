@@ -1,7 +1,13 @@
-import { generateMock } from '@anatine/zod-mock'
+import { omit } from 'lodash'
+import { createFixture } from 'zod-fixture'
 
+import { categorySchemaProjection } from '~/modules/category/category.project'
 import { CategoryModel } from '~/schemas'
 
-const mockCategoryInputData1 = generateMock(CategoryModel, { seed: 1 })
+export const generateMockCategory = () => {
+  return omit(createFixture(CategoryModel), ...categorySchemaProjection.keys)
+}
+
+const mockCategoryInputData1 = createFixture(CategoryModel)
 
 export { mockCategoryInputData1 }
