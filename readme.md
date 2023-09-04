@@ -1,6 +1,6 @@
 # Nest Http Template
 
-A best practice for using Prisma + Postgres, Socket.IO (Guest or authentication required) and Zod data validation.
+A best practice for using Prisma + Postgres, Socket.IO (Guest or authentication required) and Zod data validation. And it covers unit testing and integration testing.
 
 <img width="727" alt="image" src="https://user-images.githubusercontent.com/41265413/159869110-7704ddc4-d0ac-4cc4-9f34-b7b5568481f9.png">
 
@@ -28,6 +28,8 @@ npm run dev
 - [x] Fully testing unit and e2e
 - [ ] Data caching and API caching without cache-manager
 
-## Authors
+## License
 
-[Innei](https://github.com/innei).
+2023 © Innei, Released under the MIT License.
+
+> [Personal Website](https://innei.in/) · GitHub [@Innei](https://github.com/innei/)

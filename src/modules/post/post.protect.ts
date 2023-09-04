@@ -8,7 +8,6 @@ export const PostSchemaProjection = createProjectionOmit(
   [],
   true,
 )
-
 export const PostSchemaSerializeProjection = createProjectionOmit(
   PostModel.shape,
   [],

@@ -4,10 +4,13 @@ services:
   app:
     container_name: nest-http
     image: nest/nest-http:latest
-    command: node index.js --redis_host=redis --allowed_origins=${ALLOWED_ORIGINS} --jwt_secret=${JWT_SECRET} --color --cluster
+    command: /bin/sh -c "npm run prisma:migrate:deploy; node dist/main.js --redis_host=redis --allowed_origins=${ALLOWED_ORIGINS} --jwt_secret=${JWT_SECRET} --color --cluster"
+    env_file:
+      - .env
     environment:
       - TZ=Asia/Shanghai
       - NODE_ENV=production
+      - DATABASE_URL=postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/nest-http?schema=public
     restart: 'on-failure'
     volumes:
       - ./data/nest:/root/.nest
@@ -15,25 +18,34 @@ services:
     ports:
       - '3333:3333'
     depends_on:
-      - nest-postgres
+      - postgres
       - redis
     links:
-      - nest-postgres
+      - postgres
       - redis
     networks:
       - app-network
 
-  nest-postgres:
+  postgres:
     image: postgres:14
-    container_name: nest-postgres
+    container_name: postgres
     restart: always
     ports:
-      - '5432:5432'
+      - '15432:5432'
     env_file:
       - .env
     volumes:
       - nest-postgres:/var/lib/postgresql/data
-
+    environment:
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_USER=${POSTGRES_USER}
+    healthcheck:
+      test: ['CMD-SHELL', 'pg_isready -U nest-http']
+      interval: 30s
+      timeout: 10s
+      retries: 5
+    networks:
+      - app-network
 
   redis:
     image: redis

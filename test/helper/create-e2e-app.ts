@@ -1,3 +1,4 @@
+import { MockedHelperModule } from 'test/mock/helper/helper.module'
 import { MockedDatabaseModule } from 'test/mock/processors/database/database.module'
 
 import { ModuleMetadata } from '@nestjs/common'
@@ -27,6 +28,7 @@ export const createE2EApp = (module: ModuleMetadata) => {
         isGlobal: true,
       }),
       CacheModule,
+      MockedHelperModule,
     )
     nestModule.providers ||= []
 

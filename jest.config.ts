@@ -12,6 +12,7 @@ const config: Config = {
   coverageDirectory: 'coverage',
   coverageProvider: 'v8',
 
+  prettierPath: null,
   collectCoverageFrom: ['src/modules/*.{js,jsx,ts,tsx}'],
   rootDir: resolve(__dirname, './'),
   watchPathIgnorePatterns: ['<rootDir>/node_modules/', '<rootDir>/dist/'],
