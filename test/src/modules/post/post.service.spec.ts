@@ -1,11 +1,15 @@
 import { prisma } from 'test/lib/prisma'
 import { generateMockCategory } from 'test/mock/data/category.data'
-import { mockPostInputData } from 'test/mock/data/post.data'
-import { mockedEventManagerServiceProvider } from 'test/mock/helper/hepler.event'
+import { generateMockPost, mockPostInputData } from 'test/mock/data/post.data'
+import {
+  mockedEventManagerService,
+  mockedEventManagerServiceProvider,
+} from 'test/mock/helper/helper.event'
 import { MockedDatabaseModule } from 'test/mock/processors/database/database.module'
 
 import { ConfigModule } from '@nestjs/config'
 import { Test } from '@nestjs/testing'
+import { Prisma } from '@prisma/client'
 
 import { PostService } from '~/modules/post/post.service'
 import { CacheService } from '~/processors/cache/cache.service'
@@ -57,5 +61,78 @@ describe('/modules/post/post.service', () => {
       categoryId: id,
       category,
     })
+    expect(mockedEventManagerService.event).toBeCalledWith(
+      'POST_CREATE',
+      result,
+    )
+  })
+
+  it('should throw when post exist', async () => {
+    const category = await createMockCategory()
+    await prisma.post.create({
+      data: {
+        ...mockPostInputData,
+        categoryId: category.id,
+      },
+    })
+    const { id } = category
+    await expect(
+      service.create({
+        ...mockPostInputData,
+        categoryId: id,
+      }),
+    ).rejects.toThrowErrorMatchingSnapshot()
+  })
+
+  it('should throw when category not found', async () => {
+    await expect(
+      service.create({
+        ...mockPostInputData,
+        categoryId: 'not-found',
+      }),
+    ).rejects.toThrowErrorMatchingSnapshot()
+  })
+
+  it('should paginate posts successful', async () => {
+    const cate = await createMockCategory()
+    const mockedDataList = [] as Prisma.PostCreateManyInput[]
+    for (let i = 0; i < 20; i++) {
+      mockedDataList.push({
+        ...generateMockPost(),
+        categoryId: cate.id,
+      })
+    }
+
+    await prisma.post.createMany({
+      data: mockedDataList,
+    })
+
+    const pagination = await service.paginatePosts({
+      page: 1,
+      size: 5,
+    })
+
+    expect(pagination.pagination).toMatchSnapshot()
+    expect(pagination.data[0]!.category).toMatchObject(cate)
+  })
+
+  it('should get post by id successful', async () => {
+    const cate = await createMockCategory()
+    const post = await prisma.post.create({
+      data: {
+        ...generateMockPost(),
+        categoryId: cate.id,
+      },
+    })
+
+    const result = await service.getPostById(post.id)
+
+    expect(result).toMatchObject(post)
+  })
+
+  it('should get post throw when 404', async () => {
+    expect(
+      service.getPostById('not-found'),
+    ).rejects.toThrowErrorMatchingSnapshot()
   })
 })

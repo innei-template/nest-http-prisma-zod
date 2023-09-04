@@ -11,5 +11,11 @@ export const snowflakeGeneratorMiddleware: Prisma.Middleware = async (
 
     params.args.data.id = id
   }
+
+  if (params.action === 'createMany') {
+    params.args.data.forEach((item) => {
+      item.id = snowflake.nextId()
+    })
+  }
   return next(params)
 }

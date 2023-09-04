@@ -14,7 +14,9 @@ export class MockedEventManagerService {
   }
 }
 
+export const mockedEventManagerService = new MockedEventManagerService()
+
 export const mockedEventManagerServiceProvider = defineProvider({
   provide: EventManagerService,
-  useValue: new MockedEventManagerService(),
+  useValue: mockedEventManagerService,
 })
