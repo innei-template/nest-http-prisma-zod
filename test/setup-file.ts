@@ -9,6 +9,7 @@ beforeEach(async () => {
 })
 
 afterAll(async () => {
-  prisma.$disconnect()
+  await resetDb()
+  await prisma.$disconnect()
   await (await redisHelper).close()
 })
