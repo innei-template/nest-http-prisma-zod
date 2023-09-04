@@ -5,7 +5,7 @@
   "author": "Innei <https://innei.ren>",
   "private": true,
   "license": "MIT",
-  "packageManager": "pnpm@8.6.6",
+  "packageManager": "pnpm@8.6.12",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -102,14 +102,14 @@
     "@nestjs/schematics": "10.0.2",
     "@nestjs/testing": "10.2.4",
     "@types/bcrypt": "5.0.0",
-    "@types/cache-manager": "4.0.2",
+    "@types/cache-manager": "4.0.3",
     "@types/cron": "2.0.1",
     "@types/jest": "29.5.4",
-    "@types/lodash": "4.14.196",
-    "@types/node": "20.4.5",
+    "@types/lodash": "4.14.197",
+    "@types/node": "20.4.10",
     "@types/passport-jwt": "3.0.9",
     "@types/supertest": "2.0.12",
-    "@types/ua-parser-js": "0.7.36",
+    "@types/ua-parser-js": "0.7.37",
     "dotenv-cli": "7.3.0",
     "eslint": "^8.45.0",
     "fastify": "^4.20.0",
