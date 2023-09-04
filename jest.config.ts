@@ -17,7 +17,6 @@ const config: Config = {
 
   rootDir: resolve(__dirname, './test'),
   testMatch: ['**/*.spec.ts', '**/*.e2e-spec.ts'],
-  maxWorkers: 1, // set to 1 if you don't want parallel execution
   globalSetup: resolve(__dirname, './test/setup.ts'),
   setupFilesAfterEnv: [resolve(__dirname, './test/setup-file.ts')],
   testEnvironment: 'node',

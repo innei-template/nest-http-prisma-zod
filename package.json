@@ -118,6 +118,7 @@
     "prettier": "3.0.3",
     "prisma": "5.2.0",
     "prisma-mock": "0.8.2",
+    "redis-memory-server": "0.7.0",
     "rimraf": "5.0.1",
     "source-map-support": "*",
     "ts-jest": "29.1.1",
@@ -128,12 +129,15 @@
     "zod-prisma-types": "2.7.9",
     "zx": "7.2.3"
   },
-  "optionalDependencies": {
-    "redis-memory-server": "0.7.0"
-  },
   "resolutions": {
     "pino": "./external/pino",
     "typescript": "^5.2.2"
+  },
+  "redisMemoryServer": {
+    "downloadDir": "./tmp/redis/binaries",
+    "version": "6.0.10",
+    "disablePostinstall": "1",
+    "systemBinary": "/opt/homebrew/bin/redis-server"
   },
   "prisma": {
     "seed": "ts-node prisma/seed.ts"

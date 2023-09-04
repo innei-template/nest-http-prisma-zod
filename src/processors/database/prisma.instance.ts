@@ -3,6 +3,7 @@ import { loggingMiddleware, QueryInfo } from 'nestjs-prisma'
 import { Logger } from '@nestjs/common'
 import { Prisma, PrismaClient } from '@prisma/client'
 
+import { isDev } from '~/global/env.global'
 import { PaginationResult } from '~/shared/interface/paginator.interface'
 
 import { snowflakeGeneratorMiddleware } from './middlewares/snowflake'
@@ -16,14 +17,16 @@ export const createExtendedPrismaClient = ({ url }: { url?: string } = {}) => {
     },
   })
   prismaClient.$use(snowflakeGeneratorMiddleware)
-  prismaClient.$use(
-    loggingMiddleware({
-      logger: new Logger('Prisma'),
-      logLevel: 'log', // default is `debug`
-      logMessage: (query: QueryInfo) =>
-        `[Query] ${query.model}.${query.action} - ${query.executionTime}ms`,
-    }),
-  )
+
+  if (isDev)
+    prismaClient.$use(
+      loggingMiddleware({
+        logger: new Logger('Prisma'),
+        logLevel: 'log', // default is `debug`
+        logMessage: (query: QueryInfo) =>
+          `[Query] ${query.model}.${query.action} - ${query.executionTime}ms`,
+      }),
+    )
 
   const extendedPrismaClient = prismaClient.$extends({
     model: {
