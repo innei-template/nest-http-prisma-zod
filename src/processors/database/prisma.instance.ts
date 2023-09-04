@@ -1,8 +1,4 @@
-import {
-  CustomPrismaService,
-  loggingMiddleware,
-  QueryInfo,
-} from 'nestjs-prisma'
+import { loggingMiddleware, QueryInfo } from 'nestjs-prisma'
 
 import { Logger } from '@nestjs/common'
 import { Prisma, PrismaClient } from '@prisma/client'
@@ -70,5 +66,3 @@ export const createExtendedPrismaClient = ({ url }: { url?: string } = {}) => {
   return extendedPrismaClient
 }
 export type extendedPrismaClient = ReturnType<typeof createExtendedPrismaClient>
-
-export type ExtendedPrismaService = CustomPrismaService<extendedPrismaClient>
