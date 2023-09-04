@@ -1,28 +1,21 @@
+import { prisma } from 'test/lib/prisma'
 import { mockUserInputData1 } from 'test/mock/data/user.data'
 import { authProvider } from 'test/mock/modules/auth.mock'
+import { MockedDatabaseModule } from 'test/mock/processors/database/database.module'
 
 import { ConfigModule } from '@nestjs/config'
 import { Test } from '@nestjs/testing'
 
 import { UserService } from '~/modules/user/user.service'
 import { CacheService } from '~/processors/cache/cache.service'
-import { DatabaseModule } from '~/processors/database/database.module'
-import { DatabaseService } from '~/processors/database/database.service'
 
-// jest.mock('bcrypt', () => ({}))
 describe('/modules/user/user.service', () => {
   let service: UserService
-  let dbService: DatabaseService
-  let prisma: DatabaseService['prisma']
 
   beforeAll(async () => {
     const app = await Test.createTestingModule({
       providers: [
         UserService,
-        // {
-        //   provide: CacheService,
-        //   useClass: MockCacheService,
-        // },
 
         {
           provide: CacheService,
@@ -30,23 +23,9 @@ describe('/modules/user/user.service', () => {
         },
 
         authProvider,
-        // {
-        //   provide: DatabaseService,
-        //   useValue: {
-        //     prisma: {
-        //       user: {
-        //         findFirstOrThrow: jest.fn(),
-        //         findUnique: jest.fn(),
-        //         exists: jest.fn(),
-        //       },
-
-        //       $disconnect: jest.fn(),
-        //     },
-        //   },
-        // },
       ],
       imports: [
-        DatabaseModule,
+        MockedDatabaseModule,
         ConfigModule.forRoot({
           isGlobal: true,
           envFilePath: ['.env.test', '.env'],
@@ -55,9 +34,6 @@ describe('/modules/user/user.service', () => {
     }).compile()
     await app.init()
     service = app.get(UserService)
-
-    dbService = app.get(DatabaseService)
-    prisma = dbService.prisma
   })
 
   it('should register user successfully', async () => {
@@ -85,7 +61,7 @@ describe('/modules/user/user.service', () => {
     const userModel = mockUserInputData1
     await service.register(userModel)
     const user = await prisma.user.findFirstOrThrow()
-    await service.patchUserData(user, {
+    await service.patchUserData(user.id, {
       name: 'test',
     })
 

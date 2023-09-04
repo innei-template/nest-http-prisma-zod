@@ -55,13 +55,10 @@ export class UserService {
    * 修改密码
    *
    * @async
-   * @param {DocumentType} user - 用户查询结果，已经挂载在 req.user
+   * @param {string} id - 用户id
    * @param {Partial} data - 部分修改数据
    */
-  async patchUserData(
-    user: Prisma.UserCreateInput,
-    data: Partial<Prisma.UserCreateInput>,
-  ): Promise<any> {
+  async patchUserData(id: string, data: Partial<Prisma.UserCreateInput>) {
     const { password } = data
 
     for (const key in UserSchemaProjection) {
@@ -72,7 +69,6 @@ export class UserService {
 
     const doc = { ...data }
     if (password !== undefined) {
-      const { id } = user
       const currentUser = await this.db.prisma.user.findUnique({
         where: {
           id,
@@ -99,7 +95,7 @@ export class UserService {
 
     await this.db.prisma.user.update({
       where: {
-        id: user.id,
+        id,
       },
       data: doc,
     })
