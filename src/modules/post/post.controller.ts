@@ -15,7 +15,8 @@ export class PostController {
 
   @Get('/')
   async gets(@Query() query: PagerDto) {
-    return query
+    const paginate = await this.service.paginatePosts(query)
+    return paginate
   }
 
   @Get('/:id')

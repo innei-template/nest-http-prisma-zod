@@ -1,4 +1,4 @@
-export interface Pagination<T> {
+export interface PaginationResult<T> {
   data: T[]
   pagination: Paginator
 }

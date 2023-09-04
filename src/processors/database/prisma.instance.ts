@@ -3,6 +3,8 @@ import { loggingMiddleware, QueryInfo } from 'nestjs-prisma'
 import { Logger } from '@nestjs/common'
 import { Prisma, PrismaClient } from '@prisma/client'
 
+import { PaginationResult } from '~/shared/interface/paginator.interface'
+
 import { snowflakeGeneratorMiddleware } from './middlewares/snowflake'
 
 export const createExtendedPrismaClient = ({ url }: { url?: string } = {}) => {
@@ -26,29 +28,70 @@ export const createExtendedPrismaClient = ({ url }: { url?: string } = {}) => {
   const extendedPrismaClient = prismaClient.$extends({
     model: {
       $allModels: {
-        // Define a new operation `customCall`.
-        // T corresponds to the current model,
-        // A corresponds to the arguments for the operation.
-        async exists<T, A>(
-          // `this` is the current type (for example
-          // it might be `prisma.user` at runtime).
+        async paginate<T, A>(
           this: T,
           x: Prisma.Exact<
             A,
-            // For `customCall`, use the arguments from model `T` and the
-            // operation `findFirst`. Add `customProperty` to the operation.
-            Pick<Prisma.Args<T, 'findFirst'>, 'where'>
+            Pick<
+              Prisma.Args<T, 'findFirst'>,
+              'where' | 'select' | 'include' | 'orderBy'
+            >
           >,
+          options: {
+            page: number
+            size: number
+          },
+        ): Promise<PaginationResult<Prisma.Result<T, A, 'findFirst'>>> {
+          if (typeof x !== 'object') {
+            return {
+              data: [],
+              pagination: {
+                total: 0,
+                size: 0,
+                totalPage: 0,
+                currentPage: 0,
 
-          // Get the correct result types for the model of type `T`,
-          // and the arguments of type `A` for `findFirst`.
-          // `Prisma.Result` computes the result for a given operation
-          // such as `select {id: true}` in function `main` below.
-          //
+                hasNextPage: false,
+                hasPrevPage: false,
+              },
+            }
+          }
+
+          const { page, size: perPage } = options
+          const skip = page > 0 ? perPage * (page - 1) : 0
+          const countArgs = 'select' in x ? { where: x.where } : {}
+          const [total, data] = await Promise.all([
+            (this as any).count(countArgs),
+            (this as any).findMany({
+              ...x,
+              take: perPage,
+              skip,
+
+              // @ts-ignore
+              orderBy: x.orderBy,
+              // @ts-ignore
+              include: x.include,
+            }),
+          ])
+
+          const lastPage = Math.ceil(total / perPage)
+
+          return {
+            data,
+            pagination: {
+              total,
+              size: perPage,
+              totalPage: lastPage,
+              currentPage: page,
+              hasNextPage: page < lastPage,
+              hasPrevPage: page > 1,
+            },
+          } as PaginationResult<any>
+        },
+        async exists<T, A>(
+          this: T,
+          x: Prisma.Exact<A, Pick<Prisma.Args<T, 'findFirst'>, 'where'>>,
         ): Promise<boolean> {
-          // Override type safety here, because we cannot
-          // predict the result types in advance.
-
           if (typeof x !== 'object') {
             return false
           }
