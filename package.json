@@ -60,7 +60,7 @@
     "@nestjs/platform-fastify": "10.2.4",
     "@nestjs/platform-socket.io": "10.2.4",
     "@nestjs/schedule": "3.0.3",
-    "@nestjs/throttler": "4.2.1",
+    "@nestjs/throttler": "5.0.0",
     "@nestjs/websockets": "10.2.4",
     "@prisma/client": "5.2.0",
     "axios": "1.4.0",
