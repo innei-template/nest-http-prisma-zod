@@ -8,9 +8,9 @@ A best practice for using Prisma + Postgres, Socket.IO (Guest or authentication 
 
 - Framework: NestJS (Based on Fastify)
 - Language: TypeScript (Best practices, Not AnyScript)
-- Database ODM: prisma (Fully type-safe schema and query)
+- Database ODM: Prisma (Fully type-safe schema and query)
 - Data Validation: Zod
-- Testing: Jest
+- Testing: Vitest
 - Package Manager: pnpm
 - DevOps: Docker
 - Other: Prettier, ESLint, Husky, Bump Version, etc.
