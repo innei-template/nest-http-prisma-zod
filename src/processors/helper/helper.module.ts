@@ -22,10 +22,12 @@ const providers: Provider<any>[] = [
       isGlobal: true,
     }),
 
-    ThrottlerModule.forRoot({
-      ttl: 60,
-      limit: 100,
-    }),
+    ThrottlerModule.forRoot([
+      {
+        ttl: 60,
+        limit: 100,
+      },
+    ]),
     EventEmitterModule.forRoot({
       wildcard: false,
       // the delimiter used to segment namespaces

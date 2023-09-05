@@ -18,7 +18,12 @@ export class UserController {
   ) {}
 
   @Post('/login')
-  @Throttle(1, 3)
+  @Throttle({
+    default: {
+      limit: 1,
+      ttl: 1_000,
+    },
+  })
   @HttpCode(200)
   @HTTPDecorators.ProtectKeys(UserSchemaSerializeProjection.keys)
   async login(@Body() body: UserLoginDto) {
