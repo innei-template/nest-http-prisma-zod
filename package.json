@@ -99,6 +99,7 @@
     "@nestjs/cli": "10.1.17",
     "@nestjs/schematics": "10.0.2",
     "@nestjs/testing": "10.2.4",
+    "@swc/cli": "0.1.62",
     "@types/bcrypt": "5.0.0",
     "@types/cache-manager": "4.0.3",
     "@types/cron": "2.0.1",
