@@ -35,7 +35,7 @@ jobs:
         node-version: [16.x]
 
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Start Redis
         uses: supercharge/redis-github-action@1.5.0
         with:
