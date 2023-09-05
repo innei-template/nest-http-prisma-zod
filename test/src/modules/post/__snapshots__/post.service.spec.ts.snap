@@ -1,4 +1,21 @@
-// Jest Snapshot v1, https://goo.gl/fbAQLP
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`/modules/post/post.service > should get post throw when 404 1`] = `"post not found"`;
+
+exports[`/modules/post/post.service > should paginate posts successful 1`] = `
+{
+  "currentPage": 1,
+  "hasNextPage": true,
+  "hasPrevPage": false,
+  "size": 5,
+  "total": 20,
+  "totalPage": 4,
+}
+`;
+
+exports[`/modules/post/post.service > should throw when category not found 1`] = `"category not found"`;
+
+exports[`/modules/post/post.service > should throw when post exist 1`] = `"post already exist"`;
 
 exports[`/modules/post/post.service should get post throw when 404 1`] = `"post not found"`;
 

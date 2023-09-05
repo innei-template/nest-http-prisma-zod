@@ -9,7 +9,7 @@
     "esModuleInterop": true,
 
     "allowSyntheticDefaultImports": true,
-    "target": "ES2019",
+    "target": "es2022",
     "sourceMap": true,
     "outDir": "./dist",
     "noEmit": true,
@@ -18,8 +18,8 @@
     "noImplicitAny": false,
     "incremental": true,
     "resolveJsonModule": true,
-    "lib": ["ES2021", "ES2020"],
     "skipLibCheck": true,
+    "types": ["vitest/globals"],
     "paths": {
       "~": ["./src"],
       "~/*": ["./src/*"]

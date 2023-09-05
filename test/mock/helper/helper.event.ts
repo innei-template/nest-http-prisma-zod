@@ -1,13 +1,14 @@
 import { defineProvider } from 'test/helper/defineProvider'
+import { Mock, vi } from 'vitest'
 
 import { EventManagerService } from '~/processors/helper/helper.event.service'
 
 export class MockedEventManagerService {
   constructor() {}
 
-  emit = jest.fn().mockResolvedValue(null)
+  emit = vi.fn().mockResolvedValue(null) as Mock
 
-  event = jest.fn().mockResolvedValue(null)
+  event = vi.fn().mockResolvedValue(null) as Mock
 
   get broadcast() {
     return this.emit
