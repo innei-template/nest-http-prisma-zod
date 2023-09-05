@@ -2,7 +2,7 @@
 
 A best practice for using Prisma + Postgres, Socket.IO (Guest or authentication required) and Zod data validation. And it covers unit testing and integration testing.
 
-<img width="727" alt="image" src="https://user-images.githubusercontent.com/41265413/159869110-7704ddc4-d0ac-4cc4-9f34-b7b5568481f9.png">
+![](https://github.com/Innei/nest-http-prisma-zod/assets/41265413/5fe1a343-5eae-4eb4-a3eb-65d61d517b8d)
 
 ## Which Tech Stack In Use
 
