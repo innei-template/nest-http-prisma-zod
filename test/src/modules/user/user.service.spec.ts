@@ -1,13 +1,11 @@
-import { prisma } from 'test/lib/prisma'
-import { mockUserInputData1 } from 'test/mock/data/user.data'
-import { authProvider } from 'test/mock/modules/auth.mock'
-import { MockedDatabaseModule } from 'test/mock/processors/database/database.module'
-
+import { UserService } from '@core/modules/user/user.service'
+import { CacheService } from '@core/processors/cache/cache.service'
 import { ConfigModule } from '@nestjs/config'
 import { Test } from '@nestjs/testing'
-
-import { UserService } from '~/modules/user/user.service'
-import { CacheService } from '~/processors/cache/cache.service'
+import { prisma } from '@test/lib/prisma'
+import { mockUserInputData1 } from '@test/mock/data/user.data'
+import { authProvider } from '@test/mock/modules/auth.mock'
+import { MockedDatabaseModule } from '@test/mock/processors/database/database.module'
 
 describe('/modules/user/user.service', () => {
   let service: UserService

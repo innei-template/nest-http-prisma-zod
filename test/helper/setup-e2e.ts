@@ -1,14 +1,13 @@
+import { fastifyApp } from '@core/common/adapter/fastify.adapter'
+import { JSONTransformerInterceptor } from '@core/common/interceptors/json-transformer.interceptor'
+import { ResponseInterceptor } from '@core/common/interceptors/response.interceptor'
+import { ZodValidationPipe } from '@core/common/pipes/zod-validation.pipe'
+import { LoggerModule } from '@core/processors/logger/logger.module'
+import { MyLogger } from '@core/processors/logger/logger.service'
 import { ModuleMetadata } from '@nestjs/common'
 import { APP_INTERCEPTOR, APP_PIPE } from '@nestjs/core'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { Test } from '@nestjs/testing'
-
-import { fastifyApp } from '~/common/adapter/fastify.adapter'
-import { JSONTransformerInterceptor } from '~/common/interceptors/json-transformer.interceptor'
-import { ResponseInterceptor } from '~/common/interceptors/response.interceptor'
-import { ZodValidationPipe } from '~/common/pipes/zod-validation.pipe'
-import { LoggerModule } from '~/processors/logger/logger.module'
-import { MyLogger } from '~/processors/logger/logger.service'
 
 const interceptorProviders = [JSONTransformerInterceptor, ResponseInterceptor]
 export const setupE2EApp = async (module: ModuleMetadata) => {
@@ -19,12 +18,12 @@ export const setupE2EApp = async (module: ModuleMetadata) => {
     controllers: module.controllers || [],
   }
 
-  nextModule.imports.unshift(LoggerModule)
-  nextModule.providers.unshift({
+  nextModule.imports!.unshift(LoggerModule)
+  nextModule.providers!.unshift({
     provide: APP_PIPE,
     useClass: ZodValidationPipe,
   })
-  nextModule.providers.unshift(
+  nextModule.providers!.unshift(
     ...interceptorProviders.map((interceptor) => ({
       provide: APP_INTERCEPTOR,
       useClass: interceptor,

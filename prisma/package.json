@@ -1,0 +1,30 @@
+{
+  "name": "@nest-http/prisma",
+  "description": "",
+  "author": "Innei <https://innei.in>",
+  "private": true,
+  "license": "MIT",
+  "main": "./client/index.js",
+  "scripts": {
+    "migrate:dev": "npx prisma migrate dev",
+    "migrate:dev:create": "npx prisma migrate dev --create-only",
+    "prisma:migrate:deploy": "prisma migrate deploy",
+    "prisma:migrate:status": "prisma migrate status --preview-feature",
+    "prisma:migrate:resolve": "prisma migrate resolve --preview-feature",
+    "migrate:deploy": "npx prisma migrate deploy",
+    "prisma:generate": "npx prisma generate",
+    "prisma:studio": "npx prisma studio",
+    "prisma:seed": "npx prisma db seed"
+  },
+  "dependencies": {
+    "@prisma/client": "5.2.0",
+    "nestjs-zod": "3.0.0"
+  },
+  "devDependencies": {
+    "nestjs-zod-prisma": "3.0.1",
+    "prisma": "5.2.0"
+  },
+  "prisma": {
+    "seed": "ts-node prisma/seed.ts"
+  }
+}

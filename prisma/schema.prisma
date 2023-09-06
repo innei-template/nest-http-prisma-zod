@@ -3,11 +3,12 @@
 
 generator client {
   provider = "prisma-client-js"
+  output = "./client"
 }
 
 generator zod {
   provider = "nestjs-zod-prisma"
-  output   = "../src/schemas" // (default) the directory where generated zod schemas will be saved
+  output   = "./schemas" // (default) the directory where generated zod schemas will be saved
 
   relationModel = true // (default) Create and export both plain and related models.
   // relationModel         = "default" // Do not export model without relations.

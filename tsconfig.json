@@ -17,9 +17,25 @@
     "resolveJsonModule": true,
     "skipLibCheck": true,
     "paths": {
-      "~": ["./src"],
-      "~/*": ["./src/*"]
-    }
+      "@core": [
+        "./apps/core/src"
+      ],
+      "@core/*": [
+        "./apps/core/src/*"
+      ],
+      "@test": [
+        "."
+      ],
+      "@test/*": [
+        "./*"
+      ],
+      "@prisma/client": [
+        "./prisma/client"
+      ]
+    },
   },
-  "exclude": ["dist", "tmp"]
+  "exclude": [
+    "dist",
+    "tmp"
+  ]
 }

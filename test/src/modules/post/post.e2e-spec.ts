@@ -1,6 +1,5 @@
-import { createE2EApp } from 'test/helper/create-e2e-app'
-
-import { PostModule } from '~/modules/post/post.module'
+import { PostModule } from '@core/modules/post/post.module'
+import { createE2EApp } from '@test/helper/create-e2e-app'
 
 describe('ROUTE /posts', () => {
   const proxy = createE2EApp({

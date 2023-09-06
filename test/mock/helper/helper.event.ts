@@ -1,7 +1,7 @@
-import { defineProvider } from 'test/helper/defineProvider'
 import { Mock, vi } from 'vitest'
 
-import { EventManagerService } from '~/processors/helper/helper.event.service'
+import { EventManagerService } from '@core/processors/helper/helper.event.service'
+import { defineProvider } from '@test/helper/defineProvider'
 
 export class MockedEventManagerService {
   constructor() {}

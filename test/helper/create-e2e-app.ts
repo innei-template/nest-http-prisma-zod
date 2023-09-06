@@ -1,14 +1,12 @@
-import { MockedHelperModule } from 'test/mock/helper/helper.module'
-import { MockedDatabaseModule } from 'test/mock/processors/database/database.module'
-
+import { AllExceptionsFilter } from '@core/common/filters/all-exception.filter'
+import { JSONTransformerInterceptor } from '@core/common/interceptors/json-transformer.interceptor'
+import { ResponseInterceptor } from '@core/common/interceptors/response.interceptor'
 import { ModuleMetadata } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
-
-import { AllExceptionsFilter } from '~/common/filters/all-exception.filter'
-import { JSONTransformerInterceptor } from '~/common/interceptors/json-transformer.interceptor'
-import { ResponseInterceptor } from '~/common/interceptors/response.interceptor'
+import { MockedHelperModule } from '@test/mock/helper/helper.module'
+import { MockedDatabaseModule } from '@test/mock/processors/database/database.module'
 
 import { redisHelper } from './redis-mock.helper'
 import { setupE2EApp } from './setup-e2e'
