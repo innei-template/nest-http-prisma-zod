@@ -83,7 +83,7 @@
     "zod-fixture": "2.5.0",
     "zod-prisma-types": "2.7.9",
     "zx": "7.2.3",
-    "@types/lodash": "4.14.197",
+    "@types/lodash": "4.14.198",
     "zod": "3.22.2",
     "dayjs": "1.11.9",
     "@types/bcrypt": "5.0.0",
