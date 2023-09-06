@@ -3,7 +3,7 @@ version: '3.8'
 services:
   app:
     container_name: nest-http
-    image: nest/nest-http:latest
+    image: innei/nest-http-prisma-zod:latest
     command: /bin/sh -c "./node_modules/.bin/prisma migrate deploy; node apps/core/dist/main.js --redis_host=redis --allowed_origins=${ALLOWED_ORIGINS} --jwt_secret=${JWT_SECRET} --color --cluster"
     env_file:
       - .env

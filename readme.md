@@ -15,6 +15,13 @@ A best practice for using Prisma + Postgres, Socket.IO (Guest or authentication 
 - DevOps: Docker
 - Other: Prettier, ESLint, Husky, Bump Version, etc.
 
+## Run in docker compose
+
+```sh
+docker build . -t innei/nest-http-prisma-zod
+docker compose up
+```
+
 ## How to start development
 
 ```bash

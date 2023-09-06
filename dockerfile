@@ -22,6 +22,10 @@ COPY --from=builder /app/prisma ./prisma/
 COPY external ./external/
 
 RUN pnpm install --prod
+
+COPY docker-clean.sh ./
+RUN sh docker-clean.sh
+
 ENV TZ=Asia/Shanghai
 EXPOSE 3333
 
