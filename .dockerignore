@@ -2,3 +2,8 @@
 node_modules/
 dist/
 npm-debug.log
+
+dist
+apps/apps/core/dist
+prisma/client
+prisma/schemas

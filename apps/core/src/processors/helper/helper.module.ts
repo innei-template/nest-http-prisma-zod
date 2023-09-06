@@ -28,6 +28,7 @@ const providers: Provider<any>[] = [
       //   : [...envPathCompose('.env')],
       envFilePath: isTest ? ['.env.test', '.env'] : ['.env'],
       isGlobal: true,
+      expandVariables: true,
     }),
 
     ThrottlerModule.forRoot([

@@ -10,10 +10,14 @@ import {
 export class DatabaseService implements OnModuleInit, OnModuleDestroy {
   private client: extendedPrismaClient
   constructor(readonly configService: ConfigService) {
-    const dbUrl = configService.getOrThrow('DATABASE_URL')
+    const dbUrl = configService.getOrThrow<string>('DATABASE_URL')
+    // const user = configService.getOrThrow('POSTGRES_USER')
+    // const password = configService.getOrThrow('POSTGRES_PASSWORD')
 
     this.client = createExtendedPrismaClient({
       url: dbUrl,
+      // .replace('${POSTGRES_USER}', user)
+      // .replace('${POSTGRES_PASSWORD}', password),
     })
   }
   async onModuleInit() {

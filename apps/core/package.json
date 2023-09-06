@@ -34,6 +34,18 @@
     "prod:debug": "cross-env NODE_ENV=production nest start --debug --watch"
   },
   "dependencies": {
+    "@nestjs/cache-manager": "2.1.0",
+    "@nestjs/common": "10.2.4",
+    "@nestjs/config": "3.0.1",
+    "@nestjs/core": "10.2.4",
+    "@nestjs/event-emitter": "2.0.2",
+    "@nestjs/jwt": "10.1.1",
+    "@nestjs/passport": "10.0.1",
+    "@nestjs/platform-fastify": "10.2.4",
+    "@nestjs/platform-socket.io": "10.2.4",
+    "@nestjs/schedule": "3.0.3",
+    "@nestjs/throttler": "5.0.0",
+    "@nestjs/websockets": "10.2.4",
     "@prisma/client": "workspace:@nest-http/prisma@*",
     "axios": "1.5.0",
     "bcrypt": "5.1.1",

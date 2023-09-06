@@ -49,11 +49,11 @@
     "@nestjs/throttler": "5.0.0",
     "@nestjs/websockets": "10.2.4",
     "lodash": "4.17.21",
-    "bcrypt": "5.1.1"
+    "bcrypt": "5.1.1",
+    "prisma": "5.2.0"
   },
   "devDependencies": {
     "nestjs-zod-prisma": "3.0.1",
-    "prisma": "5.2.0",
     "@anatine/zod-mock": "3.13.2",
     "@faker-js/faker": "8.0.2",
     "@innei/bump-version": "^1.5.10",

@@ -10,17 +10,19 @@ FROM node:16-alpine
 RUN apk add zip unzip bash --no-cache
 RUN npm i -g pnpm
 WORKDIR /app
-COPY --from=builder /app/dist dist
+COPY --from=builder /app/apps/core/dist apps/core/dist
 
 ENV NODE_ENV=production
 COPY package.json ./
 COPY pnpm-lock.yaml ./
+COPY pnpm-workspace.yaml ./
+COPY apps ./apps/
 COPY .npmrc ./
-COPY prisma ./prisma/
+COPY --from=builder /app/prisma ./prisma/
 COPY external ./external/
 
 RUN pnpm install --prod
 ENV TZ=Asia/Shanghai
 EXPOSE 3333
 
-CMD ["npm", "start:prod"]
+CMD ["pnpm", "-C apps/core run start:prod"]
