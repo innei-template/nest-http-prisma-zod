@@ -2,12 +2,12 @@ import { hashSync } from 'bcrypt'
 import { omit } from 'lodash'
 import { nanoid } from 'nanoid'
 import snakecaseKeys from 'snakecase-keys'
-import { createE2EApp } from 'test/helper/create-e2e-app'
-import { prisma } from 'test/lib/prisma'
-import { mockUserInputData1 } from 'test/mock/data/user.data'
 
-import { UserModule } from '~/modules/user/user.module'
-import { UserSchemaSerializeProjection } from '~/modules/user/user.protect'
+import { UserModule } from '@core/modules/user/user.module'
+import { UserSchemaSerializeProjection } from '@core/modules/user/user.protect'
+import { createE2EApp } from '@test/helper/create-e2e-app'
+import { prisma } from '@test/lib/prisma'
+import { mockUserInputData1 } from '@test/mock/data/user.data'
 
 describe('ROUTE /user', () => {
   const proxy = createE2EApp({

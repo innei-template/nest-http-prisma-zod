@@ -1,8 +1,7 @@
 import IORedis, { Redis } from 'ioredis'
 
+import { CacheService } from '@core/processors/cache/cache.service'
 import { Global, Module } from '@nestjs/common'
-
-import { CacheService } from '~/processors/cache/cache.service'
 
 export class MockCacheService {
   private client: Redis

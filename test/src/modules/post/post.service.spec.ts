@@ -1,18 +1,16 @@
-import { prisma } from 'test/lib/prisma'
-import { generateMockCategory } from 'test/mock/data/category.data'
-import { generateMockPost, mockPostInputData } from 'test/mock/data/post.data'
-import {
-  mockedEventManagerService,
-  mockedEventManagerServiceProvider,
-} from 'test/mock/helper/helper.event'
-import { MockedDatabaseModule } from 'test/mock/processors/database/database.module'
-
+import { PostService } from '@core/modules/post/post.service'
+import { CacheService } from '@core/processors/cache/cache.service'
 import { ConfigModule } from '@nestjs/config'
 import { Test } from '@nestjs/testing'
 import { Prisma } from '@prisma/client'
-
-import { PostService } from '~/modules/post/post.service'
-import { CacheService } from '~/processors/cache/cache.service'
+import { prisma } from '@test/lib/prisma'
+import { generateMockCategory } from '@test/mock/data/category.data'
+import { generateMockPost, mockPostInputData } from '@test/mock/data/post.data'
+import {
+  mockedEventManagerService,
+  mockedEventManagerServiceProvider,
+} from '@test/mock/helper/helper.event'
+import { MockedDatabaseModule } from '@test/mock/processors/database/database.module'
 
 describe('/modules/post/post.service', () => {
   let service: PostService

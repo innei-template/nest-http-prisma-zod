@@ -33,7 +33,10 @@ export default defineConfig({
   resolve: {
     alias: {
       'zx-cjs': 'zx',
-      '~/app.config': resolve(__dirname, './src/app.config.testing.ts'),
+      '@core/app.config': resolve(
+        __dirname,
+        './apps/core/src/app.config.testing.ts',
+      ),
     },
   },
 

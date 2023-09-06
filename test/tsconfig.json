@@ -7,22 +7,36 @@
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
     "esModuleInterop": true,
-
     "allowSyntheticDefaultImports": true,
     "target": "es2022",
     "sourceMap": true,
     "outDir": "./dist",
     "noEmit": true,
     "allowJs": true,
-    "baseUrl": "..",
+    "baseUrl": ".",
     "noImplicitAny": false,
     "incremental": true,
     "resolveJsonModule": true,
     "skipLibCheck": true,
-    "types": ["vitest/globals"],
+    "types": [
+      "vitest/globals"
+    ],
     "paths": {
-      "~": ["./src"],
-      "~/*": ["./src/*"]
+      "@core": [
+        "../apps/core/src"
+      ],
+      "@core/*": [
+        "../apps/core/src/*"
+      ],
+      "@test": [
+        "."
+      ],
+      "@test/*": [
+        "./*"
+      ],
+      "@prisma/client": [
+        "../prisma/client"
+      ]
     }
   },
   "include": [
@@ -30,6 +44,7 @@
     "./src/**/*.tsx",
     "./src/**/*.js",
     "./src/**/*.jsx",
-    "./**/*.ts"
+    "./**/*.ts",
+    "../apps/core/src/**/*.ts",
   ]
 }

@@ -1,6 +1,5 @@
+import { DatabaseService } from '@core/processors/database/database.service'
 import { Global, Module } from '@nestjs/common'
-
-import { DatabaseService } from '~/processors/database/database.service'
 
 import { MockedDatabaseService } from './database.service'
 

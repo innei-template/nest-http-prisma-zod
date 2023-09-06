@@ -39,3 +39,8 @@ out
 release.zip
 
 run
+
+prisma/client
+prisma/schemas
+
+apps/core/dist

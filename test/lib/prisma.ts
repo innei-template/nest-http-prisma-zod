@@ -1,4 +1,4 @@
-import { createExtendedPrismaClient } from '~/processors/database/prisma.instance'
+import { createExtendedPrismaClient } from '@core/processors/database/prisma.instance'
 
 export const prisma = createExtendedPrismaClient({
   url: process.env.DATABASE_URL,

@@ -1,8 +1,7 @@
+import { AppController } from '@core/app.controller'
+import { fastifyApp } from '@core/common/adapter/fastify.adapter'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 import { Test, TestingModule } from '@nestjs/testing'
-
-import { AppController } from '~/app.controller'
-import { fastifyApp } from '~/common/adapter/fastify.adapter'
 
 describe('AppController (e2e)', () => {
   let app: NestFastifyApplication
