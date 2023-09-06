@@ -5,7 +5,7 @@
   "author": "Innei <https://innei.in>",
   "private": true,
   "license": "MIT",
-  "packageManager": "pnpm@8.6.12",
+  "packageManager": "pnpm@8.7.4",
   "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
@@ -56,7 +56,7 @@
     "class-validator": "0.14.0",
     "class-validator-jsonschema": "^5.0.0",
     "consola": "*",
-    "cron": "^2.3.1",
+    "cron": "^2.4.3",
     "cross-env": "7.0.3",
     "dayjs": "1.11.9",
     "jsonwebtoken": "9.0.2",
