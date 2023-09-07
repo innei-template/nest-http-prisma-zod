@@ -24,6 +24,7 @@
   "scripts": {
     "prepare": "if [ \"$NODE_ENV\" = \"production\" ]; then  echo 'skip prepare in production' ;else corepack enable && husky install; fi",
     "prebuild": "rimraf dist && pnpm run prisma:generate",
+    "init": "pnpm run prisma:generate && pnpm run migrate:dev",
     "build": "pnpm -C \"apps/core\" run build",
     "dev": "pnpm -C \"apps/core\" run start",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",

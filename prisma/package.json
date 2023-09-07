@@ -23,8 +23,5 @@
   "devDependencies": {
     "nestjs-zod-prisma": "3.0.1",
     "prisma": "5.2.0"
-  },
-  "prisma": {
-    "seed": "ts-node prisma/seed.ts"
   }
 }

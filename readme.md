@@ -25,6 +25,7 @@ docker compose up
 ## How to start development
 
 ```bash
+pnpm run init # first time
 npm run dev
 ```
 
