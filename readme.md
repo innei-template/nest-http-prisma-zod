@@ -2,7 +2,7 @@
 
 A best practice for using Prisma + Postgres, Socket.IO (Guest or authentication required) and Zod data validation. And it covers unit testing and integration testing.
 
-![](https://github.com/Innei/nest-http-prisma-zod/assets/41265413/5fe1a343-5eae-4eb4-a3eb-65d61d517b8d)
+![](https://github.com/Innei/nest-http-prisma-zod/assets/41265413/beb9fac0-19c8-448f-ac28-9299765ed899)
 
 ## Which Tech Stack In Use
 
@@ -13,7 +13,7 @@ A best practice for using Prisma + Postgres, Socket.IO (Guest or authentication 
 - Testing: Vitest
 - Package Manager: pnpm
 - DevOps: Docker
-- Other: Prettier, ESLint, Husky, Bump Version, etc.
+- Other: Monorepo, Prettier, ESLint, Husky, Bump Version, etc.
 
 ## Run in docker compose
 
@@ -27,6 +27,16 @@ docker compose up
 ```bash
 npm run dev
 ```
+
+**Before you start dev, do not forget copy `.env.template` to `.env`**
+
+## Using this template for your own project
+
+Just tap the `Fork` button.
+
+### Write an service unit test
+
+### Write an route integration test
 
 ## TODO
 

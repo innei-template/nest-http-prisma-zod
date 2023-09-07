@@ -1,42 +1,17 @@
 import { UserService } from '@core/modules/user/user.service'
-import { CacheService } from '@core/processors/cache/cache.service'
-import { ConfigModule } from '@nestjs/config'
-import { Test } from '@nestjs/testing'
+import { createServiceUnitTestApp } from '@test/helper/create-service-unit'
 import { prisma } from '@test/lib/prisma'
 import { mockUserInputData1 } from '@test/mock/data/user.data'
 import { authProvider } from '@test/mock/modules/auth.mock'
-import { MockedDatabaseModule } from '@test/mock/processors/database/database.module'
 
 describe('/modules/user/user.service', () => {
-  let service: UserService
-
-  beforeAll(async () => {
-    const app = await Test.createTestingModule({
-      providers: [
-        UserService,
-
-        {
-          provide: CacheService,
-          useValue: {},
-        },
-
-        authProvider,
-      ],
-      imports: [
-        MockedDatabaseModule,
-        ConfigModule.forRoot({
-          isGlobal: true,
-          envFilePath: ['.env.test', '.env'],
-        }),
-      ],
-    }).compile()
-    await app.init()
-    service = app.get(UserService)
+  const proxy = createServiceUnitTestApp(UserService, {
+    providers: [authProvider],
   })
 
   it('should register user successfully', async () => {
     const userModel = mockUserInputData1
-    await service.register(userModel)
+    await proxy.service.register(userModel)
 
     const user = await prisma.user.findUnique({
       where: {
@@ -50,16 +25,16 @@ describe('/modules/user/user.service', () => {
 
   it('should throw if existed', async () => {
     const userModel = mockUserInputData1
-    await service.register(userModel)
+    await proxy.service.register(userModel)
 
-    await expect(service.register(userModel)).rejects.toThrowError()
+    await expect(proxy.service.register(userModel)).rejects.toThrowError()
   })
 
   it('should patch user successfully', async () => {
     const userModel = mockUserInputData1
-    await service.register(userModel)
+    await proxy.service.register(userModel)
     const user = await prisma.user.findFirstOrThrow()
-    await service.patchUserData(user.id, {
+    await proxy.service.patchUserData(user.id, {
       name: 'test',
     })
 

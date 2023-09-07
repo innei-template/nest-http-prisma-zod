@@ -1,42 +1,13 @@
 import { PostService } from '@core/modules/post/post.service'
-import { CacheService } from '@core/processors/cache/cache.service'
-import { ConfigModule } from '@nestjs/config'
-import { Test } from '@nestjs/testing'
 import { Prisma } from '@prisma/client'
+import { createServiceUnitTestApp } from '@test/helper/create-service-unit'
 import { prisma } from '@test/lib/prisma'
 import { generateMockCategory } from '@test/mock/data/category.data'
 import { generateMockPost, mockPostInputData } from '@test/mock/data/post.data'
-import {
-  mockedEventManagerService,
-  mockedEventManagerServiceProvider,
-} from '@test/mock/helper/helper.event'
-import { MockedDatabaseModule } from '@test/mock/processors/database/database.module'
+import { mockedEventManagerService } from '@test/mock/helper/helper.event'
 
 describe('/modules/post/post.service', () => {
-  let service: PostService
-
-  beforeAll(async () => {
-    const app = await Test.createTestingModule({
-      providers: [
-        PostService,
-        mockedEventManagerServiceProvider,
-        {
-          provide: CacheService,
-          useValue: {},
-        },
-      ],
-      imports: [
-        MockedDatabaseModule,
-        ConfigModule.forRoot({
-          isGlobal: true,
-          envFilePath: ['.env.test', '.env'],
-        }),
-      ],
-    }).compile()
-    await app.init()
-
-    service = app.get<PostService>(PostService)
-  })
+  const proxy = createServiceUnitTestApp(PostService)
 
   const createMockCategory = async () => {
     return await prisma.category.create({
@@ -49,7 +20,8 @@ describe('/modules/post/post.service', () => {
   it('should create post successful', async () => {
     const category = await createMockCategory()
     const { id } = category
-    const result = await service.create({
+
+    const result = await proxy.service.create({
       ...mockPostInputData,
       categoryId: id,
     })
@@ -75,7 +47,7 @@ describe('/modules/post/post.service', () => {
     })
     const { id } = category
     await expect(
-      service.create({
+      proxy.service.create({
         ...mockPostInputData,
         categoryId: id,
       }),
@@ -84,7 +56,7 @@ describe('/modules/post/post.service', () => {
 
   it('should throw when category not found', async () => {
     await expect(
-      service.create({
+      proxy.service.create({
         ...mockPostInputData,
         categoryId: 'not-found',
       }),
@@ -105,7 +77,7 @@ describe('/modules/post/post.service', () => {
       data: mockedDataList,
     })
 
-    const pagination = await service.paginatePosts({
+    const pagination = await proxy.service.paginatePosts({
       page: 1,
       size: 5,
     })
@@ -123,14 +95,14 @@ describe('/modules/post/post.service', () => {
       },
     })
 
-    const result = await service.getPostById(post.id)
+    const result = await proxy.service.getPostById(post.id)
 
     expect(result).toMatchObject(post)
   })
 
   it('should get post throw when 404', async () => {
     expect(
-      service.getPostById('not-found'),
+      proxy.service.getPostById('not-found'),
     ).rejects.toThrowErrorMatchingSnapshot()
   })
 })
