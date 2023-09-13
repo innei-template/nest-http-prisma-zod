@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "module": "CommonJS",
+    "declaration": true,
+    "strict": true,
+    "removeComments": true,
+    "experimentalDecorators": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "target": "es2021",
+    "sourceMap": false,
+    "outDir": "./dist",
+    "noImplicitAny": false,
+    "incremental": true,
+    "skipLibCheck": true,
+    "paths": {}
+  },
+  "include": [
+    "./zod",
+    "./global.ts"
+  ],
+  "exclude": [
+    "dist",
+  ]
+}

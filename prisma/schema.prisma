@@ -6,55 +6,31 @@ generator client {
   output = "./client"
 }
 
-generator zod {
-  provider = "nestjs-zod-prisma"
-  output   = "./schemas" // (default) the directory where generated zod schemas will be saved
+generator json {
+  provider  = "prisma-json-types-generator"
+  namespace = "PrismaJson"
 
-  relationModel = true // (default) Create and export both plain and related models.
-  // relationModel         = "default" // Do not export model without relations.
-  // relationModel         = false // Do not generate related model
-
-  generateDto = true // (default) Generate DTOs for NestJS
-
-  modelCase = "PascalCase" // (default) Output models using pascal case (ex. UserModel, PostModel)
-  // modelCase             = "camelCase" // Output models using camel case (ex. userModel, postModel)
-
-  modelSuffix = "Model" // (default) Suffix to apply to your prisma models when naming Zod schemas
-
-  dtoCase = "PascalCase" // (default) Output DTOs using pascal case (ex. UserDto, PostDto)
-  // dtoCase             = "camelCase" // Output DTOs using camel case (ex. userDto, postDto)
-
-  dtoSuffix = "Dto" // (default) Suffix to apply to your prisma models when naming DTOs
-
-  // useDecimalJs          = false // (default) represent the prisma Decimal type using as a JS number
-  useDecimalJs = true // represent the prisma Decimal type using Decimal.js (as Prisma does)
-
-  // imports = null // (default) will import the referenced file in generated schemas to be used via imports.someExportedVariable
-
-  // https://www.prisma.io/docs/concepts/components/prisma-client/working-with-fields/working-with-json-fields#filtering-by-null-values
-  prismaJsonNullability = true // (default) uses prisma's scheme for JSON field nullability
-  // prismaJsonNullability = false // allows null assignment to optional JSON fields
+  allowAny = false
 }
 
-// generator zod {
-//   provider                         = "zod-prisma-types"
-//   output                           = "../src/generated/zod" // default is ./generated/zod
-//   useMultipleFiles                 = true // default is false
-//   writeBarrelFiles                 = false // default is true
-//   createInputTypes                 = true // default is true
-//   createModelTypes                 = true // default is true
-//   addInputTypeValidation           = true // default is true
-//   addIncludeType                   = false // default is true
-//   addSelectType                    = false // default is true
-//   validateWhereUniqueInput         = false // default is false
-//   createOptionalDefaultValuesTypes = true // default is false
-//   createRelationValuesTypes        = true // default is false
-//   createPartialTypes               = true // default is false
-//   useDefaultValidators             = true // default is true
-//   coerceDate                       = true // default is true
-//   writeNullishInModelTypes         = true // default is false
-//   prismaClientPath                 = "./path/to/prisma/client" // default is client output path
-// }
+generator zod-prisma-types {
+  provider                         = "zod-prisma-types"
+  output                           = "./zod" // default is ./generated/zod
+  useMultipleFiles                 = true // default is false
+  writeBarrelFiles                 = true // default is true
+  createInputTypes                 = false // default is true
+  createModelTypes                 = true // default is true
+  addInputTypeValidation           = false // default is true
+  addIncludeType                   = false // default is true
+  addSelectType                    = false // default is true
+  validateWhereUniqueInput         = false // default is false
+  createOptionalDefaultValuesTypes = true // default is false
+  createRelationValuesTypes        = false // default is false
+  createPartialTypes               = false // default is false
+  useDefaultValidators             = true // default is true
+  coerceDate                       = true // default is true
+  writeNullishInModelTypes         = false // default is false
+}
 
 datasource db {
   provider = "postgresql"
@@ -117,8 +93,10 @@ model Post {
 
 model Category {
   id      String   @id @default("")
+  /// @zod.string.max(80)
   name    String   @unique
-  slug    String   @unique
+  /// @zod.string.max(255)
+  slug String @unique @db.VarChar(255)
   created DateTime @default(now()) @map("created_at")
   Post    Post[]
 

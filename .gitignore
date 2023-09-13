@@ -40,7 +40,10 @@ release.zip
 
 run
 
+apps/core/dist
 prisma/client
 prisma/schemas
+prisma/zod
+prisma/dist
 
 apps/core/dist

@@ -1,17 +1,17 @@
 import { z } from 'zod'
 
-import { UserModel } from '@core/schemas'
 import { createProjectionOmit } from '@core/shared/utils/schema.util'
+import { UserSchema } from '@prisma/client/zod'
 
 export const UserSchemaProjection = createProjectionOmit(
-  UserModel.shape,
+  UserSchema.shape,
   ['lastLoginIp', 'authCode', 'lastLoginIp', 'lastLoginTime'],
   true,
 )
 
 export const UserSchemaSerializeProjection = createProjectionOmit(
-  UserModel.shape,
+  UserSchema.shape,
   ['password', 'authCode'],
 )
 
-export type UserSchema = z.infer<typeof UserModel>
+export type UserSchema = z.infer<typeof UserSchema>

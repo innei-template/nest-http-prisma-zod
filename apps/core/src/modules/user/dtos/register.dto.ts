@@ -1,12 +1,12 @@
 import { createZodDto } from 'nestjs-zod'
 import { z } from 'zod'
 
-import { UserModel } from '@core/schemas'
+import { UserSchema } from '@prisma/client/zod'
 
 import { UserSchemaProjection } from '../user.protect'
 
 export class UserRegisterDto extends createZodDto(
-  UserModel.omit(UserSchemaProjection).extend({
+  UserSchema.omit(UserSchemaProjection).extend({
     socialIds: z.record(z.string(), z.string()).optional(),
   }),
 ) {}

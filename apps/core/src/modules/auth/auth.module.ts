@@ -1,5 +1,5 @@
 import { SECURITY } from '@core/app.config'
-import { Module } from '@nestjs/common'
+import { Global, Module } from '@nestjs/common'
 import { JwtModule } from '@nestjs/jwt'
 import { PassportModule } from '@nestjs/passport'
 
@@ -26,4 +26,5 @@ const jwtModule = JwtModule.registerAsync({
   controllers: [AuthController],
   exports: [JwtStrategy, AuthService, jwtModule],
 })
+@Global()
 export class AuthModule {}

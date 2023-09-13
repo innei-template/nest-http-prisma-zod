@@ -1,5 +1,3 @@
-import { isJWT } from 'class-validator'
-
 import { AuthService } from '@core/modules/auth/auth.service'
 import { UserService } from '@core/modules/user/user.service'
 import { getNestExecutionContextRequest } from '@core/transformers/get-req.transformer'
@@ -10,6 +8,16 @@ import {
   Injectable,
   UnauthorizedException,
 } from '@nestjs/common'
+
+function isJWT(token: string): boolean {
+  const parts = token.split('.')
+  return (
+    parts.length === 3 &&
+    /^[a-zA-Z0-9_-]+$/.test(parts[0]) &&
+    /^[a-zA-Z0-9_-]+$/.test(parts[1]) &&
+    /^[a-zA-Z0-9_-]+$/.test(parts[2])
+  )
+}
 
 /**
  * JWT auth guard

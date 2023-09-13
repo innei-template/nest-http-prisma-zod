@@ -37,6 +37,7 @@ export default defineConfig({
         __dirname,
         './apps/core/src/app.config.testing.ts',
       ),
+      '@prisma/client/zod': resolve(__dirname, './prisma/zod'),
     },
   },
 

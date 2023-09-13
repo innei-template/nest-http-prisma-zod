@@ -16,6 +16,7 @@ import { IdempotenceInterceptor } from './common/interceptors/idempotence.interc
 import { JSONTransformerInterceptor } from './common/interceptors/json-transformer.interceptor'
 import { ResponseInterceptor } from './common/interceptors/response.interceptor'
 import { ZodValidationPipe } from './common/pipes/zod-validation.pipe'
+import { AuthModule } from './modules/auth/auth.module'
 import { CategoryModule } from './modules/category/category.module'
 import { PostModule } from './modules/post/post.module'
 import { UserModule } from './modules/user/user.module'
@@ -44,6 +45,7 @@ const appInterceptors: Type<any>[] = [
     GatewayModule,
 
     // BIZ
+    AuthModule,
     PostModule,
     UserModule,
     CategoryModule,

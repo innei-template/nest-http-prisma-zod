@@ -1,19 +1,24 @@
 import { z } from 'zod'
 
-import { PostModel } from '@core/schemas'
 import { createProjectionOmit } from '@core/shared/utils/schema.util'
+import { Prisma } from '@prisma/client'
+import { PostSchema } from '@prisma/client/zod'
 
 export const PostSchemaProjection = createProjectionOmit(
-  PostModel.shape,
+  PostSchema.shape,
   [],
   true,
 )
 export const PostSchemaSerializeProjection = createProjectionOmit(
-  PostModel.shape,
+  PostSchema.shape,
   [],
 )
 
 export type PostInputSchema = Omit<
-  z.infer<typeof PostModel>,
+  z.infer<typeof PostSchema>,
   keyof typeof PostSchemaProjection
 >
+
+export const PostIncluded: Prisma.PostInclude = {
+  category: true,
+}
