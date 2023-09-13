@@ -36,7 +36,7 @@
   "dependencies": {
     "@nestjs/cache-manager": "2.1.0",
     "@nestjs/common": "10.2.5",
-    "@nestjs/config": "3.0.1",
+    "@nestjs/config": "3.1.1",
     "@nestjs/core": "10.2.5",
     "@nestjs/event-emitter": "2.0.2",
     "@nestjs/jwt": "10.1.1",
@@ -79,7 +79,7 @@
     "@types/passport-jwt": "3.0.9",
     "@types/supertest": "2.0.12",
     "@types/ua-parser-js": "0.7.37",
-    "fastify": "^4.22.2",
+    "fastify": "^4.23.1",
     "ioredis": "^5.3.2",
     "zod-prisma-types": "2.7.9",
     "zx": "7.2.3"
