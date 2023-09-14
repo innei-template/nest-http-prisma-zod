@@ -79,7 +79,7 @@
     "@types/passport-jwt": "3.0.9",
     "@types/supertest": "2.0.12",
     "@types/ua-parser-js": "0.7.37",
-    "fastify": "^4.23.1",
+    "fastify": "^4.23.2",
     "ioredis": "^5.3.2",
     "zod-prisma-types": "2.7.9",
     "zx": "7.2.3"
