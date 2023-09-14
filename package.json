@@ -63,7 +63,7 @@
     "@swc/cli": "0.1.62",
     "dotenv-cli": "7.3.0",
     "eslint": "^8.49.0",
-    "fastify": "^4.23.1",
+    "fastify": "^4.23.2",
     "husky": "8.0.3",
     "ioredis": "^5.3.2",
     "lint-staged": "14.0.1",
