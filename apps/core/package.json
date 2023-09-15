@@ -75,7 +75,7 @@
     "@nestjs/schematics": "10.0.2",
     "@types/bcrypt": "5.0.0",
     "@types/cache-manager": "4.0.3",
-    "@types/jsonwebtoken": "9.0.2",
+    "@types/jsonwebtoken": "9.0.3",
     "@types/passport-jwt": "3.0.9",
     "@types/supertest": "2.0.12",
     "@types/ua-parser-js": "0.7.37",
