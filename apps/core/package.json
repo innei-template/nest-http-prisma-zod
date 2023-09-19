@@ -55,7 +55,7 @@
     "consola": "*",
     "cron": "^2.4.3",
     "cross-env": "7.0.3",
-    "dayjs": "1.11.9",
+    "dayjs": "1.11.10",
     "jsonwebtoken": "9.0.2",
     "lodash": "4.17.21",
     "nanoid": "3.3.6",
