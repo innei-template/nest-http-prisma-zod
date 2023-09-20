@@ -85,7 +85,7 @@
     "dayjs": "1.11.10",
     "@types/bcrypt": "5.0.0",
     "nanoid": "3.3.6",
-    "snakecase-keys": "5.4.6"
+    "snakecase-keys": "5.4.7"
   },
   "resolutions": {
     "pino": "./external/pino",
