@@ -1,6 +1,5 @@
 import { hashSync } from 'bcrypt'
 import { omit } from 'lodash'
-import { nanoid } from 'nanoid'
 import snakecaseKeys from 'snakecase-keys'
 
 import { UserModule } from '@core/modules/user/user.module'
@@ -38,7 +37,6 @@ describe('ROUTE /user', () => {
       data: {
         ...mockUserInputData1,
         password: hashSync(password, 8),
-        authCode: nanoid(8),
       },
     })
 

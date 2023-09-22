@@ -1,6 +1,8 @@
 import { AllExceptionsFilter } from '@core/common/filters/all-exception.filter'
 import { JSONTransformerInterceptor } from '@core/common/interceptors/json-transformer.interceptor'
 import { ResponseInterceptor } from '@core/common/interceptors/response.interceptor'
+import { AuthModule } from '@core/modules/auth/auth.module'
+import { UserModule } from '@core/modules/user/user.module'
 import { ModuleMetadata } from '@nestjs/common'
 import { ConfigModule } from '@nestjs/config'
 import { APP_FILTER, APP_INTERCEPTOR } from '@nestjs/core'
@@ -22,11 +24,14 @@ export const createE2EApp = (module: ModuleMetadata) => {
     nestModule.imports ||= []
     nestModule.imports.push(
       MockedDatabaseModule,
+
       ConfigModule.forRoot({
         isGlobal: true,
       }),
       CacheModule,
       MockedHelperModule,
+      AuthModule,
+      UserModule,
     )
     nestModule.providers ||= []
 

@@ -31,9 +31,20 @@ export const REDIS = {
 }
 export const SECURITY = {
   jwtSecret: argv.jwtSecret || 'asjhczxiucipoiopiqm2376',
-  jwtExpire: '7d',
+  jwtExpire: 7,
 }
 
 export const AXIOS_CONFIG: AxiosRequestConfig = {
   timeout: 10000,
+}
+
+export const ENCRYPT = {
+  key: '',
+  enable: false,
+  algorithm: argv.encrypt_algorithm || 'aes-256-ecb',
+}
+
+export const CLUSTER = {
+  enable: false,
+  workers: argv.cluster_workers,
 }

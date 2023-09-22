@@ -5,13 +5,13 @@ import { UserSchema } from '@prisma/client/zod'
 
 export const UserSchemaProjection = createProjectionOmit(
   UserSchema.shape,
-  ['lastLoginIp', 'authCode', 'lastLoginIp', 'lastLoginTime'],
+  ['lastLoginIp', 'lastLoginIp', 'lastLoginTime'],
   true,
 )
 
 export const UserSchemaSerializeProjection = createProjectionOmit(
   UserSchema.shape,
-  ['password', 'authCode'],
+  ['password'],
 )
 
 export type UserSchema = z.infer<typeof UserSchema>

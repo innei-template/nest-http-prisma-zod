@@ -8,12 +8,6 @@ import { EventManagerService } from './helper.event.service'
 import { HttpService } from './helper.http.service'
 import { JWTService } from './helper.jwt.service'
 
-// const envPathCompose = (envFilename: string) => {
-//   const rootPath = join(__dirname, '../../../../../..')
-//   return [envFilename].concat(join(rootPath, envFilename))
-// }
-
-// console.log([...envPathCompose('.env')])
 const providers: Provider<any>[] = [
   HttpService,
   JWTService,
@@ -23,9 +17,6 @@ const providers: Provider<any>[] = [
 @Module({
   imports: [
     ConfigModule.forRoot({
-      // envFilePath: isTest
-      //   ? [...envPathCompose('.env.test'), ...envPathCompose('.env')]
-      //   : [...envPathCompose('.env')],
       envFilePath: isTest ? ['.env.test', '.env'] : ['.env'],
       isGlobal: true,
       expandVariables: true,

@@ -1,46 +1,23 @@
 import { compareSync } from 'bcrypt'
 import dayjs from 'dayjs'
 import { isDate } from 'lodash'
-import { nanoid } from 'nanoid'
 
 import { BizException } from '@core/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '@core/constants/error-code.constant'
 import { DatabaseService } from '@core/processors/database/database.service'
-import { resourceNotFoundWrapper } from '@core/shared/utils/prisma.util'
+import { JWTService } from '@core/processors/helper/helper.jwt.service'
 import { sleep } from '@core/shared/utils/tool.utils'
 import { Injectable } from '@nestjs/common'
-import { JwtService } from '@nestjs/jwt'
-
-import { JwtPayload } from './interfaces/jwt-payload.interface'
 
 @Injectable()
 export class AuthService {
   constructor(
     private readonly db: DatabaseService,
-    private readonly jwtService: JwtService,
+    private readonly jwtService: JWTService,
   ) {}
 
   get jwtServicePublic() {
     return this.jwtService
-  }
-
-  private async getUserAuthCode(id: string) {
-    const { authCode } = await this.db.prisma.user
-      .findUniqueOrThrow({
-        where: {
-          id,
-        },
-        select: {
-          authCode: true,
-        },
-      })
-      .catch(
-        resourceNotFoundWrapper(
-          new BizException(ErrorCodeEnum.AuthFailUserNotExist),
-        ),
-      )
-
-    return authCode
   }
 
   async validateUsernameAndPassword(username: string, password: string) {
@@ -59,21 +36,7 @@ export class AuthService {
   }
 
   async signToken(id: string) {
-    const authCode = await this.getUserAuthCode(id)
-    const payload: JwtPayload = {
-      id,
-      authCode,
-    }
-
-    return this.jwtService.sign(payload)
-  }
-  async verifyPayload(payload: JwtPayload): Promise<boolean> {
-    const authCode = await this.getUserAuthCode(payload.id)
-    return authCode === payload.authCode
-  }
-
-  async generateAuthCode() {
-    return nanoid(10)
+    return this.jwtService.sign(id)
   }
 
   isCustomToken(token: string) {

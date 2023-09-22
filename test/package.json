@@ -1,0 +1,5 @@
+{
+	"devDependencies": {
+		"bcrypt": "5.1.1"
+	}
+}

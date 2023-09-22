@@ -1,9 +1,7 @@
 import { compareSync, hashSync } from 'bcrypt'
-import { nanoid } from 'nanoid'
 
 import { BizException } from '@core/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '@core/constants/error-code.constant'
-import { CacheService } from '@core/processors/cache/cache.service'
 import { DatabaseService } from '@core/processors/database/database.service'
 import { resourceNotFoundWrapper } from '@core/shared/utils/prisma.util'
 import {
@@ -13,19 +11,13 @@ import {
 } from '@nestjs/common'
 import { Prisma } from '@prisma/client'
 
-import { AuthService } from '../auth/auth.service'
 import { UserRegisterDto } from './dtos/register.dto'
 import { UserSchemaProjection } from './user.protect'
 
 @Injectable()
 export class UserService {
   private Logger = new Logger(UserService.name)
-  constructor(
-    private readonly authService: AuthService,
-    private readonly redis: CacheService,
-
-    private readonly db: DatabaseService,
-  ) {}
+  constructor(private readonly db: DatabaseService) {}
 
   async register(userDto: UserRegisterDto) {
     const isExist = await this.db.prisma.user.exists({
@@ -38,10 +30,8 @@ export class UserService {
       throw new BizException(ErrorCodeEnum.UserExist)
     }
 
-    const authCode = await this.authService.generateAuthCode()
     const model = await this.db.prisma.user.create({
       data: {
-        authCode,
         ...userDto,
         password: hashSync(userDto.password, 10),
       },
@@ -54,7 +44,7 @@ export class UserService {
    * 修改密码
    *
    * @async
-   * @param {string} id - 用户id
+   * @param {string} id - 用户 id
    * @param {Partial} data - 部分修改数据
    */
   async patchUserData(id: string, data: Partial<Prisma.UserCreateInput>) {
@@ -86,10 +76,6 @@ export class UserService {
       if (isSamePassword) {
         throw new UnprocessableEntityException('密码可不能和原来的一样哦')
       }
-
-      // 2. 认证码重新生成
-      const newCode = nanoid(10)
-      doc.authCode = newCode
     }
 
     await this.db.prisma.user.update({

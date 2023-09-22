@@ -40,7 +40,7 @@ export const REDIS = {
 
 export const SECURITY = {
   jwtSecret: argv.jwtSecret || 'asjhczxiucipoiopiqm2376',
-  jwtExpire: '7d',
+  jwtExpire: 7,
 }
 
 export const AXIOS_CONFIG: AxiosRequestConfig = {

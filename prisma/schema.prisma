@@ -3,7 +3,7 @@
 
 generator client {
   provider = "prisma-client-js"
-  output = "./client"
+  output   = "./client"
 }
 
 generator json {
@@ -50,7 +50,6 @@ model User {
 
   lastLoginIp String?    @map("last_login_ip")
   socialIds   Json?      @default("{}") @map("social_ids")
-  authCode    String     @map("auth_code")
   apiTokens   ApiToken[]
   oauths      OAuth[]
 
@@ -96,7 +95,7 @@ model Category {
   /// @zod.string.max(80)
   name    String   @unique
   /// @zod.string.max(255)
-  slug String @unique @db.VarChar(255)
+  slug    String   @unique @db.VarChar(255)
   created DateTime @default(now()) @map("created_at")
   Post    Post[]
 
