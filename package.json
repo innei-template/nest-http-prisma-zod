@@ -68,7 +68,7 @@
     "vite": "4.4.11",
     "vite-tsconfig-paths": "4.2.1",
     "vitest": "0.34.6",
-    "zod": "3.22.2",
+    "zod": "3.22.3",
     "zod-fixture": "2.5.0",
     "zod-prisma-types": "2.7.13",
     "zx": "7.2.3"
