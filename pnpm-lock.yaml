@@ -174,8 +174,8 @@ importers:
         specifier: '*'
         version: 2.15.3
       cron:
-        specifier: ^2.4.4
-        version: 2.4.4
+        specifier: ^3.1.6
+        version: 3.1.6
       cross-env:
         specifier: 7.0.3
         version: 7.0.3
@@ -3168,11 +3168,11 @@ packages:
       luxon: 3.3.0
     dev: false
 
-  /cron@2.4.4:
-    resolution: {integrity: sha512-MHlPImXJj3K7x7lyUHjtKEOl69CSlTOWxS89jiFgNkzXfvhVjhMz/nc7/EIfN9vgooZp8XTtXJ1FREdmbyXOiQ==}
+  /cron@3.1.6:
+    resolution: {integrity: sha512-cvFiQCeVzsA+QPM6fhjBtlKGij7tLLISnTSvFxVdnFGLdz+ZdXN37kNe0i2gefmdD17XuZA6n2uPVwzl4FxW/w==}
     dependencies:
       '@types/luxon': 3.3.2
-      luxon: 3.3.0
+      luxon: 3.4.3
     dev: false
 
   /cross-env@7.0.3:
@@ -5416,6 +5416,11 @@ packages:
 
   /luxon@3.3.0:
     resolution: {integrity: sha512-An0UCfG/rSiqtAIiBPO0Y9/zAnHUZxAMiCpTd5h2smgsj7GGmcenvrvww2cqNA8/4A5ZrD1gJpHN2mIHZQF+Mg==}
+    engines: {node: '>=12'}
+    dev: false
+
+  /luxon@3.4.3:
+    resolution: {integrity: sha512-tFWBiv3h7z+T/tDaoxA8rqTxy1CHV6gHS//QdaH4pulbq/JuBSGgQspQQqcgnwdAx6pNI7cmvz5Sv/addzHmUg==}
     engines: {node: '>=12'}
     dev: false
 
