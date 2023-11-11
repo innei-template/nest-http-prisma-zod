@@ -46,7 +46,7 @@
     "@nestjs/throttler": "5.0.0",
     "@nestjs/websockets": "10.2.7",
     "@prisma/client": "workspace:@nest-http/prisma@*",
-    "axios": "1.5.1",
+    "axios": "1.6.0",
     "bcrypt": "5.1.1",
     "cache-manager": "5.2.4",
     "cache-manager-ioredis": "2.1.0",
