@@ -111,8 +111,8 @@ importers:
         specifier: 2.5.0
         version: 2.5.0(zod@3.22.2)
       zod-prisma-types:
-        specifier: 2.7.13
-        version: 2.7.13
+        specifier: 3.1.6
+        version: 3.1.6
       zx:
         specifier: 7.2.3
         version: 7.2.3
@@ -247,8 +247,8 @@ importers:
         specifier: ^5.3.2
         version: 5.3.2
       zod-prisma-types:
-        specifier: 2.7.13
-        version: 2.7.13
+        specifier: 3.1.6
+        version: 3.1.6
       zx:
         specifier: 7.2.3
         version: 7.2.3
@@ -265,8 +265,8 @@ importers:
         specifier: 3.0.2
         version: 3.0.2(prisma@5.3.1)(typescript@5.2.2)
       zod-prisma-types:
-        specifier: 2.7.13
-        version: 2.7.13
+        specifier: 3.1.6
+        version: 3.1.6
     devDependencies:
       nestjs-zod-prisma:
         specifier: 3.0.1
@@ -1421,10 +1421,10 @@ packages:
       - supports-color
     dev: false
 
-  /@prisma/debug@5.4.2:
-    resolution: {integrity: sha512-YRRi7beaX/sAQs0WQ/Y0LndfWynyodJKO0qF0Vj/KQ8aynmllpL7Hahdm4MVEy6eDPeoX7FWu/otkHRGKWmKSQ==}
+  /@prisma/debug@5.6.0:
+    resolution: {integrity: sha512-rVQuC5/4FvGvAwUEISumRctLnW2VGCzp8yfzqZhupYtKWWjAhP7amAMYg8wjfuBJ9eARfVDTG88sjelBdboy0g==}
     dependencies:
-      '@types/debug': 4.1.9
+      '@types/debug': 4.1.12
       debug: 4.3.4
       strip-ansi: 6.0.1
     transitivePeerDependencies:
@@ -1460,11 +1460,11 @@ packages:
       - supports-color
     dev: false
 
-  /@prisma/generator-helper@5.4.2:
-    resolution: {integrity: sha512-UC2W3ZUs87jbdEOCmsQfCyGeuLA0oosAKgS+0vTCoZWnKUPGvMNxMqNPL08rpXTc1vwUFvl09R76ZVC3Zm7PHw==}
+  /@prisma/generator-helper@5.6.0:
+    resolution: {integrity: sha512-trrLzQQAhVhpmrr+I33QoZXY+4uY3lJL8qUUm8QAtk6iIY0f9Y2zgoEbHa9UfUkHyx1kujRfgi16C0mUeF+DTA==}
     dependencies:
-      '@prisma/debug': 5.4.2
-      '@types/cross-spawn': 6.0.3
+      '@prisma/debug': 5.6.0
+      '@types/cross-spawn': 6.0.5
       cross-spawn: 7.0.3
       kleur: 4.1.5
     transitivePeerDependencies:
@@ -1759,6 +1759,17 @@ packages:
     resolution: {integrity: sha512-BDAkU7WHHRHnvBf5z89lcvACsvkz/n7Tv+HyD/uW76O29HoH1Tk/W6iQrepaZVbisvlEek4ygwT8IW7ow9XLAA==}
     dependencies:
       '@types/node': 20.8.0
+    dev: false
+
+  /@types/cross-spawn@6.0.5:
+    resolution: {integrity: sha512-wsIMP68FvGXk+RaWhraz6Xp4v7sl4qwzHAmtPaJEN2NRTXXI9LtFawUpeTsBNL/pd6QoLStdytCaAyiK7AEd/Q==}
+    dependencies:
+      '@types/node': 20.8.0
+
+  /@types/debug@4.1.12:
+    resolution: {integrity: sha512-vIChWdVG3LG1SMxEvI/AK+FWJthlrqlTu7fbrlywTkkaONwk/UAGaULXRlf8vkzFBLVm0zkMdCquhL5aOjhXPQ==}
+    dependencies:
+      '@types/ms': 0.7.31
 
   /@types/debug@4.1.8:
     resolution: {integrity: sha512-/vPO1EPOs306Cvhwv7KfVfYvOJqA/S/AXjaHQiJboCZzcNDb+TIJFN9/2C9DZ//ijSKWioNyUxD792QmDJ+HKQ==}
@@ -1770,6 +1781,7 @@ packages:
     resolution: {integrity: sha512-8Hz50m2eoS56ldRlepxSBa6PWEVCtzUo/92HgLc2qTMnotJNIm7xP+UZhyWoYsyOdd5dxZ+NZLb24rsKyFs2ow==}
     dependencies:
       '@types/ms': 0.7.31
+    dev: false
 
   /@types/eslint-scope@3.7.5:
     resolution: {integrity: sha512-JNvhIEyxVW6EoMIFIvj93ZOywYFatlpu9deeH6eSx6PE3WHYvHaQtmHmQeNw7aA81bYGBPPQqdtBm6b1SsQMmA==}
@@ -8005,19 +8017,22 @@ packages:
       zod: 3.22.2
     dev: true
 
-  /zod-prisma-types@2.7.13:
-    resolution: {integrity: sha512-HuGrm333z/7yDnJ2ZCXTJmkTREzRpOSj5koNCNQkaqm/RxbQfv2HqAMeX9DX7KeEvMiYBb6alggSNo3Z/wXbJQ==}
+  /zod-prisma-types@3.1.6:
+    resolution: {integrity: sha512-ySaG91RraTm4J19zfvuX6S3OxhDMlK4dTfYWM4rS+4AlEGqDqGu5BbIn2trjTDt8OiCMBHoIjZmRXPKQCyNApA==}
     hasBin: true
     dependencies:
-      '@prisma/generator-helper': 5.4.2
+      '@prisma/generator-helper': 5.6.0
       code-block-writer: 12.0.0
       lodash: 4.17.21
-      zod: 3.22.2
+      zod: 3.22.4
     transitivePeerDependencies:
       - supports-color
 
   /zod@3.22.2:
     resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
+
+  /zod@3.22.4:
+    resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
 
   /zx-cjs@7.0.7-0:
     resolution: {integrity: sha512-CDwRWriV229ZQN5/wIk92DYQ33Q/jU2DvL+CQXa96qIwMINpW6RQWaXWCRticVDPF0CRKZ4y6uB/8GRzBw1MxA==}
