@@ -1,5 +1,5 @@
 import { PostService } from '@core/modules/post/post.service'
-import { Prisma } from '@prisma/client'
+import { Prisma } from '@db/client'
 import { createServiceUnitTestApp } from '@test/helper/create-service-unit'
 import { prisma } from '@test/lib/prisma'
 import { generateMockCategory } from '@test/mock/data/category.data'

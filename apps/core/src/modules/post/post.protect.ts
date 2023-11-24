@@ -1,8 +1,8 @@
 import { z } from 'zod'
 
 import { createProjectionOmit } from '@core/shared/utils/schema.util'
-import { Prisma } from '@prisma/client'
-import { PostSchema } from '@prisma/client/zod'
+import { Prisma } from '@db/client'
+import { PostSchema } from '@db/client/zod'
 
 export const PostSchemaProjection = createProjectionOmit(
   PostSchema.shape,

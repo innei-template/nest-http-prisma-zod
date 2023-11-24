@@ -7,13 +7,22 @@
     ":automergeLinters",
     ":rebaseStalePrs"
   ],
-  "labels": ["dependencies"],
+  "labels": [
+    "dependencies"
+  ],
   "rangeStrategy": "bump",
   "packageRules": [
     {
-      "updateTypes": ["major"],
-      "labels": ["UPDATE-MAJOR"]
+      "updateTypes": [
+        "major"
+      ],
+      "labels": [
+        "UPDATE-MAJOR"
+      ]
     }
   ],
-  "ignoreDeps": ["nanoid", "chalk", "consola"]
+  "ignoreDeps": [
+    "chalk",
+    "consola"
+  ]
 }

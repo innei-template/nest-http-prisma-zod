@@ -1,7 +1,7 @@
 import { FastifyRequest } from 'fastify'
 
+import { User } from '@db/client'
 import { ExecutionContext } from '@nestjs/common'
-import { User } from '@prisma/client'
 
 export function getNestExecutionContextRequest(
   context: ExecutionContext,

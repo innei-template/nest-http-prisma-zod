@@ -1,7 +1,7 @@
 import { isDev } from '@core/global/env.global'
 import { PaginationResult } from '@core/shared/interface/paginator.interface'
+import { Prisma, PrismaClient } from '@db/client'
 import { Logger } from '@nestjs/common'
-import { Prisma, PrismaClient } from '@prisma/client'
 
 import { loggingMiddleware, QueryInfo } from './middlewares/logger.middleware'
 import { snowflakeGeneratorMiddleware } from './middlewares/snowflake.middleware'

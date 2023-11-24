@@ -29,7 +29,7 @@
       "@test/*": [
         "./*"
       ],
-      "@prisma/client": [
+      "@db/client": [
         "./prisma/client"
       ]
     },

@@ -1,7 +1,7 @@
 import { createZodDto } from 'nestjs-zod'
 import { z } from 'zod'
 
-import { UserSchema } from '@prisma/client/zod'
+import { UserSchema } from '@db/client/zod'
 
 import { UserSchemaProjection } from '../user.protect'
 

@@ -1,4 +1,5 @@
 // @copy https://github.com/notiz-dev/nestjs-prisma/blob/main/lib/prisma-client-exception.filter.ts
+import { Prisma } from '@db/client'
 import {
   ArgumentsHost,
   Catch,
@@ -8,7 +9,6 @@ import {
   HttpStatus,
 } from '@nestjs/common'
 import { APP_FILTER, BaseExceptionFilter, HttpAdapterHost } from '@nestjs/core'
-import { Prisma } from '@prisma/client'
 
 export declare type GqlContextType = 'graphql' | ContextType
 

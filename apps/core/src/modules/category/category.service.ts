@@ -1,8 +1,8 @@
 import { BizException } from '@core/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '@core/constants/error-code.constant'
 import { DatabaseService } from '@core/processors/database/database.service'
+import { Prisma } from '@db/client'
 import { Injectable } from '@nestjs/common'
-import { Prisma } from '@prisma/client'
 
 @Injectable()
 export class CategoryService {

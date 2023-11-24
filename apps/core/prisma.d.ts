@@ -1,1 +1,1 @@
-import '@prisma/client/global'
+import '@db/client/global'

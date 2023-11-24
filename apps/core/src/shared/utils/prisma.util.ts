@@ -1,4 +1,4 @@
-import { Prisma } from '@prisma/client'
+import { Prisma } from '@db/client'
 
 export function resourceNotFoundWrapper(desiredErr: Error) {
   return (err: any) => {

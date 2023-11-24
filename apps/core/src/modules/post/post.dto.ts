@@ -4,7 +4,7 @@ import { z } from 'zod'
 
 import { basePagerSchema } from '@core/shared/dto/pager.dto'
 import { makeOptionalPropsNullable } from '@core/shared/utils/zod.util'
-import { PostOptionalDefaultsSchema, PostSchema } from '@prisma/client/zod'
+import { PostOptionalDefaultsSchema, PostSchema } from '@db/client/zod'
 
 import { PostSchemaProjection } from './post.protect'
 

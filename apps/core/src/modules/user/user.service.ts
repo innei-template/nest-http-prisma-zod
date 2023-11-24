@@ -4,12 +4,12 @@ import { BizException } from '@core/common/exceptions/biz.exception'
 import { ErrorCodeEnum } from '@core/constants/error-code.constant'
 import { DatabaseService } from '@core/processors/database/database.service'
 import { resourceNotFoundWrapper } from '@core/shared/utils/prisma.util'
+import { Prisma } from '@db/client'
 import {
   Injectable,
   Logger,
   UnprocessableEntityException,
 } from '@nestjs/common'
-import { Prisma } from '@prisma/client'
 
 import { UserRegisterDto } from './dtos/register.dto'
 import { UserSchemaProjection } from './user.protect'

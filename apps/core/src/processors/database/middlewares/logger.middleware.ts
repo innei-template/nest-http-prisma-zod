@@ -1,6 +1,6 @@
 // @copy https://github.com/notiz-dev/nestjs-prisma/blob/main/lib/logging.middleware.ts
+import { Prisma } from '@db/client'
 import { Logger } from '@nestjs/common'
-import { Prisma } from '@prisma/client'
 
 export interface LoggingMiddlewareOptions {
   logger: Console | Logger
