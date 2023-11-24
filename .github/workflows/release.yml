@@ -20,7 +20,7 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 16.x
+          node-version: 20.x
       - name: Start MongoDB
         uses: supercharge/mongodb-github-action@v1.10.0
         with:
