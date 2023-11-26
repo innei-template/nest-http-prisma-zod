@@ -50,7 +50,7 @@
     "bcrypt": "5.1.1",
     "cache-manager": "5.3.1",
     "cache-manager-ioredis": "2.1.0",
-    "chalk": "^4",
+    "chalk": "^5.3.0",
     "cron": "^3.1.6",
     "cross-env": "7.0.3",
     "dayjs": "1.11.10",
