@@ -1,6 +1,6 @@
-import chalk from 'chalk'
+import { Logger } from 'nestjs-pretty-logger'
+import { chalk } from 'zx-cjs'
 
-import { Logger } from '@nestjs/common'
 import { NestFactory } from '@nestjs/core'
 import { NestFastifyApplication } from '@nestjs/platform-fastify'
 
@@ -10,7 +10,6 @@ import { fastifyApp } from './common/adapter/fastify.adapter'
 import { SpiderGuard } from './common/guards/spider.guard'
 import { LoggingInterceptor } from './common/interceptors/logging.interceptor'
 import { consola } from './global/consola.global'
-import { MyLogger } from './processors/logger/logger.service'
 import { isDev } from './shared/utils/environment.util'
 
 // const APIVersion = 1
@@ -40,7 +39,7 @@ export async function bootstrap() {
   app.useGlobalGuards(new SpiderGuard())
 
   await app.listen(+PORT, '0.0.0.0', async () => {
-    app.useLogger(app.get(MyLogger))
+    app.useLogger(app.get(Logger))
     consola.info('ENV:', process.env.NODE_ENV)
     const url = await app.getUrl()
     const pid = process.pid
@@ -49,7 +48,7 @@ export async function bootstrap() {
 
     consola.success(`[${prefix + pid}] Server listen on: ${url}`)
 
-    Logger.log(`Server is up. ${chalk.yellow(`+${performance.now() | 0}ms`)}`)
+    consola.info(`Server is up. ${chalk.yellow(`+${performance.now() | 0}ms`)}`)
   })
   if (module.hot) {
     module.hot.accept()

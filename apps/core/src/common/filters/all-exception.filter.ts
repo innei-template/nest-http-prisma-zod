@@ -1,7 +1,7 @@
 import fs, { WriteStream } from 'fs'
 import { resolve } from 'path'
-import chalk from 'chalk'
 import { FastifyReply, FastifyRequest } from 'fastify'
+import { chalk } from 'zx-cjs'
 
 import { HTTP_REQUEST_TIME } from '@core/constants/meta.constant'
 import { LOG_DIR } from '@core/constants/path.constant'

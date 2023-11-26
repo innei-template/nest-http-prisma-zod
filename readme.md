@@ -51,7 +51,7 @@ Just tap the `Fork` button.
 
 ## TODO
 
-- [ ] Custom Logger without consola
+- [x] Custom Logger without consola
 - [x] Prisma pagination implementation
 - [x] Fully testing unit and e2e
 - [ ] Data caching and API caching without cache-manager

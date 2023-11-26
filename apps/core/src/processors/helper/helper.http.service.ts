@@ -1,7 +1,7 @@
 import { performance } from 'perf_hooks'
 import { inspect } from 'util'
 import axios, { AxiosInstance, AxiosRequestConfig } from 'axios'
-import chalk from 'chalk'
+import { chalk } from 'zx-cjs'
 
 import { version } from '@core/../package.json'
 import { AXIOS_CONFIG } from '@core/app.config'
