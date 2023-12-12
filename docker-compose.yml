@@ -27,7 +27,7 @@ services:
       - app-network
 
   postgres:
-    image: postgres:15
+    image: postgres:16
     container_name: postgres
     restart: always
     ports:
