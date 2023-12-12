@@ -1,6 +1,6 @@
 // Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
 
-exports[`/modules/post/post.service > should get post throw when 404 1`] = `"post not found"`;
+exports[`/modules/post/post.service > should get post throw when 404 1`] = `[BizException: post not found]`;
 
 exports[`/modules/post/post.service > should paginate posts successful 1`] = `
 {
@@ -13,6 +13,6 @@ exports[`/modules/post/post.service > should paginate posts successful 1`] = `
 }
 `;
 
-exports[`/modules/post/post.service > should throw when category not found 1`] = `"category not found"`;
+exports[`/modules/post/post.service > should throw when category not found 1`] = `[BizException: category not found]`;
 
-exports[`/modules/post/post.service > should throw when post exist 1`] = `"post already exist"`;
+exports[`/modules/post/post.service > should throw when post exist 1`] = `[BizException: post already exist]`;
