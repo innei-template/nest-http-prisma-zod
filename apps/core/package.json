@@ -76,7 +76,7 @@
     "fastify": "^4.24.3",
     "ioredis": "^5.3.2",
     "zod-prisma-types": "3.1.6",
-    "zx": "7.2.3"
+    "zx": "8.8.5"
   },
   "redisMemoryServer": {
     "downloadDir": "./tmp/redis/binaries",
