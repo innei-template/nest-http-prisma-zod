@@ -20,18 +20,18 @@ jobs:
 
       - uses: actions/setup-node@v3
         with:
-          node-version: 20.x
+          node-version: 20.20.2
       - name: Start MongoDB
-        uses: supercharge/mongodb-github-action@v1.10.0
+        uses: supercharge/mongodb-github-action@1.12.1
         with:
           mongodb-version: 4.4
       - name: Start Redis
-        uses: supercharge/redis-github-action@1.7.0
+        uses: supercharge/redis-github-action@1.8.1
         with:
           redis-version: 6
       - uses: pnpm/action-setup@v2.4.0
         with:
-          version: 8.x.x
+          version: 8.15.9
           run_install: true
       - name: Test
         run: |
@@ -113,7 +113,7 @@ jobs:
             ${{ runner.os }}-build-${{ env.cache-name }}-${{ matrix.node-version }}-
       - uses: pnpm/action-setup@v2.4.0
         with:
-          version: 8.x.x
+          version: 8.15.9
           run_install: true
       - name: Build project
         run: |
