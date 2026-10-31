@@ -105,11 +105,11 @@ importers:
         specifier: 1.0.2
         version: 1.0.2
       zod:
-        specifier: 3.22.4
-        version: 3.22.4
+        specifier: 4.6.6
+        version: 4.6.6
       zod-fixture:
         specifier: 2.5.1
-        version: 2.5.1(zod@3.22.4)
+        version: 2.5.1(zod@4.6.6)
       zod-prisma-types:
         specifier: 3.1.6
         version: 3.1.6
@@ -187,7 +187,7 @@ importers:
         version: 0.2.0(reflect-metadata@0.1.14)(rxjs@7.8.1)
       nestjs-zod:
         specifier: 3.0.0
-        version: 3.0.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(zod@3.22.4)
+        version: 3.0.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(zod@4.6.6)
       redis:
         specifier: 4.6.11
         version: 4.6.11
@@ -204,8 +204,8 @@ importers:
         specifier: 5.5.0
         version: 5.5.0
       zod:
-        specifier: 3.22.4
-        version: 3.22.4
+        specifier: 4.6.6
+        version: 4.6.6
       zx-cjs:
         specifier: 7.0.7-0
         version: 7.0.7-0
@@ -251,7 +251,7 @@ importers:
         version: 5.7.0(prisma@5.7.0)
       nestjs-zod:
         specifier: 3.0.0
-        version: 3.0.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(zod@3.22.4)
+        version: 3.0.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(zod@4.6.6)
       prisma-json-types-generator:
         specifier: 3.0.3
         version: 3.0.3(prisma@5.7.0)(typescript@5.3.3)
@@ -5822,16 +5822,16 @@ packages:
         optional: true
     dependencies:
       '@prisma/generator-helper': 4.16.2
-      nestjs-zod: 3.0.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(zod@3.22.4)
+      nestjs-zod: 3.0.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(zod@4.6.6)
       parenthesis: 3.1.8
       prisma: 5.7.0
       ts-morph: 13.0.3
-      zod: 3.22.2
+      zod: 3.22.4
     transitivePeerDependencies:
       - supports-color
     dev: true
 
-  /nestjs-zod@3.0.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(zod@3.22.4):
+  /nestjs-zod@3.0.0(@nestjs/common@10.2.10)(@nestjs/core@10.2.10)(zod@4.6.6):
     resolution: {integrity: sha512-vL9CHShCVj6TmjCVPOd4my46D8d7FdoB4nQvvh+lmVTuzvnwuD+slSxjT4EDdPDWDFtjhfpvQnnkr55/80KHEQ==}
     peerDependencies:
       '@nestjs/common': '>= 8.0.0'
@@ -5849,7 +5849,7 @@ packages:
       '@nestjs/common': 10.2.10(reflect-metadata@0.1.14)(rxjs@7.8.1)
       '@nestjs/core': 10.2.10(@nestjs/common@10.2.10)(@nestjs/websockets@10.2.10)(reflect-metadata@0.1.14)(rxjs@7.8.1)
       merge-deep: 3.0.3
-      zod: 3.22.4
+      zod: 4.6.6
 
   /no-case@3.0.4:
     resolution: {integrity: sha512-fgAN3jGAh+RoxUGZHTSOLJIqUc2wmoBwGR4tbpNAKmmovFoWq0OdRkb0VkldReO2a2iBT/OEulG9XSUc10r3zg==}
@@ -8194,13 +8194,13 @@ packages:
     engines: {node: '>=12.20'}
     dev: true
 
-  /zod-fixture@2.5.1(zod@3.22.4):
+  /zod-fixture@2.5.1(zod@4.6.6):
     resolution: {integrity: sha512-qjLe9TbZL22+MVMovGc6pB7O/7iXwquS4hXX3YImYzZ1p8FN3XEpYzjfR86dDQwBs/mf/jyYjwibPXktzXEljA==}
     peerDependencies:
       zod: '>=3.0.0'
     dependencies:
       randexp: 0.5.3
-      zod: 3.22.4
+      zod: 4.6.6
     dev: true
 
   /zod-prisma-types@3.1.6:
@@ -8214,12 +8214,11 @@ packages:
     transitivePeerDependencies:
       - supports-color
 
-  /zod@3.22.2:
-    resolution: {integrity: sha512-wvWkphh5WQsJbVk1tbx1l1Ly4yg+XecD+Mq280uBGt9wa5BKSWf4Mhp6GmrkPixhMxmabYY7RbzlwVP32pbGCg==}
-    dev: true
-
   /zod@3.22.4:
     resolution: {integrity: sha512-iC+8Io04lddc+mVqQ9AZ7OQ2MrUKGN+oIQyq1vemgt46jwCwLfhq7/pwnBnNXXXZb8VTVLKwp9EDkx+ryxIWmg==}
+
+  /zod@4.6.6:
+    resolution: {integrity: sha512-4UmzQUF5fxvfcYHlbjBmejU+w+hbDnWFx4aS8kBx7nPBHcO2SqPbpAG8snbdg+Xse4pRefR98hgjFgIMCI/UhA==}
 
   /zx-cjs@7.0.7-0:
     resolution: {integrity: sha512-CDwRWriV229ZQN5/wIk92DYQ33Q/jU2DvL+CQXa96qIwMINpW6RQWaXWCRticVDPF0CRKZ4y6uB/8GRzBw1MxA==}
